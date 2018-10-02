@@ -9,6 +9,8 @@ import { ColorService } from "../../Services/color.service";
 import { SizeService } from "../../Services/size.service";
 import { StockService } from "../../Services/stock.service";
 import { SupplierService } from "../../Services/supplier.service";
+import { category } from "../../classes/category_class";
+import { CategoryService } from "../../Services/category.service";
 import { extra } from "../../classes/tmp_class";
 
 @Component({
@@ -19,7 +21,7 @@ import { extra } from "../../classes/tmp_class";
 
 
 export class AddProductComponent implements OnInit {
-  constructor(private prod_ser: ProductService,private color_ser: ColorService,private size_ser: SizeService,private stock_ser: StockService,private sup_ser: SupplierService) {}
+  constructor(private prod_ser: ProductService,private color_ser: ColorService,private size_ser: SizeService,private stock_ser: StockService,private sup_ser: SupplierService,private cat_ser:CategoryService) {}
 
   Product_name: string;
   Fk_category_id: number;
@@ -39,9 +41,12 @@ export class AddProductComponent implements OnInit {
   stock: stock[] = [];
   supplier: supplier[] = [];
   suppliers: supplier;
+  category:category[]=[];
+  categories:category;
   qty: number[] = [0];
   qtys: number;
   id: number;
+
 
   extra_arr: extra[] = [];
 
@@ -61,16 +66,17 @@ export class AddProductComponent implements OnInit {
   }
   onclickAdd()
   {
+    console.log(this.categories.Category_id)
     const fd = new FormData();
     fd.append("Product_name", this.Product_name);
     fd.append("Product_desc", this.Product_desc);
-    fd.append("Fk_category_id", this.Fk_category_id.toString());
+    fd.append("Fk_category_id", this.categories.Category_id.toString());
     fd.append("Product_price", this.Product_price.toString());
     fd.append("Product_image", this.selectedFile, this.selectedFile.name);
     this.prod_ser.addProduct(fd).subscribe(
       (data: any) =>
       {
-      this.arr.push(new product(this.Product_name,this.Product_desc,this.Fk_category_id,this.Product_price,this.Product_image));
+      this.arr.push(new product(this.Product_name,this.Product_desc,this.categories.Category_id,this.Product_price,this.Product_image));
       console.log(this.colors.length);
       console.log(this.sizes.length);
       this.id = data.insertId;
@@ -81,6 +87,7 @@ export class AddProductComponent implements OnInit {
               console.log(data);
             });
         }
+        alert("product added successfully");
       });
 
 
@@ -135,5 +142,8 @@ export class AddProductComponent implements OnInit {
     this.sup_ser.getAllSupplier().subscribe((data: supplier[]) => {
       this.supplier = data;
     });
+    this.cat_ser.getAllCategory().subscribe((data:category[])=>{
+      this.category=data;
+    })
   }
 }

@@ -1,13 +1,20 @@
 <div class="container">
   <h1>Add-Product</h1>
-  <form class="example-form">
+
+   <form class="example-form">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Product Name" [(ngModel)]="Product_name" name="Product_name">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Category_Id" [(ngModel)]="Fk_category_id" name="Fk_category_id">
-    </mat-form-field>
+
+
+    <mat-form-field>
+    <mat-select placeholder="Category Name"  name="category_name" [(ngModel)]="categories">
+      <mat-option *ngFor="let item of category"  [value]="item">
+        {{item.Category_name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
     <!-- <mat-form-field class="example-full-width">
       <input matInput placeholder="Color_Id" [(ngModel)]="Fk_color_id" name="Fk_color_id">
