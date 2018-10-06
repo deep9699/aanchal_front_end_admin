@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { product } from "../../classes/product_class";
 import { color } from "../../classes/color_class";
 import { size } from "../../classes/size_class";
 import { stock } from "../../classes/stock_class";
@@ -12,6 +11,8 @@ import { SupplierService } from "../../Services/supplier.service";
 import { category } from "../../classes/category_class";
 import { CategoryService } from "../../Services/category.service";
 import { extra } from "../../classes/tmp_class";
+import { Router } from "@angular/router";
+import { TouchSequence } from "selenium-webdriver";
 
 @Component({
   selector: "app-add-product",
@@ -21,7 +22,7 @@ import { extra } from "../../classes/tmp_class";
 
 
 export class AddProductComponent implements OnInit {
-  constructor(private prod_ser: ProductService,private color_ser: ColorService,private size_ser: SizeService,private stock_ser: StockService,private sup_ser: SupplierService,private cat_ser:CategoryService) {}
+  constructor(private prod_ser: ProductService,private color_ser: ColorService,private size_ser: SizeService,private stock_ser: StockService,private sup_ser: SupplierService,private cat_ser:CategoryService,private _router:Router) {}
 
   Product_name: string;
   Fk_category_id: number;
@@ -32,20 +33,25 @@ export class AddProductComponent implements OnInit {
   Fk_size_id: number;
   imagesUrl: any[] = [];
   Supplier_id: number;
-  selectedFile: File = null;
-  arr: product[] = [];
-  color: color[] = [];
-  size: size[] = [];
-  sizes: size[] = [];
-  colors: color[] = [];
   stock: stock[] = [];
-  supplier: supplier[] = [];
-  suppliers: supplier;
-  category:category[]=[];
-  categories:category;
+
+  selectedFile: File=null;
+
+  color_list: color[] = [];
+  size_list: size[] = [];
+  selected_sizes: size[] = [];
+  selected_color: color[] = [];
+  supplier_list: supplier[] = [];
+  selected_suppliers: supplier;
+  category_list:category[]=[];
+  selected_categories:category;
   qty: number[] = [0];
-  qtys: number;
+
   id: number;
+
+  color_flag:boolean=false;
+  size_flag:boolean=false;
+  supplier_flag:boolean=false;
 
 
   extra_arr: extra[] = [];
@@ -55,95 +61,111 @@ export class AddProductComponent implements OnInit {
   k: number;
 
   s: number = 0;
-  onClickChange(item: any, i: number) {
-    if (this.qty[i] < 1) {
-      alert("Item can not be 0");
-      this.qty[i] = 1;
+  onClickChange(i: number) {
+
+    if (this.qty[i] < 0) {
+      alert("Item can not less than 0");
+      this.qty[i] = 0;
+      console.log(i);
     }
   }
   onChange(value) {
+
     this.selectedFile = <File>value.target.files[0];
+  }
+  onclickCancle()
+  {
+
+    this._router.navigate(['product_home']);
   }
   onclickAdd()
   {
-    console.log(this.categories.Category_id)
+    console.log(this.selected_categories.Category_id)
     const fd = new FormData();
     fd.append("Product_name", this.Product_name);
     fd.append("Product_desc", this.Product_desc);
-    fd.append("Fk_category_id", this.categories.Category_id.toString());
+    fd.append("Fk_category_id", this.selected_categories.Category_id.toString());
     fd.append("Product_price", this.Product_price.toString());
     fd.append("Product_image", this.selectedFile, this.selectedFile.name);
     this.prod_ser.addProduct(fd).subscribe(
       (data: any) =>
       {
-      this.arr.push(new product(this.Product_name,this.Product_desc,this.categories.Category_id,this.Product_price,this.Product_image));
-      console.log(this.colors.length);
-      console.log(this.sizes.length);
+
+      console.log(this.selected_color.length);
+      console.log(this.selected_sizes.length);
       this.id = data.insertId;
       for(this.i=0;this.i<this.extra_arr.length;this.i++)
       {
-          this.stock_ser.addStock(new stock(this.suppliers.Supplier_id,this.extra_arr[this.i].size.Size_id,this.extra_arr[this.i].color.Color_id,this.id,this.qty[this.i])).subscribe(
+        if(this.qty[this.i]>0)
+        {
+          this.stock_ser.addStock(new stock(this.selected_suppliers.Supplier_id,this.extra_arr[this.i].size.Size_id,this.extra_arr[this.i].color.Color_id,this.id,this.qty[this.i])).subscribe(
             (data: any) => {
               console.log(data);
             });
         }
+
+        }
         alert("product added successfully");
+        this._router.navigate(['']);
       });
 
 
     }
 
   onCheckChangeColor(item: color) {
-    if (this.colors.find(x => x == item)) {
-      this.colors.splice(this.colors.indexOf(item), 1);
+    this.color_flag=true;
+    if (this.selected_color.find(x => x == item)) {
+      this.selected_color.splice(this.selected_color.indexOf(item), 1);
     } else {
-      this.colors.push(item);
+      this.selected_color.push(item);
     }
-    if (this.colors.length != 0 && this.sizes.length != 0) {
+    if (this.selected_color.length != 0 && this.selected_sizes.length != 0) {
       this.extra_arr.splice(0,this.extra_arr.length);
-      for (this.i = 0; this.i < this.colors.length; this.i++) {
-        for (this.j = 0; this.j < this.sizes.length; this.j++) {
-          this.extra_arr.push(new extra(this.colors[this.i], this.sizes[this.j], 0));
+      for (this.i = 0; this.i < this.selected_color.length; this.i++) {
+        for (this.j = 0; this.j < this.selected_sizes.length; this.j++) {
+          this.extra_arr.push(new extra(this.selected_color[this.i], this.selected_sizes[this.j], 0));
         }
       }
     }
-    console.log(this.colors);
+    console.log(this.selected_color);
   }
   onCheckChangeSize(item: size) {
-    if (this.sizes.find(x => x == item)) {
-      this.sizes.splice(this.sizes.indexOf(item), 1);
+    this.size_flag=true;
+    if (this.selected_sizes.find(x => x == item)) {
+      this.selected_sizes.splice(this.selected_sizes.indexOf(item), 1);
     } else {
-      this.sizes.push(item);
+      this.selected_sizes.push(item);
     }
-    if (this.colors.length != 0 && this.sizes.length != 0) {
+    if (this.selected_color.length != 0 && this.selected_sizes.length != 0) {
       this.extra_arr.splice(0,this.extra_arr.length);
-      for (this.i = 0; this.i < this.colors.length; this.i++) {
-        for (this.j = 0; this.j < this.sizes.length; this.j++) {
-          this.extra_arr.push(new extra(this.colors[this.i],this.sizes[this.j],0)
+      for (this.i = 0; this.i < this.selected_color.length; this.i++) {
+        for (this.j = 0; this.j < this.selected_sizes.length; this.j++) {
+          this.extra_arr.push(new extra(this.selected_color[this.i],this.selected_sizes[this.j],0)
           );
         }
       }
     }
 
-    console.log(this.sizes);
+    console.log(this.selected_sizes);
   }
   onCheckChangeSupplier(item: supplier) {
-    this.suppliers = item;
-    console.log(this.suppliers);
+    this.supplier_flag=true;
+    this.selected_suppliers = item;
+    console.log(this.selected_suppliers);
   }
   ngOnInit() {
     this.color_ser.getAllColor().subscribe((data: color[]) => {
-      this.color = data;
-      console.log(this.color);
+      this.color_list = data;
+      console.log(this.color_list);
     });
     this.size_ser.getAllSize().subscribe((data: size[]) => {
-      this.size = data;
+      this.size_list = data;
     });
     this.sup_ser.getAllSupplier().subscribe((data: supplier[]) => {
-      this.supplier = data;
+      this.supplier_list = data;
     });
     this.cat_ser.getAllCategory().subscribe((data:category[])=>{
-      this.category=data;
+      this.category_list=data;
     })
   }
 }

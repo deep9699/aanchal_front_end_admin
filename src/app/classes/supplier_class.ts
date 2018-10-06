@@ -4,7 +4,7 @@ export class supplier{
     public Email_id:string,
     public Name:string,
     public Address:string,
-    public password:string,
+    public Password:string,
     public Mobile_no:string
   ){ }
 };

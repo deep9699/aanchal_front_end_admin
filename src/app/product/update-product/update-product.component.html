@@ -1,0 +1,49 @@
+<div class="container">
+    <h1>Update-Product</h1>
+
+     <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Product Name" ngModel #product_name="ngModel" required [(ngModel)]="Product_name" name="Product_name">
+        <mat-error *ngIf="product_name?.hasError('required')">
+            Product Name Is Required
+          </mat-error>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-form">
+      <mat-select placeholder="Category Name"  required #cat="ngModel"  name="category_name" [(ngModel)]="category_id" class="example-full-width">
+        <mat-option *ngFor="let item of category"  [value]="item.Category_id">
+          {{item.Category_name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="cat?.hasError('required')">
+          Category Name Is Required
+        </mat-error>
+
+    </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput  required #product_desc="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc" name="Product_image">
+        <mat-error *ngIf="product_desc?.hasError('required')">
+            Description is must
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Price"  required #product_price="ngModel" type="number"  [(ngModel)]="Product_price" name="Product_price">
+        <mat-error *ngIf="product_price?.hasError('required')">
+            Product price is must
+          </mat-error>
+
+      </mat-form-field>
+
+
+
+  <br><br>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid || Product_price<1">Update</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
+
+    </form>
+  </div>
