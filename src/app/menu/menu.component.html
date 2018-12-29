@@ -6,11 +6,13 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-toolbar color="primary"><img src="http://localhost:3000/images/AANCHAL_LOGO.jpg" height="70px" width="200px"></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/product_home']" routerLinkActive="router-link-active" >Product Management</a>
-      <a mat-list-item [routerLink]="['/category_home']" routerLinkActive="router-link-active" >Category Management</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item [routerLink]="['product_home']" routerLinkActive="router-link-active" >Product Management</a>
+      <a mat-list-item [routerLink]="['category_home']" routerLinkActive="router-link-active" >Category Management</a>
+      <a mat-list-item [routerLink]="['supplier_home']" routerLinkActive="router-link-active" >Supplier Management</a>
+      <a mat-list-item [routerLink]="['bill_home']" routerLinkActive="router-link-active" >Bill Management</a>
+      <a mat-list-item [routerLink]="['../']" routerLinkActive="router-link-active" >Log Out</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,7 +27,8 @@
       </button>
       <span>admin</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <!-- Add Content Here -->;
+    <!-- <img src='http://localhost:3000/images/AANCHAL_LOGO.JPG'class="center"> -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

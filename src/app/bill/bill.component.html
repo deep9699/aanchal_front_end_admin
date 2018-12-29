@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+  <h1>
+    <b style="font-size: 50px; color:black;">Bill Management</b>
+  </h1>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Bill_date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let arr"> {{arr.Bill_date | date}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Total_amount">
+    <th mat-header-cell *matHeaderCellDef> Amount </th>
+    <td mat-cell *matCellDef="let arr"> {{arr.Total_amount}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Fk_c_email_id">
+      <th mat-header-cell *matHeaderCellDef> Emil_id </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.Fk_c_email_id}} </td>
+    </ng-container>
+
+
+  <!-- Weight Column -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+</div>

@@ -11,5 +11,9 @@ export class ColorService {
   getAllColor(){
     return this._http.get(this.url);
   }
+  getColorById(id)
+  {
+    return this._http.get(this.url+id);
+  }
 
 }

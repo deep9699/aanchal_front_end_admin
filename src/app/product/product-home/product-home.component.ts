@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import {animate, state, style, transition, trigger} from '@angular/animations';
 import { PageEvent, MatPaginator } from "@angular/material";
 import { product } from "../../classes/product_class";
 import { MatTableDataSource } from "@angular/material/table";
@@ -11,7 +12,14 @@ import { CategoryService } from "../../Services/category.service";
 @Component({
   selector: "app-product-home",
   templateUrl: "./product-home.component.html",
-  styleUrls: ["./product-home.component.css"]
+  styleUrls: ["./product-home.component.css"],
+   animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ProductHomeComponent implements OnInit {
   prod_tbl_arr: product[] = [];
@@ -28,8 +36,11 @@ export class ProductHomeComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
   pageEvent: PageEvent;
+  expandedElement;
+  arr:number[]=[];
   displayedColumns: string[] = [
     "Action1",
+    "id",
     "Product_name",
     "Product_price",
     "Category_name",
@@ -48,8 +59,10 @@ export class ProductHomeComponent implements OnInit {
     this.product_dataSource.sort = this.sort;
     this.prod_ser.getAllProduct().subscribe(
       (data: any[]) => {
+        console.log(data);
           this.prod_tbl_arr=data;
           this.product_dataSource.data=data;
+
     });
   }
   onProduct_Delete(item: product) {
@@ -62,10 +75,10 @@ export class ProductHomeComponent implements OnInit {
     });
   }
   onProduct_Add() {
-    this._router.navigate(["add_product"]);
+    this._router.navigate(["menu/add_product"]);
   }
   onProduct_Update(item) {
-    this._router.navigate(["update_product", item.Product_id]);
+    this._router.navigate(["/menu/update_product", item.Product_id]);
   }
   isAllSelected() {
     const numSelected = this.product_selection.selected.length;

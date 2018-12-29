@@ -76,7 +76,7 @@ export class AddProductComponent implements OnInit {
   onclickCancle()
   {
 
-    this._router.navigate(['product_home']);
+    this._router.navigate(['menu/product_home']);
   }
   onclickAdd()
   {
@@ -106,7 +106,7 @@ export class AddProductComponent implements OnInit {
 
         }
         alert("product added successfully");
-        this._router.navigate(['']);
+        this._router.navigate(['menu/product_home']);
       });
 
 

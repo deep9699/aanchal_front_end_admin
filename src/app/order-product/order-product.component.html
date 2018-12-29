@@ -1,0 +1,49 @@
+<div class="container">
+  <h1 mat-dialog-title>Order Product</h1>
+
+
+  <form class="example-form" #f="ngForm" name="Order_product_form">
+
+
+
+     <h5>Supplier Details</h5>
+     <table>
+       <tr>
+         <td> Name  : </td>
+         <td>{{Suppliers.Name}}</td>
+      </tr>
+      <tr>
+        <td> Email id   : </td>
+        <td>{{Suppliers.Email_id}}</td>
+      </tr>
+      <tr>
+        <td> Address    : </td>
+        <td>{{Suppliers.Address}}</td>
+      </tr>
+      <tr>
+        <td> Mobile No   : </td>
+        <td>{{Suppliers.Mobile_no}}</td>
+      </tr>
+      <tr>
+        <td> Price   : </td>
+        <td>{{Price}}</td>
+      </tr>
+
+      <tr>
+        <td> Quantity   : </td>
+        <td><input type="number" name="Quantity" [(ngModel)]="Qty" ></td>
+      </tr>
+      <tr>
+        <td><button mat-raised-button color="primary"  (click)="onClickOrderNow()">SENT REQUEST</button></td>
+        <td><button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button></td>
+      </tr>
+
+
+
+     </table>
+
+  </form>
+
+</div>
+
+

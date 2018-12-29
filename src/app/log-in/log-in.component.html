@@ -1,0 +1,53 @@
+
+<div class="container">
+<h1>Aanchal </h1>
+    <hr>
+    <div class="form-group">
+       <mat-form-field class="example-full-width" hintLabel="Must be valid Email Id">
+        <input matInput
+        name="email_id"
+        ngModel
+        #email_id="ngModel"
+        required
+        email
+        placeholder="Email Id"
+        [(ngModel)]="email_id1"
+        >
+        <mat-error *ngIf="email_id?.hasError('required')">
+          email id is required
+        </mat-error>
+
+        <mat-error *ngIf="!email_id?.hasError('required')">
+          email id is not valid
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" hintLabel="Must conatin 8 characters">
+         <input matInput
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        [type]="flag ? 'password' : 'text'"
+        placeholder="Password"
+        [(ngModel)]="password1"
+        >
+       <mat-icon matSuffix (click)="flag = !flag">{{flag ? 'visibility' : 'visibility_off'}}</mat-icon>
+       <mat-hint align="end">{{password.value.length}}/8</mat-hint>
+        <mat-error *ngIf="password.hasError('required')">
+          password is required
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="btn-group">
+        <!-- <button (click)="onclicklogin()" style="background-color:cornflowerblue;font-size: 30px;">Log In</button> -->
+        <button mat-raised-button (click)="onclicklogin()" color="primary">Log In</button>
+  </div>
+
+
+
+  <div class="atag">
+  <a mat-raised-button (click)="onclickforget()" >Forget Password?</a>
+</div>
+  </div>

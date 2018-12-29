@@ -11,5 +11,9 @@ export class SizeService {
   getAllSize(){
     return this._http.get(this.url);
   }
+  getSizeById(id)
+  {
+    return this._http.get(this.url+id);
+  }
 
 }

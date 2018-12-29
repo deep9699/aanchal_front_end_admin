@@ -17,9 +17,10 @@ import { MatCardModule,
   MatRadioModule,
   MatSelectModule,
   MatOptionModule,
-  MatSidenavModule, MatToolbarModule, MatListModule,
-
-
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatDialogModule
    } from '@angular/material';
    import { MatFormFieldModule } from "@angular/material/form-field";
    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +31,14 @@ import { CategoryHomeComponent } from './category/category-home/category-home.co
 import { UpdateCategoryComponent } from './category/update-category/update-category.component';
 import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.component';
+import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
+import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { BillComponent } from './bill/bill.component';
+import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
+import { OrderProductComponent } from './order-product/order-product.component';
 
 
 
@@ -42,7 +51,15 @@ import { LayoutModule } from '@angular/cdk/layout';
     AddCategoryComponent,
     CategoryHomeComponent,
     UpdateCategoryComponent,
-    MenuComponent
+    MenuComponent,
+    AddSupplierComponent,
+    SupplierHomeComponent,
+    UpdateSupplierComponent,
+    LogInComponent,
+    ForgetpasswordComponent,
+    BillComponent,
+    SupplierOrderComponent,
+    OrderProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +73,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatProgressSpinnerModule,
     MatSortModule,
     MatCardModule,
+    MatDialogModule,
     routing,
     HttpClientModule,
     MatFormFieldModule,

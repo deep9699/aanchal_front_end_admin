@@ -10,3 +10,8 @@
   position: sticky;
   top: 0;
 }
+ .center {
+  position:absolute;
+  opacity: 0.15;
+}
+

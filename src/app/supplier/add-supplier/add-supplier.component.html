@@ -1,0 +1,72 @@
+<div class="container">
+  <b style="font-size: 50px; color: black;">Add Supplier</b>
+  <hr>
+
+  <form (ngSubmit)="onsignup(f)" #f="ngForm" class="example-form">
+
+
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email_id:" type="text" [(ngModel)]="Email_id" name="Email_id" #id="ngModel"
+            email required>
+          <mat-error *ngIf="id.hasError('email')">
+            Email is Invalid
+          </mat-error>
+          <mat-error *ngIf="id.hasError('required')">
+            Email is Required
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password:" type="text" [(ngModel)]="Password" name="Password" #pass="ngModel"
+            required minlength="6">
+          <mat-error *ngIf="pass.hasError('min')">
+            Password is too short
+          </mat-error>
+          <mat-error *ngIf="pass.hasError('required')">
+            Password is Required
+          </mat-error>
+        </mat-form-field>
+
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name:" type="text" [(ngModel)]="Name" name="Name" #user="ngModel" required>
+          <mat-error *ngIf="user.hasError('required')">
+            Supplier Name is Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Mobile_no:" type="text" name="Mobile_no" [(ngModel)]="Mobile_no" #mob1="ngModel"
+            required required minlength="10" maxlength="10">
+          <mat-error *ngIf="mob1.hasError('minlength')">
+            Required 10 Digit
+          </mat-error>
+          <mat-error *ngIf="mob1.hasError('required')">
+            Mobile Number is Required
+          </mat-error>
+        </mat-form-field>
+
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Address" name="Address" #ad="ngModel" [(ngModel)]="Address" required>
+        <mat-error *ngIf="ad.hasError('required')">
+          Address is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="rows">
+        <div class="col-md-6">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">ADD Supplier</button>
+        </div>
+        <div class="col-md-6">
+          <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
+        </div>
+      </div>
+
+  </form>
+</div>

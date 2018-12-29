@@ -12,31 +12,47 @@
 
 
       <mat-form-field class="example-form">
-      <mat-select placeholder="Category Name"  required #cat="ngModel"  name="category_name" [(ngModel)]="category_id" class="example-full-width">
-        <mat-option *ngFor="let item of category"  [value]="item.Category_id">
+      <mat-select placeholder="Category Name" required #category_name="ngModel" name="category_name" [(ngModel)]="category_id" class="example-full-width">
+        <mat-option *ngFor="let item of category" [value]="item.Category_id">
           {{item.Category_name}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="cat?.hasError('required')">
-          Category Name Is Required
-        </mat-error>
 
     </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput  required #product_desc="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc" name="Product_image">
-        <mat-error *ngIf="product_desc?.hasError('required')">
-            Description is must
-          </mat-error>
-      </mat-form-field>
+    <div class="form-group">
+        <h5>Image:</h5> <input class="form-control" id="trigger" type="file"  (change)="onChange($event)" accept="image/*">
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Price"  required #product_price="ngModel" type="number"  [(ngModel)]="Product_price" name="Product_price">
-        <mat-error *ngIf="product_price?.hasError('required')">
-            Product price is must
-          </mat-error>
+      </div>
 
-      </mat-form-field>
+      <div class="example-element-diagram" *ngIf="!flag">
+          <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
+        </div>
+
+         <div class="example-element-diagram" *ngIf="flag" >
+
+          </div>
+          <canvas #mycanvas width="200" height="200" style="border: 1px solid red" ></canvas>
+
+
+          <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
+
+
+          <mat-form-field class="example-full-width">
+              <input matInput  required #product_desc1="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc" name="Product_desc">
+              <mat-error *ngIf="product_desc1?.hasError('required')">
+                  Description is must
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Price"  required #product_price="ngModel" type="number"  [(ngModel)]="Product_price" name="Product_price">
+              <mat-error *ngIf="product_price?.hasError('required')">
+                  Product price is must
+                </mat-error>
+
+            </mat-form-field>
+
 
 
 

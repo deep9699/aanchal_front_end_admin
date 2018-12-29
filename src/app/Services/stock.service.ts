@@ -15,4 +15,8 @@ export class StockService {
     let head1=new HttpHeaders().set('Content-Type','application/json');
     return this._http.post(this.url,body,{headers:head1});
   }
+  getSupplierId(id)
+  {
+    return this._http.get(this.url+id);
+  }
 }

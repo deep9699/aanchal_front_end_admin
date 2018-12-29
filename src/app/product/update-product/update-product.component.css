@@ -7,3 +7,20 @@
 .example-full-width {
   width: 100%;
 }
+
+.example-element-diagram {
+  min-width: 200px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 204px;
+  width: 240px;
+}
+
+img
+{
+  height: 180px;
+  width :220px;
+}
+
