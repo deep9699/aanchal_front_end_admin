@@ -20,6 +20,8 @@ import { MatCardModule,
   MatSidenavModule,
   MatToolbarModule,
   MatListModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
   MatDialogModule
    } from '@angular/material';
    import { MatFormFieldModule } from "@angular/material/form-field";
@@ -39,6 +41,10 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { BillComponent } from './bill/bill.component';
 import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.component";
+import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
+import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
+
 
 
 
@@ -60,6 +66,9 @@ import { OrderProductComponent } from './order-product/order-product.component';
     BillComponent,
     SupplierOrderComponent,
     OrderProductComponent,
+    EmployeeHomeComponent,
+    UpdateEmployeeComponent,
+    AddEmployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +94,9 @@ import { OrderProductComponent } from './order-product/order-product.component';
     LayoutModule,
     MatToolbarModule,
     MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    
 
 
   ],

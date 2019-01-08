@@ -14,6 +14,9 @@ import { LogInComponent } from './log-in/log-in.component';
 import { BillComponent } from "./bill/bill.component";
 import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.component";
+import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.component";
+import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
 
 
 
@@ -33,7 +36,10 @@ const arr:Routes=[
       {path:"update_supplier/:id",component:UpdateSupplierComponent},
       {path:"bill_home",component:BillComponent},
       {path:"supplier_order",component:SupplierOrderComponent},
-      {path:"order_product",component:OrderProductComponent}
+      {path:"order_product",component:OrderProductComponent},
+      {path:"employee_home",component:EmployeeHomeComponent},
+      {path:"add_employee",component:AddEmployeeComponent},
+      {path:"update_employee/:email_id",component:UpdateEmployeeComponent}
     ]},
 
 

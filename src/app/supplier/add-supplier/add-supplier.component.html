@@ -59,7 +59,13 @@
         </mat-error>
       </mat-form-field>
 
-      <div class="rows">
+      <!-- <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
+       <div class="rows">
         <div class="col-md-6">
           <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">ADD Supplier</button>
         </div>
