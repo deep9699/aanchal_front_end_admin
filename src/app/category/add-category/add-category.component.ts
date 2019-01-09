@@ -35,7 +35,7 @@ export class AddCategoryComponent implements OnInit {
 
   onclickCancle()
   {
-    //this._router.navigate(['menu/category_home']);
+    this._router.navigate(['menu/category_home']);
 
   }
 
