@@ -9,6 +9,7 @@ import { ProductService } from '../Services/product.service';
 import { product } from '../classes/product_class';
 import { EmployeeService } from '../Services/employee.service';
 import { email } from '../classes/email_class';
+import { supplier_order } from '../classes/supplier_order_class';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class OrderProductComponent implements OnInit {
         this.Product_name=data[0].Product_name;
       }
     );
-    this.stock_ser.getSupplierId(this.Stock_id).subscribe(
+    this.stock_ser.getStockById(this.Stock_id).subscribe(
       (data:any)=>
       {
         console.log(data[0].Fk_supplier_id);
@@ -69,14 +70,22 @@ export class OrderProductComponent implements OnInit {
     console.log(this.Qty);
     if(this.Qty>=10)
     {
-      this.emp_ser.sentMail(new email(this.Suppliers.Email_id,
-        "REQUEST ORDER FROM AANCHAL FASHION DESIGN & BOUTIQUE","AANCHAL FAHSION DESIGN & BOUTIQUE SEND YOU ORDER OF "+this.Product_name+" PRODUCT OF "+this.Color_name+" Color  & "+this.Size_name+" Size of"+this.Qty+" pices"+" FOR "+this.Price+" RS. per pices")).subscribe(
+      // this.emp_ser.sentMail(new email(this.Suppliers.Email_id,
+      //   "REQUEST ORDER FROM AANCHAL FASHION DESIGN & BOUTIQUE","AANCHAL FAHSION DESIGN & BOUTIQUE SEND YOU ORDER OF "+this.Product_name+" PRODUCT OF "+this.Color_name+" Color  & "+this.Size_name+" Size of"+this.Qty+" pices"+" FOR "+this.Price+" RS. per pices")).subscribe(
+      //   (data:any[])=>
+      //   {
+      //     console.log(data);
+      //   }
+      // );
+      // localStorage.setItem("Status","REQUEST SENT");
+
+      this.sup_ser.addSupplierOrder(new supplier_order(0,this.Stock_id,this.Qty,this.Price,"Request Sent")).subscribe(
         (data:any[])=>
         {
           console.log(data);
         }
       );
-      localStorage.setItem("Status","REQUEST SENT");
+
       alert("Request Sent");
       this.dialogRef.close();
     }

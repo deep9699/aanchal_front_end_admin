@@ -23,7 +23,7 @@ import { MatCardModule,
   MatDialogModule
    } from '@angular/material';
    import { MatFormFieldModule } from "@angular/material/form-field";
-   import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+   import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductHomeComponent } from './product/product-home/product-home.component';
 import {MatIconModule} from '@angular/material/icon';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
@@ -39,6 +39,8 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { BillComponent } from './bill/bill.component';
 import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -60,9 +62,12 @@ import { OrderProductComponent } from './order-product/order-product.component';
     BillComponent,
     SupplierOrderComponent,
     OrderProductComponent,
+    SupplierOrderStatusComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
+    NoopAnimationsModule,
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,

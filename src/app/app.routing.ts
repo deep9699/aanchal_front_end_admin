@@ -14,6 +14,8 @@ import { LogInComponent } from './log-in/log-in.component';
 import { BillComponent } from "./bill/bill.component";
 import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -21,6 +23,7 @@ import { OrderProductComponent } from './order-product/order-product.component';
 const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
+    {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},
@@ -33,6 +36,7 @@ const arr:Routes=[
       {path:"update_supplier/:id",component:UpdateSupplierComponent},
       {path:"bill_home",component:BillComponent},
       {path:"supplier_order",component:SupplierOrderComponent},
+      {path:"supplier_order_status",component:SupplierOrderStatusComponent},
       {path:"order_product",component:OrderProductComponent}
     ]},
 

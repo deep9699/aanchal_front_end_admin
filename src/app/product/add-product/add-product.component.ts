@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { color } from "../../classes/color_class";
 import { size } from "../../classes/size_class";
 import { stock } from "../../classes/stock_class";
@@ -23,6 +23,10 @@ import { TouchSequence } from "selenium-webdriver";
 
 export class AddProductComponent implements OnInit {
   constructor(private prod_ser: ProductService,private color_ser: ColorService,private size_ser: SizeService,private stock_ser: StockService,private sup_ser: SupplierService,private cat_ser:CategoryService,private _router:Router) {}
+
+  context=CanvasRenderingContext2D;
+  @ViewChild("mycanvas") mycanvas;
+
 
   Product_name: string;
   Fk_category_id: number;
@@ -49,6 +53,7 @@ export class AddProductComponent implements OnInit {
 
   id: number;
 
+  flag:boolean=false;
   color_flag:boolean=false;
   size_flag:boolean=false;
   supplier_flag:boolean=false;
@@ -69,10 +74,7 @@ export class AddProductComponent implements OnInit {
       console.log(i);
     }
   }
-  onChange(value) {
 
-    this.selectedFile = <File>value.target.files[0];
-  }
   onclickCancle()
   {
 
@@ -153,6 +155,36 @@ export class AddProductComponent implements OnInit {
     this.selected_suppliers = item;
     console.log(this.selected_suppliers);
   }
+
+  onClickdelete(item)
+  {
+    console.log(item);
+    this.extra_arr.splice(this.extra_arr.indexOf(item),1);
+    console.log(this.extra_arr);
+  }
+
+  onChange(value):void {
+    this.selectedFile = <File>value.target.files[0];
+    if(this.selectedFile)
+    {
+      this.flag=true;
+      let canvas=this.mycanvas.nativeElement;
+      let context=canvas.getContext('2d');
+      context.clearRect(0,0,200,200);
+
+      var render=new FileReader();
+      render.onload=function(event:any){
+        var img=new Image();
+        img.onload=function(){
+          context.drawImage(img,0,0,218,180);
+        };
+        img.src=event.target.result;
+      };
+      render.readAsDataURL(value.target.files[0]);
+    }
+  }
+
+
   ngOnInit() {
     this.color_ser.getAllColor().subscribe((data: color[]) => {
       this.color_list = data;

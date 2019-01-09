@@ -18,6 +18,7 @@ export class ForgetpasswordComponent implements OnInit {
   flag:boolean=true;
   email_id1:string;
   password:string;
+  code:number;
 
   constructor(private _ser:EmployeeService,private _router:Router,private _act:ActivatedRoute,public dialogRef: MatDialogRef<LogInComponent>) {
 
@@ -39,14 +40,20 @@ export class ForgetpasswordComponent implements OnInit {
       else
       {
         this.password=data[0].Password;
-        this._ser.sentMail(new email(this.email_id1,"AANCHAL Forget Password","Your password is : "+this.password)).subscribe(
+        this.code=(Math.floor(Math.random()*1000)+9000);
+        localStorage.setItem('code',this.code.toString());
+        localStorage.setItem('Email_id',this.email_id1);
+        this._ser.sentMail(new email(this.email_id1,"AANCHAL Forget Password","Your Code for Change Password is : "+this.code)).subscribe(
         (data:any[])=>
         {
           console.log(data);
-     //     this._router.navigate(['']);
-          this.dialogRef.close();
+          console.log(localStorage.getItem('code'));
         }
         );
+        console.log(localStorage.getItem('code'));
+        this._router.navigate(['changepassword']);
+        this.dialogRef.close();
+
       }
     }
   );
@@ -54,7 +61,7 @@ export class ForgetpasswordComponent implements OnInit {
 
 
   ngOnInit() {
-    this.email_id1=this._act.snapshot.params["id"];
+
   }
 
 }

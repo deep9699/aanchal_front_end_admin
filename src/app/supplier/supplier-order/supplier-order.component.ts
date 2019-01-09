@@ -10,7 +10,8 @@ import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { OrderProductComponent } from "../../order-product/order-product.component";
 import { stock } from "../../classes/stock_class";
-import { IterableChangeRecord_ } from "@angular/core/src/change_detection/differs/default_iterable_differ";
+import { SupplierService } from "../../Services/supplier.service";
+import { supplier_order } from "../../classes/supplier_order_class";
 import { TouchSequence } from "selenium-webdriver";
 
 
@@ -45,8 +46,10 @@ export class SupplierOrderComponent implements OnInit {
     stock_tbl_arr:stock[]=[];
     prod_tbl_arr: any[] = [];
     product_delarr: product[] = [];
+    indexs:number;
     j: number;
     i: number = 0;
+    saw_flag:boolean=false;
     page_length = 100;
     pageSize = 10;
     product_selection = new SelectionModel(true, []);
@@ -65,12 +68,12 @@ export class SupplierOrderComponent implements OnInit {
       "Size",
       "Color",
       "Quentity",
-      "Status",
       "Action"
     ];
     constructor(
       private prod_ser: ProductService,
       private _router: Router,
+      private sup_ser:SupplierService,
       private matDialog:MatDialog,private _act:ActivatedRoute
     ) {}
 
@@ -79,16 +82,48 @@ export class SupplierOrderComponent implements OnInit {
       this.Table_dataSource.paginator = this.paginator;
 
       this.Table_dataSource.sort = this.sort;
+      this.Table_detials=[];
+      this.Table_dataSource.data=[];
       this.prod_ser.getLowQtyProduct().subscribe(
         (data: Product_details[]) => {
-          console.log(data);
-          for(this.i=0;this.i<data.length;this.i++)
-          {
-              data[this.i].Status="UNSEEN";
-          }
-          this.Table_detials=data;
-          this.Table_dataSource.data=this.Table_detials;
+
+          this.sup_ser.getSupplierOrder().subscribe(
+            (x:supplier_order[])=>
+            {
+              for(this.i=0;this.i<data.length;this.i++)
+              {
+                for(this.j=0;this.j<x.length;this.j++)
+                {
+                  console.log(data[this.i].Stock_id ,x[this.j].Fk_stock_id);
+                  if(data[this.i].Stock_id==x[this.j].Fk_stock_id)
+                  {
+                    this.saw_flag=true;
+                    break;
+                  }
+                  else
+                  {
+
+                  }
+                }
+                if(this.saw_flag==false)
+                {
+                  this.Table_detials.push(data[this.i]);
+                }
+                this.saw_flag=false;
+              }
+
+              this.Table_dataSource.data=this.Table_detials;
+            }
+          );
+          //console.log(data);
+          //this.Table_detials=data;
+          console.log(this.Table_detials);
+
       });
+
+    }
+    onSentRequest()
+    {
 
     }
     onOrder_now(item: Product_details) {
@@ -108,8 +143,8 @@ export class SupplierOrderComponent implements OnInit {
 
         });
         this.currentdialog.afterClosed().subscribe(result => {
-        item.Status=localStorage.getItem("Status");
         console.log('the dailog was closed');
+          this.ngOnInit();
         })
       });
 

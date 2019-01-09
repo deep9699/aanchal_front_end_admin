@@ -25,17 +25,17 @@
 
       </div>
 
-      <div class="example-element-diagram" *ngIf="!flag">
-          <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
+      <div class="example-element-diagram" [hidden]="flag">
+        <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
         </div>
 
-         <div class="example-element-diagram" *ngIf="flag" >
-
+         <div class="example-element-diagram" [hidden]="!flag">
+            <canvas #mycanvas width="218px" height="180px"  ></canvas>
           </div>
-          <canvas #mycanvas width="200" height="200" style="border: 1px solid red" ></canvas>
 
 
-          <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
+
+          <!-- <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*"> -->
 
 
           <mat-form-field class="example-full-width">
