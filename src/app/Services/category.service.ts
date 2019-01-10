@@ -7,7 +7,7 @@ import { category } from '../classes/category_class';
 })
 export class CategoryService {
   private url='http://localhost:3000/category/';
-  private delete_cat='http://localhost:3000/category_delete/'
+  private delete_cat='http://localhost:3000/category_delete/';
   constructor(private _http:HttpClient) { }
   getAllCategory(){
     return this._http.get(this.url);

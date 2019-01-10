@@ -21,6 +21,10 @@ export class ProductService {
   getProductById(id){
     return this._http.get(this.url+id);
   }
+  getProductByCategoryId(id){
+    return this._http.get(this.product_route+id);
+  }
+
   addProduct(item:FormData){
     return this._http.post(this.url,item);
   }

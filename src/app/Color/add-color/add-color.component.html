@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 mat-dialog-title>Add-Color</h1>
+
+
+  <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_Color_form">
+    <mat-form-field class="example-full-width">
+      <input matInput name="color_name" ngModel #color_name="ngModel" required placeholder="color Name"
+        [(ngModel)]="Color_name">
+
+        <mat-error *ngIf="color_name?.hasError('required')">
+        Size Name Is Required
+      </mat-error>
+
+    </mat-form-field>
+
+    <br><br>
+  <button mat-raised-button color="primary"  type="submit" [disabled]="!f.valid ">ADD</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
+
+</form>
+</div>
+
+
+
+

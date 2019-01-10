@@ -20,6 +20,15 @@ import { UpdateEmployeeComponent } from "./Employee/update-employee/update-emplo
 
 
 
+import { SizeHomeComponent } from './Size/size-home/size-home.component';
+import { UpdateSizeComponent } from './Size/update-size/update-size.component';
+import { AddSizeComponent } from './Size/add-size/add-size.component';
+import { ColorHomeComponent } from './Color/color-home/color-home.component';
+import { AddColorComponent } from './Color/add-color/add-color.component';
+import { UpdateColorComponent } from './Color/update-color/update-color.component';
+import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
+import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
+import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
 
 const arr:Routes=[
     {path:'',component:LogInComponent},
@@ -39,7 +48,17 @@ const arr:Routes=[
       {path:"order_product",component:OrderProductComponent},
       {path:"employee_home",component:EmployeeHomeComponent},
       {path:"add_employee",component:AddEmployeeComponent},
-      {path:"update_employee/:email_id",component:UpdateEmployeeComponent}
+      {path:"update_employee/:email_id",component:UpdateEmployeeComponent},
+      {path:"size_home",component:SizeHomeComponent},
+      {path:"order_product",component:OrderProductComponent},
+      {path:"update_size/:id",component:UpdateSizeComponent},
+      {path:"add_size",component:AddSizeComponent},
+      {path:"color_home",component:ColorHomeComponent},
+      {path:"add_color",component:AddColorComponent},
+      {path:"update_color/:id",component:UpdateColorComponent},
+      {path:"bill_details/:id",component:BillDetalisComponent},
+      {path:"gen_bill",component:GenerateBillComponent},
+      {path:"customer_home",component:CustomerHomeComponent}
     ]},
 
 

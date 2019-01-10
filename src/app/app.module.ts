@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { routing } from "./app.routing";
 import { AddProductComponent } from "./product/add-product/add-product.component";
 import { UpdateProductComponent } from './product/update-product/update-product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule,
   MatSortModule,
   MatProgressSpinnerModule,
@@ -22,7 +22,8 @@ import { MatCardModule,
   MatListModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatDialogModule
+  MatAutocompleteModule,
+  
    } from '@angular/material';
    import { MatFormFieldModule } from "@angular/material/form-field";
    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,6 +46,16 @@ import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.co
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
 
+//import { SizeComponent } from './size_home/size/size.component';
+import { SizeHomeComponent } from './Size/size-home/size-home.component';
+import { UpdateSizeComponent } from './Size/update-size/update-size.component';
+import { AddSizeComponent } from './Size/add-size/add-size.component';
+import { ColorHomeComponent } from './Color/color-home/color-home.component';
+import { AddColorComponent } from './Color/add-color/add-color.component';
+import { UpdateColorComponent } from './Color/update-color/update-color.component';
+import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
+import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
+import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
 
 
 
@@ -69,20 +80,33 @@ import { UpdateEmployeeComponent } from './Employee/update-employee/update-emplo
     EmployeeHomeComponent,
     UpdateEmployeeComponent,
     AddEmployeeComponent,
+    //SizeComponent,
+    SizeHomeComponent,
+    UpdateSizeComponent,
+    AddSizeComponent,
+    ColorHomeComponent,
+    AddColorComponent,
+    UpdateColorComponent,
+    BillDetalisComponent,
+    GenerateBillComponent,
+    CustomerHomeComponent,
+
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatTableModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatDatepickerModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
     MatCardModule,
-    MatDialogModule,
+    MatAutocompleteModule,
     routing,
     HttpClientModule,
     MatFormFieldModule,
@@ -97,6 +121,7 @@ import { UpdateEmployeeComponent } from './Employee/update-employee/update-emplo
     MatDatepickerModule,
     MatNativeDateModule
     
+
 
 
   ],

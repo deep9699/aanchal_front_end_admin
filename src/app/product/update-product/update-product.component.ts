@@ -54,6 +54,7 @@ image:File;
           context.drawImage(img,0,0);
         };
        // img.src=event.target.result;
+//        img.src=event.target.result;
       };
       render.readAsDataURL(value.target.files[0]);
     }
@@ -104,6 +105,7 @@ image:File;
         context.drawImage(img,0,0);
       };
      // img.src=event.target.result;
+  //    img.src=event.target.result;
     };
     render.readAsDataURL(e.target.files[0]);
   }
