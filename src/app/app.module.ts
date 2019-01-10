@@ -26,7 +26,7 @@ import { MatCardModule,
   
    } from '@angular/material';
    import { MatFormFieldModule } from "@angular/material/form-field";
-   import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+   import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductHomeComponent } from './product/product-home/product-home.component';
 import {MatIconModule} from '@angular/material/icon';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
@@ -46,6 +46,8 @@ import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.co
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
 
+import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 //import { SizeComponent } from './size_home/size/size.component';
 import { SizeHomeComponent } from './Size/size-home/size-home.component';
 import { UpdateSizeComponent } from './Size/update-size/update-size.component';
@@ -81,6 +83,8 @@ import { CustomerHomeComponent } from './customer/customer-home/customer-home.co
     UpdateEmployeeComponent,
     AddEmployeeComponent,
     //SizeComponent,
+    SupplierOrderStatusComponent,
+    ChangePasswordComponent,
     SizeHomeComponent,
     UpdateSizeComponent,
     AddSizeComponent,

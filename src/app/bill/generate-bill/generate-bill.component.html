@@ -20,7 +20,7 @@
         [(ngModel)]="selected_number"
         [matAutocomplete]="auto"
       />
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onNumberChange()">
         <mat-option
           *ngFor="let option of (filteredOptions | async)"
           [value]="option"

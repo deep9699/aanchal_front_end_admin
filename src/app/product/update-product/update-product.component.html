@@ -27,6 +27,7 @@
 
     </div>
 
+<<<<<<< HEAD
     <div class="example-element-diagram" *ngIf="!flag">
       <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
     </div>
@@ -38,6 +39,19 @@
 
 
     <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
+=======
+      <div class="example-element-diagram" [hidden]="flag">
+        <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
+        </div>
+
+         <div class="example-element-diagram" [hidden]="!flag">
+            <canvas #mycanvas width="218px" height="180px"  ></canvas>
+          </div>
+
+
+
+          <!-- <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*"> -->
+>>>>>>> 43695f6c0c2d5449f963a5d2e3ea20b31a65fda0
 
 
     <mat-form-field class="example-full-width">

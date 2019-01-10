@@ -24,7 +24,7 @@ import { bill } from "../../classes/bill_class";
 import { bill_details } from "../../classes/bill_details_class";
 
 export class updatestock {
-  constructor(public qty1: number, public stock_id: number) {}
+  constructor(public Quantity: number, public Stock_id: number) {}
 }
 
 export class getsizeBycolorpro
@@ -124,6 +124,11 @@ export class GenerateBillComponent implements OnInit {
   stock_id1: number;
 
   ngOnInit() {
+    this.details=[];
+    this.extra_arr=[];
+    this._qty=1;
+
+
     this.cust_ser.getAllCustomer().subscribe((data: cust[]) => {
       console.log(data);
       for (this.i = 0; this.i < data.length; this.i++) {
@@ -179,23 +184,11 @@ export class GenerateBillComponent implements OnInit {
 
     this.Product_price = this.selected_product.Product_price;
     console.log(this.selected_product);
-    //this.extra_arr.push(new temp(this.selected_color,this.selected_product,this.selected_sizes,this._qty,this.Product_price));
+
     this.extra_arr.push(
       new temp(this.selected_product,this.sele_col.color,this.selected_sizes,this._qty,this.Product_price * this._qty,this.stock_id1)
     );
     console.log(this.extra_arr);
-    // for(this.s=0;this.s<this.details.length;this.s++)
-    // {
-    //   this.details.pop();
-    // }
-    // for(this.k=0;this.k<this.sizebycolor.length;this.k++)
-    // {
-    //   this.sizebycolor.pop();
-    // }
-    //this.selected_product.Product_name=" ";
-    // this.selected_color.Color_name=" ";
-    // this._qty=1;
-    // this.selected_sizes.Size_name=" ";
     this.sizebycolor.splice(0, this.sizebycolor.length);
     this.stock_id.splice(0, this.stock_id.length);
     this.selected_product;
@@ -230,17 +223,7 @@ export class GenerateBillComponent implements OnInit {
                   this.bill_details1.push(new bill_details(this.bill_id,this.customer_id,this.product_id,this._qty,this.amount)
                   );
 
-                  //   this.stock_ser.stockdetails(this.product_id).subscribe(
-                  //     (data:stock)=>{
-                  //       this.update_qty=data.Quantity;
-                  //       this.update_qty-=this._qty;
-                  //     //   this.stock_ser.updateStock(new updatestock(this.update_qty,this.product_id)).subscribe(
-                  //     //     (data:any)=>{
-                  //     //       console.log(data);
-                  //     //     }
-                  //     //   );
-                  //     }
-                  // );
+
                 }
                 this.bill_ser.addBillDetails(this.bill_details1).subscribe
                 ((data: any) => {
@@ -292,6 +275,10 @@ export class GenerateBillComponent implements OnInit {
           //this.x++;
         });
     }
+    alert('Thank You');
+    this._router.navigate(["menu"]);
+
+
   }
   onclickAdd() {}
   onproductChange() {
@@ -353,11 +340,26 @@ export class GenerateBillComponent implements OnInit {
 
   onNumberChange()
   {
-    console.log('xyzrj')
+    console.log(this.selected_number)
+    this.cust_ser.getIdByMobileNo(this.selected_number).subscribe((data:cust[])=>{
+      console.log(data);
+      this.Email_id=data[0].Email_id;
+      this.cust_name=data[0].Name;
+      this.Gender=data[0].Gender;
+      this.Address=data[0].Gender;
+      this.date1=data[0].DOB;
+
+    }
+    )
+
+
   }
 
   onclickreset()
   {
       this.ngOnInit();
+  }
+  onclickCancle()
+  {
   }
 }

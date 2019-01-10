@@ -17,6 +17,8 @@ import { OrderProductComponent } from './order-product/order-product.component';
 import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.component";
 import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.component";
 import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
+import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -33,6 +35,7 @@ import { CustomerHomeComponent } from './customer/customer-home/customer-home.co
 const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
+    {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},
@@ -49,6 +52,8 @@ const arr:Routes=[
       {path:"employee_home",component:EmployeeHomeComponent},
       {path:"add_employee",component:AddEmployeeComponent},
       {path:"update_employee/:email_id",component:UpdateEmployeeComponent},
+      {path:"supplier_order_status",component:SupplierOrderStatusComponent},
+      {path:"order_product",component:OrderProductComponent},
       {path:"size_home",component:SizeHomeComponent},
       {path:"order_product",component:OrderProductComponent},
       {path:"update_size/:id",component:UpdateSizeComponent},

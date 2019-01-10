@@ -24,6 +24,13 @@ export class EmployeeService {
   {
     return this._http.get(this.url+id);
   }
+  changePassword(item:any)
+  {
+    let _abc=new HttpHeaders().set('Content-Type','application/json');
+    let body=JSON.stringify(item);
+    return this._http.put(this.url,body,{headers:_abc});
+
+  }
   sentMail(item)
   {
     let _abc=new HttpHeaders().set('Content-Type','application/json');
