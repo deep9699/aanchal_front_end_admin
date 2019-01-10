@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 mat-dialog-title>Add-Size</h1>
+
+
+  <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_Size_form">
+    <mat-form-field class="example-full-width">
+      <input matInput name="Size_name" ngModel #category_name="ngModel" required placeholder="Size Name"
+        [(ngModel)]="Size_name">
+
+        <mat-error *ngIf="size_name?.hasError('required')">
+        Size Name Is Required
+      </mat-error>
+
+    </mat-form-field>
+
+    <br><br>
+  <button mat-raised-button color="primary"  type="submit" [disabled]="!f.valid ">ADD</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
+
+</form>
+</div>
+
+
+

@@ -53,7 +53,7 @@ image:File;
         img.onload=function(){
           context.drawImage(img,0,0,218,180);
         };
-        img.src=event.target.result;
+//        img.src=event.target.result;
       };
       render.readAsDataURL(value.target.files[0]);
     }
@@ -91,6 +91,26 @@ image:File;
   }
 
 
+<<<<<<< HEAD
+=======
+  preview(e:any):void
+  {
+    let canvas=this.mycanvas.nativeElement;
+    let context=canvas.getContext('2d');
+    context.clearRect(0,0,300,300);
+
+    var render=new FileReader();
+    render.onload=function(event){
+      var img=new Image();
+      img.onload=function(){
+        context.drawImage(img,0,0);
+      };
+  //    img.src=event.target.result;
+    };
+    render.readAsDataURL(e.target.files[0]);
+  }
+
+>>>>>>> 987c90b015438088b41aac4f2519feb1813f2152
   onclickCancle()
   {
     this._router.navigate(['menu/product_home']);

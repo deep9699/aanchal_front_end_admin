@@ -14,7 +14,7 @@ export class BillComponent implements OnInit {
   bill_arr:bill[];
   dataSource=new MatTableDataSource();
   constructor(private _ac:ActivatedRoute,private _abc:BillService,private route:Router) { }
-  displayedColumns: string[] = ['Bill_date','Total_amount','Fk_c_email_id'];
+  displayedColumns: string[] = ['Bill_date','Total_amount','Fk_c_email_id','Action'];
   ngOnInit() {
 
     this._abc.GetAllBill().subscribe(
@@ -25,6 +25,10 @@ export class BillComponent implements OnInit {
 
       }
     );
+  }
+  Bill_details(item:bill)
+  {
+      this.route.navigate(['menu/bill_details',item.Bill_id]);
   }
 
 

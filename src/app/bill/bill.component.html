@@ -25,6 +25,16 @@
       <td mat-cell *matCellDef="let arr"> {{arr.Fk_c_email_id}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let arr">
+          <button mat-raised-button color="primary" (click)="Bill_details(arr)">
+              Bill Details
+          </button>
+
+
+      </td>
+    </ng-container>
 
   <!-- Weight Column -->
 

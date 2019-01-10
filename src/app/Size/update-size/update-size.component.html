@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Update-Size</h1>
+
+
+  <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm" name="Add_Size_form">
+    <mat-form-field class="example-full-width">
+      <input matInput name="size_name" ngModel #size_name="ngModel" required placeholder="Size Name"
+        [(ngModel)]="Size_name" >
+
+        <!-- <mat-error *ngIf="Size_name?.hasError('required')">
+        Size Name Is Required
+      </mat-error> -->
+
+    </mat-form-field>
+
+    <br><br>
+  <button mat-raised-button color="primary"  type="submit" [disabled]="!f.valid ">Update</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-raised-button color="warn" mat-dialog-close (click)="onclickCancle()">CANCEL</button>
+
+</form>
+</div>
+

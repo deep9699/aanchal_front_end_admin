@@ -1,0 +1,197 @@
+<div class="container">
+  <div class="rows"><h1>Bill</h1></div>
+
+  <form
+    class="example-form"
+    (ngSubmit)="onclickAdd()"
+    #f="ngForm"
+    name="Bill_form"
+  >
+
+
+  <mat-form-field class="example-full-width">
+      <span matPrefix>+91 &nbsp;</span>
+      <input
+        type="text"
+        placeholder="Pick one"
+        aria-label="Number"
+        matInput
+        [formControl]="myControl"
+        [(ngModel)]="selected_number"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onNumberChange()">
+        <mat-option
+          *ngFor="let option of (filteredOptions | async)"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  <div class="rows">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Customer Name"
+          #Name="ngModel"
+          name="customer_name"
+          [(ngModel)]="cust_name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email_id" type="text" [(ngModel)]="Email_id" name="emailid" #id="ngModel">
+
+  </mat-form-field>
+
+
+
+          <h4>Gender:</h4>
+          <mat-radio-group>
+            <mat-radio-button value="Male" [(ngModel)]="Gender" name="gender" >Male</mat-radio-button>
+            <mat-radio-button value="FeMale" [(ngModel)]="Gender" name="gender">FeMale</mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Address" name="address" #ad="ngModel" [(ngModel)]="Address">
+
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker" name="DOB" [(ngModel)]="dob" placeholder="Date of birth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+
+
+      <mat-form-field class="example-form">
+        <mat-select
+          (selectionChange)="onproductChange()"
+          placeholder="Product Name"
+          required
+          #product="ngModel"
+          name="product_name"
+          [(ngModel)]="selected_product"
+          class="example-full-width"
+        >
+          <mat-option *ngFor="let item of product_list" [value]="item">
+            {{ item.Product_name }}
+          </mat-option>
+        </mat-select>
+
+        <!-- <mat-error *ngIf="product?.hasError('required')">
+                      Product Name Is Required
+                    </mat-error> -->
+      </mat-form-field>
+      <mat-form-field class="example-form">
+        <mat-select
+        (selectionChange)="oncolorChange()"
+          placeholder="color Name"
+          required
+          #product="ngModel"
+          name="color_name"
+          [(ngModel)]="sele_col"
+          class="example-full-width"
+        >
+          <mat-option *ngFor="let item of details" [value]="item">
+            {{ item.color }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-form">
+        <mat-select
+        (selectionChange)="onsizeChange(item)"
+          placeholder="Size Name"
+          required
+          #size="ngModel"
+          name="size_name"
+          [(ngModel)]="selected_sizes"
+          class="example-full-width"
+        >
+          <mat-option *ngFor="let item of sizebycolor" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="number"
+          name="qty"
+          ngModel
+          #qty1="ngModel"
+          required
+          placeholder="Qty"
+          [(ngModel)]="_qty"
+          max="total_qty"
+          required min="1"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onProduct_Add()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <div class="form-group">
+        <table class="example-full-width">
+          <thead>
+            <th>Product</th>
+            <th>Colors</th>
+            <th>Sizes</th>
+            <th>Quantities</th>
+            <th>Price</th>
+            <th>Action</th>
+          </thead>
+          <tr *ngFor="let item of extra_arr; let i = index">
+            <td>{{ item.product.Product_name }}</td>
+            <td>{{ item.color}}</td>
+            <td>{{ item.size}}</td>
+
+            <td>{{ item.qty }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+
+              <button (click)="onclickdelete(item,i)">
+                  <mat-icon >delete</mat-icon>
+              </button>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      &nbsp; &nbsp;
+      <div class="rows">
+        <div class="col-md-4">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            (click)="onclickSave()"
+            [disabled]="!f.valid"
+          >
+            ADD
+          </button>
+        </div>
+
+        <div class="col-md-4">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              (click)="onclickreset()"
+              [disabled]="!f.valid"
+            >
+              Reset
+            </button>
+          </div>
+        <div class="col-md-4">
+          <button mat-raised-button color="warn" (click)="onclickCancle()">
+            CANCEL
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
