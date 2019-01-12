@@ -31,6 +31,7 @@
         [type]="flag ? 'password' : 'text'"
         placeholder="Password"
         [(ngModel)]="password1"
+        maxlength="8"
         >
        <mat-icon matSuffix (click)="flag = !flag">{{flag ? 'visibility' : 'visibility_off'}}</mat-icon>
        <mat-hint align="end">{{password.value.length}}/8</mat-hint>

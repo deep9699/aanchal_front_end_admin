@@ -1,18 +1,20 @@
 <div class="container">
-    <h1>Update-Product</h1>
+  <h1>Update-Product</h1>
 
-     <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Product Name" ngModel #product_name="ngModel" required [(ngModel)]="Product_name" name="Product_name">
-        <mat-error *ngIf="product_name?.hasError('required')">
-            Product Name Is Required
-          </mat-error>
-      </mat-form-field>
+  <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Product Name" ngModel #product_name="ngModel" required [(ngModel)]="Product_name"
+        name="Product_name">
+      <mat-error *ngIf="product_name?.hasError('required')">
+        Product Name Is Required
+      </mat-error>
+    </mat-form-field>
 
 
 
-      <mat-form-field class="example-form">
-      <mat-select placeholder="Category Name" required #category_name="ngModel" name="category_name" [(ngModel)]="category_id" class="example-full-width">
+    <mat-form-field class="example-form">
+      <mat-select placeholder="Category Name" required #category_name="ngModel" name="category_name" [(ngModel)]="category_id"
+        class="example-full-width">
         <mat-option *ngFor="let item of category" [value]="item.Category_id">
           {{item.Category_name}}
         </mat-option>
@@ -21,45 +23,60 @@
     </mat-form-field>
 
     <div class="form-group">
-        <h5>Image:</h5> <input class="form-control" id="trigger" type="file"  (change)="onChange($event)" accept="image/*">
+      <h5>Image:</h5> <input class="form-control" id="trigger" type="file" (change)="onChange($event)" accept="image/*">
 
-      </div>
+    </div>
 
-      <div class="example-element-diagram" *ngIf="!flag">
-          <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
+<<<<<<< HEAD
+    <div class="example-element-diagram" *ngIf="!flag">
+      <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
+    </div>
+
+    <div class="example-element-diagram" *ngIf="flag">
+
+    </div>
+    <canvas #mycanvas width="200" height="200" style="border: 1px solid red"></canvas>
+
+
+    <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
+=======
+      <div class="example-element-diagram" [hidden]="flag">
+        <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
         </div>
 
-         <div class="example-element-diagram" *ngIf="flag" >
-
+         <div class="example-element-diagram" [hidden]="!flag">
+            <canvas #mycanvas width="218px" height="180px"  ></canvas>
           </div>
-          <canvas #mycanvas width="200" height="200" style="border: 1px solid red" ></canvas>
-
-
-          <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
-
-
-          <mat-form-field class="example-full-width">
-              <input matInput  required #product_desc1="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc" name="Product_desc">
-              <mat-error *ngIf="product_desc1?.hasError('required')">
-                  Description is must
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Price"  required #product_price="ngModel" type="number"  [(ngModel)]="Product_price" name="Product_price">
-              <mat-error *ngIf="product_price?.hasError('required')">
-                  Product price is must
-                </mat-error>
-
-            </mat-form-field>
 
 
 
+          <!-- <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*"> -->
+>>>>>>> 43695f6c0c2d5449f963a5d2e3ea20b31a65fda0
 
-  <br><br>
-          <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid || Product_price<1">Update</button>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
 
-    </form>
-  </div>
+    <mat-form-field class="example-full-width">
+      <input matInput required #product_desc1="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc" name="Product_desc">
+      <mat-error *ngIf="product_desc1?.hasError('required')">
+        Description is must
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Price" required #product_price="ngModel" type="number" [(ngModel)]="Product_price"
+        name="Product_price">
+      <mat-error *ngIf="product_price?.hasError('required')">
+        Product price is must
+      </mat-error>
+
+    </mat-form-field>
+
+
+
+
+    <br><br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid || Product_price<1">Update</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
+
+  </form>
+</div>

@@ -14,6 +14,14 @@ import { LogInComponent } from './log-in/log-in.component';
 import { BillComponent } from "./bill/bill.component";
 import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.component";
+import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.component";
+import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
+import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
+
+
 import { SizeHomeComponent } from './Size/size-home/size-home.component';
 import { UpdateSizeComponent } from './Size/update-size/update-size.component';
 import { AddSizeComponent } from './Size/add-size/add-size.component';
@@ -28,6 +36,7 @@ import { WithdrawalComponent } from './withdraw/withdrawal/withdrawal.component'
 const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
+    {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},
@@ -40,6 +49,12 @@ const arr:Routes=[
       {path:"update_supplier/:id",component:UpdateSupplierComponent},
       {path:"bill_home",component:BillComponent},
       {path:"supplier_order",component:SupplierOrderComponent},
+      {path:"order_product",component:OrderProductComponent},
+      {path:"employee_home",component:EmployeeHomeComponent},
+      {path:"add_employee",component:AddEmployeeComponent},
+      {path:"update_employee/:email_id",component:UpdateEmployeeComponent},
+      {path:"supplier_order_status",component:SupplierOrderStatusComponent},
+      {path:"order_product",component:OrderProductComponent},
       {path:"size_home",component:SizeHomeComponent},
       {path:"order_product",component:OrderProductComponent},
       {path:"update_size/:id",component:UpdateSizeComponent},

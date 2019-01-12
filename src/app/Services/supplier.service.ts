@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { supplier } from "../classes/supplier_class";
+import { supplier_order } from '../classes/supplier_order_class';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class SupplierService {
 
   private url='http://localhost:3000/supplier/';
   private delete='http://localhost:3000/delete_supplier/';
+  private order='http://localhost:3000/supplier_order/';
   constructor(private _http:HttpClient) { }
   getAllSupplier(){
     return this._http.get(this.url);
@@ -39,6 +41,22 @@ deleteMultiSupplier(item:supplier[])
     let head1=new HttpHeaders().set('Content-Type','application/json');
     return this._http.put(this.url+Supplier_id,body,{headers:head1});
 
+  }
+  addSupplierOrder(item:supplier_order)
+  {
+    let _abc=new HttpHeaders().set('Content-Type','application/json');
+    let body=JSON.stringify(item);
+    return this._http.post(this.order,body,{headers:_abc});
+  }
+  getSupplierOrder()
+  {
+    return this._http.get(this.order);
+  }
+  updateOrderStatus(item)
+  {
+    let body=JSON.stringify(item);
+    let head1=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.put(this.order,body,{headers:head1});
   }
 }
 

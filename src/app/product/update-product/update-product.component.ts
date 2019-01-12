@@ -45,14 +45,15 @@ image:File;
       this.flag=true;
       let canvas=this.mycanvas.nativeElement;
       let context=canvas.getContext('2d');
-      context.clearRect(0,0,300,300);
+      context.clearRect(0,0,200,200);
 
       var render=new FileReader();
-      render.onload=function(event){
+      render.onload=function(event:any){
         var img=new Image();
         img.onload=function(){
-          context.drawImage(img,0,0);
+          context.drawImage(img,0,0,218,180);
         };
+       // img.src=event.target.result;
 //        img.src=event.target.result;
       };
       render.readAsDataURL(value.target.files[0]);
@@ -103,6 +104,7 @@ image:File;
       img.onload=function(){
         context.drawImage(img,0,0);
       };
+     // img.src=event.target.result;
   //    img.src=event.target.result;
     };
     render.readAsDataURL(e.target.files[0]);
@@ -122,12 +124,13 @@ image:File;
     this.prod_ser.getProductById(this.id).subscribe(
       (data: product[]) => {
         this.product_data = data;
-        console.log(this.product_data[0].Fk_category_id)
+        console.log(this.product_data[0].Fk_category_id);
+        this.Product_image=this.product_data[0].Product_image;
         this.Product_name=this.product_data[0].Product_name;
         this.category_id=this.product_data[0].Fk_category_id;
         this.Product_desc=this.product_data[0].Product_desc;
         this.Product_price=this.product_data[0].Product_price;
-        this.Product_image=this.product_data[0].Product_image;
+        console.log(this.Product_image);
       });
   }
 }

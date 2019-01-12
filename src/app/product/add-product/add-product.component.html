@@ -77,6 +77,7 @@
           <td>{{item.color.Color_name}}</td>
           <td>{{item.size.Size_name}}</td>
           <td><input type="number" name="qty" (change)="onClickChange(i)" [(ngModel)]="qty[i]"></td>
+          <td><button mat-raised-button (click)="onClickdelete(item)"><mat-icon>delete</mat-icon></button></td>
         </tr>
       </table>
     </div>
@@ -85,8 +86,12 @@
 
     <div class="form-group">
       <h5>Image:</h5> <input class="form-control" type="file" (change)="onChange($event)">
-
     </div>
+
+    <div class="example-element-diagram" [hidden]="!flag">
+      <canvas #mycanvas width="218px" height="180px"  ></canvas>
+    </div>
+
 
     <mat-form-field class="example-full-width">
       <input matInput required #product_desc="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc" name="Product_image">
