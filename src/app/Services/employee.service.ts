@@ -6,6 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class EmployeeService {
   private url='http://localhost:3000/employee/';
+  private emp_url='http://localhost:3000/employee1/';
   private email_url='http://localhost:3000/email/';
   constructor(private _http:HttpClient) { }
   log_in_emp(item)
@@ -25,5 +26,9 @@ export class EmployeeService {
     let body=JSON.stringify(item);
     console.log(body);
     return this._http.post(this.email_url,body,{headers:_abc});
+  }
+  getAllEmp()
+  {
+    return this._http.get(this.emp_url);
   }
 }

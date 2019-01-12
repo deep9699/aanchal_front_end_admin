@@ -29,7 +29,7 @@ export class updatestock {
 
 export class getsizeBycolorpro
 {
-  constructor(public color:string,public product_id:number){}
+  constructor(public color:color,public product_id:number){}
 }
 
 @Component({
@@ -356,6 +356,10 @@ export class GenerateBillComponent implements OnInit {
     console.log('xyzrj')
   }
 
+  onclickCancle()
+  {
+
+  }
   onclickreset()
   {
       this.ngOnInit();
