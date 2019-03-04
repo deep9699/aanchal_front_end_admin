@@ -1,17 +1,23 @@
 .sidenav-container {
+  margin-top: 100px;
   height: 100%;
+  background-color: #ffffff;
 }
 
 .sidenav {
-  width: 200px;
+  width: 260px;
+  background-color: #ffffff;
 }
 
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
+  background-color: #ffffff;
 }
  .center {
   position:absolute;
   opacity: 0.15;
+  background-color: #ffffff;
 }
+
 

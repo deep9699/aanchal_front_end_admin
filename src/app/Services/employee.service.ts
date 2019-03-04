@@ -9,11 +9,8 @@ import { employee } from '../classes/employee_class';
 export class EmployeeService {
   private url='http://localhost:3000/employee/';
   private emp_url='http://localhost:3000/employee1/';
-<<<<<<< HEAD
-=======
 
   private employee_del='http://localhost:3000/employee_del/';
->>>>>>> cbf283c1503d67ca603928e660e2f30ea6125e33
   private email_url='http://localhost:3000/email/';
   constructor(private _http:HttpClient) { }
   log_in_emp(item)
@@ -41,17 +38,12 @@ export class EmployeeService {
     console.log(body);
     return this._http.post(this.email_url,body,{headers:_abc});
   }
-<<<<<<< HEAD
-=======
 
   //normal services
->>>>>>> cbf283c1503d67ca603928e660e2f30ea6125e33
   getAllEmp()
   {
     return this._http.get(this.emp_url);
   }
-<<<<<<< HEAD
-=======
   getEmployeedetailsById(Email_id:string)
   {
     return this._http.get(this.emp_url+Email_id);
@@ -82,5 +74,4 @@ export class EmployeeService {
     return this._http.post(this.employee_del,body,{headers:_abc});
   }
 
->>>>>>> cbf283c1503d67ca603928e660e2f30ea6125e33
 }
