@@ -94,7 +94,7 @@ import { CustomerOrderComponent } from "./customer-order/customer-order.componen
     GenerateBillComponent,
     CustomerHomeComponent,
     CustomerOrderComponent,
-
+    WithdrawalComponent
   ],
   imports: [
     BrowserModule,
