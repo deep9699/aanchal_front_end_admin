@@ -28,6 +28,7 @@ import { UpdateColorComponent } from './Color/update-color/update-color.componen
 import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
 import { WithdrawalComponent } from './withdraw/withdrawal/withdrawal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -37,6 +38,7 @@ const arr:Routes=[
     {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
       {path:'dashboard',component:DashboardComponent},
+      {path:'customer_order',component:CustomerOrderComponent},
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},
       {path:'update_product/:id',component:UpdateProductComponent},

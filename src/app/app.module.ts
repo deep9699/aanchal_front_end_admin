@@ -66,6 +66,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 
 
+import { CustomerOrderComponent } from "./customer-order/customer-order.component";
 
 @NgModule({
   declarations: [
@@ -103,6 +104,8 @@ import { ChartsModule } from 'ng2-charts';
     WithdrawalComponent,
     DashboardComponent,
     
+    CustomerOrderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -135,8 +138,9 @@ import { ChartsModule } from 'ng2-charts';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    ChartsModule
+    ChartsModule,
 
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

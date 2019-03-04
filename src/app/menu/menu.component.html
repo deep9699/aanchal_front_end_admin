@@ -134,6 +134,12 @@
                 </a>
               </li>
               <li class="nav-item ">
+                <a class="nav-link" [routerLink]="['customer_order']" routerLinkActive="router-link-active">
+                  <i class="material-icons">shopping_basket</i>
+                  <p>Customer order</p>
+                </a>
+              </li>
+              <li class="nav-item ">
                 <a class="nav-link" [routerLink]="['bill_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">receipt</i>
                   <p>Manage Bill</p>
@@ -160,6 +166,19 @@
             </ul>
           </div>
         </div>
+      <!-- <a mat-list-item [routerLink]="['product_home']" routerLinkActive="router-link-active" >Product Management</a>
+      <a mat-list-item [routerLink]="['customer_order']" routerLinkActive="router-link-active" >Customer Orders</a>
+      <a mat-list-item [routerLink]="['category_home']" routerLinkActive="router-link-active" >Category Management</a>
+      <a mat-list-item [routerLink]="['supplier_home']" routerLinkActive="router-link-active" >Supplier Management</a>
+      <a mat-list-item [routerLink]="['bill_home']" routerLinkActive="router-link-active" >Bill Management</a>
+      <a mat-list-item [routerLink]="['employee_home']" routerLinkActive="router-link-active" >Employee Management</a>
+      <a mat-list-item [routerLink]="['size_home']" routerLinkActive="router-link-active" >Size Management</a>
+      <a mat-list-item [routerLink]="['color_home']" routerLinkActive="router-link-active" >Color Management</a>
+      <a mat-list-item [routerLink]="['customer_home']" routerLinkActive="router-link-active" >Customer Management</a>
+      <a mat-list-item [routerLink]="['gen_bill']" routerLinkActive="router-link-active" >In Store Bill</a>
+      <a mat-list-item [routerLink]="['with_req']" routerLinkActive="router-link-active" >Withdrawal Request</a>
+
+      <a mat-list-item [routerLink]="['../']" routerLinkActive="router-link-active" >Log Out</a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
