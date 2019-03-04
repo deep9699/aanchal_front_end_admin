@@ -87,14 +87,16 @@ export class SupplierOrderComponent implements OnInit {
       this.prod_ser.getLowQtyProduct().subscribe(
         (data: Product_details[]) => {
 
+          console.log(data);
           this.sup_ser.getSupplierOrder().subscribe(
             (x:supplier_order[])=>
             {
+              console.log(x);
               for(this.i=0;this.i<data.length;this.i++)
               {
                 for(this.j=0;this.j<x.length;this.j++)
                 {
-                  console.log(data[this.i].Stock_id ,x[this.j].Fk_stock_id);
+                  //console.log(data[this.i].Stock_id ,x[this.j].Fk_stock_id);
                   if(data[this.i].Stock_id==x[this.j].Fk_stock_id)
                   {
                     this.saw_flag=true;
@@ -105,13 +107,13 @@ export class SupplierOrderComponent implements OnInit {
 
                   }
                 }
-                if(this.saw_flag==false)
+                if(this.saw_flag==true)
                 {
                   this.Table_detials.push(data[this.i]);
                 }
                 this.saw_flag=false;
               }
-
+              console.log(this.Table_detials);
               this.Table_dataSource.data=this.Table_detials;
             }
           );

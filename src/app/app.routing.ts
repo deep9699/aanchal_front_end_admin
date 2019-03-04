@@ -19,9 +19,6 @@ import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.compo
 import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
 import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-
-
-
 import { SizeHomeComponent } from './Size/size-home/size-home.component';
 import { UpdateSizeComponent } from './Size/update-size/update-size.component';
 import { AddSizeComponent } from './Size/add-size/add-size.component';
@@ -31,12 +28,14 @@ import { UpdateColorComponent } from './Color/update-color/update-color.componen
 import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
 
 const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
     {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
+      {path:'customer_order',component:CustomerOrderComponent},
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},
       {path:'update_product/:id',component:UpdateProductComponent},

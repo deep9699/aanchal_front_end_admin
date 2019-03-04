@@ -58,6 +58,7 @@ import { UpdateColorComponent } from './Color/update-color/update-color.componen
 import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
 
 
 
@@ -94,6 +95,7 @@ import { CustomerHomeComponent } from './customer/customer-home/customer-home.co
     BillDetalisComponent,
     GenerateBillComponent,
     CustomerHomeComponent,
+    CustomerOrderComponent,
 
   ],
   imports: [
