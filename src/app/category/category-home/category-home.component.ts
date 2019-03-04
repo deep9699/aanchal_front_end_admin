@@ -26,6 +26,7 @@ export class CategoryHomeComponent implements OnInit {
   category_delarr: category[] = [];
   j: number;
   length = 100;
+
   pageSize = 10;
   selection = new SelectionModel(true, []);
   category_dataSource = new MatTableDataSource();
@@ -40,7 +41,6 @@ export class CategoryHomeComponent implements OnInit {
 
   ngOnInit() {
     this.category_dataSource.paginator = this.paginator;
-
     this.category_dataSource.sort = this.sort;
     this.cat_ser.getAllCategory().subscribe((data: any[]) => {
       this.category_list=data;

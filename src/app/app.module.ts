@@ -25,39 +25,47 @@ import {
   MatNativeDateModule,
   MatAutocompleteModule
 } from "@angular/material";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ProductHomeComponent } from "./product/product-home/product-home.component";
-import { MatIconModule } from "@angular/material/icon";
-import { AddCategoryComponent } from "./category/add-category/add-category.component";
-import { CategoryHomeComponent } from "./category/category-home/category-home.component";
-import { UpdateCategoryComponent } from "./category/update-category/update-category.component";
-import { MenuComponent } from "./menu/menu.component";
-import { LayoutModule } from "@angular/cdk/layout";
-import { AddSupplierComponent } from "./supplier/add-supplier/add-supplier.component";
-import { SupplierHomeComponent } from "./supplier/supplier-home/supplier-home.component";
-import { UpdateSupplierComponent } from "./supplier/update-supplier/update-supplier.component";
-import { LogInComponent } from "./log-in/log-in.component";
-import { ForgetpasswordComponent } from "./forgetpassword/forgetpassword.component";
-import { BillComponent } from "./bill/bill.component";
-import { SupplierOrderComponent } from "./supplier/supplier-order/supplier-order.component";
-import { OrderProductComponent } from "./order-product/order-product.component";
-import { SizeHomeComponent } from "./Size/size-home/size-home.component";
-import { UpdateSizeComponent } from "./Size/update-size/update-size.component";
-import { AddSizeComponent } from "./Size/add-size/add-size.component";
-import { ColorHomeComponent } from "./Color/color-home/color-home.component";
-import { AddColorComponent } from "./Color/add-color/add-color.component";
-import { UpdateColorComponent } from "./Color/update-color/update-color.component";
-import { BillDetalisComponent } from "./bill/bill-detalis/bill-detalis.component";
-import { GenerateBillComponent } from "./bill/generate-bill/generate-bill.component";
-import { CustomerHomeComponent } from "./customer/customer-home/customer-home.component";
+
 import { WithdrawalComponent } from "./withdraw/withdrawal/withdrawal.component";
 import { MatStepperModule } from "@angular/material/stepper";
+  
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductHomeComponent } from './product/product-home/product-home.component';
+import {MatIconModule} from '@angular/material/icon';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { CategoryHomeComponent } from './category/category-home/category-home.component';
+import { UpdateCategoryComponent } from './category/update-category/update-category.component';
+import { MenuComponent } from './menu/menu.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.component';
+import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
+import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { BillComponent } from './bill/bill.component';
+import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
+import { OrderProductComponent } from './order-product/order-product.component';
 import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.component";
-import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
-import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.component";
-import { SupplierOrderStatusComponent } from "./supplier/supplier-order-status/supplier-order-status.component";
-import { ChangePasswordComponent } from "./change-password/change-password.component";
+import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
+import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
+
+import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SizeHomeComponent } from './Size/size-home/size-home.component';
+import { UpdateSizeComponent } from './Size/update-size/update-size.component';
+import { AddSizeComponent } from './Size/add-size/add-size.component';
+import { ColorHomeComponent } from './Color/color-home/color-home.component';
+import { AddColorComponent } from './Color/add-color/add-color.component';
+import { UpdateColorComponent } from './Color/update-color/update-color.component';
+import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
+import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
+import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts';
+
+
 import { CustomerOrderComponent } from "./customer-order/customer-order.component";
 
 @NgModule({
@@ -93,6 +101,9 @@ import { CustomerOrderComponent } from "./customer-order/customer-order.componen
     BillDetalisComponent,
     GenerateBillComponent,
     CustomerHomeComponent,
+    WithdrawalComponent,
+    DashboardComponent,
+    
     CustomerOrderComponent,
     WithdrawalComponent
   ],
@@ -123,6 +134,12 @@ import { CustomerOrderComponent } from "./customer-order/customer-order.componen
     MatToolbarModule,
     MatListModule,
     MatNativeDateModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatGridListModule,
+    ChartsModule,
+
     MatStepperModule
   ],
   providers: [],

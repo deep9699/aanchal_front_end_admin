@@ -23,20 +23,23 @@ export class SizeHomeComponent implements OnInit {
   size_list:size[]=[];
   size_delarr:size[]=[];
   length=100;
-  pageSize=10;
+
+  pageSize = 10;
   selection = new SelectionModel(true, []);
-  size_dataSource=new MatTableDataSource();
+  size_dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
   @ViewChild(MatSort)
   sort: MatSort;
   pageEvent: PageEvent;
 
+
   constructor(private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:SizeService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Size_name','Action'];
   ngOnInit() {
     this.size_dataSource.paginator=this.paginator;
     this.size_dataSource.sort=this.sort;
+  
     this._ser.getAllSize().subscribe(
       (data:size[])=>{
         console.log(data);

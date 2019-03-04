@@ -8,6 +8,21 @@
   width: 100%;
 }
 
+.btn{
+  margin-top: 25px;
+  background-color:rgb(156, 39, 176);
+  color: #ffffff;
+}
+
+th{
+  color: rgb(156, 39, 176);
+}
+
+.size
+{
+  width: 80%;
+  padding-left: 30px;
+}
 
 .example-section {
   display: flex;
@@ -30,13 +45,10 @@ table {
 
 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
-thead {
-  background-color: #dddddd;
-}
 
 mat-radio-button ~ .mat-radio-button {
   margin-left: 50px;

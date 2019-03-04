@@ -354,7 +354,6 @@ export class GenerateBillComponent implements OnInit {
 
 
   }
-
   onclickreset()
   {
       this.ngOnInit();

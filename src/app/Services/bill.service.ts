@@ -25,6 +25,11 @@ addBillDetails(item){
   return this._http.post(this.bill_details,body,{headers:_abc});
 }
 
+getbilldetailsByid(bill_id:number)
+{
+  console.log(bill_id);
+  return this._http.get(this.bill_details+bill_id);
+}
 
 
 }
