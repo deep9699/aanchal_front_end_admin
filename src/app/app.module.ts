@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { AppComponent } from "./app.component";
 import { routing } from "./app.routing";
 import { AddProductComponent } from "./product/add-product/add-product.component";
-import { UpdateProductComponent } from './product/update-product/update-product.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule,
+import { UpdateProductComponent } from "./product/update-product/update-product.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+  MatCardModule,
   MatSortModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
@@ -22,45 +23,42 @@ import { MatCardModule,
   MatListModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatAutocompleteModule,
-  
-   } from '@angular/material';
-   import { MatFormFieldModule } from "@angular/material/form-field";
-   import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductHomeComponent } from './product/product-home/product-home.component';
-import {MatIconModule} from '@angular/material/icon';
-import { AddCategoryComponent } from './category/add-category/add-category.component';
-import { CategoryHomeComponent } from './category/category-home/category-home.component';
-import { UpdateCategoryComponent } from './category/update-category/update-category.component';
-import { MenuComponent } from './menu/menu.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.component';
-import { SupplierHomeComponent } from './supplier/supplier-home/supplier-home.component';
-import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
-import { BillComponent } from './bill/bill.component';
-import { SupplierOrderComponent } from './supplier/supplier-order/supplier-order.component';
-import { OrderProductComponent } from './order-product/order-product.component';
+  MatAutocompleteModule
+} from "@angular/material";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ProductHomeComponent } from "./product/product-home/product-home.component";
+import { MatIconModule } from "@angular/material/icon";
+import { AddCategoryComponent } from "./category/add-category/add-category.component";
+import { CategoryHomeComponent } from "./category/category-home/category-home.component";
+import { UpdateCategoryComponent } from "./category/update-category/update-category.component";
+import { MenuComponent } from "./menu/menu.component";
+import { LayoutModule } from "@angular/cdk/layout";
+import { AddSupplierComponent } from "./supplier/add-supplier/add-supplier.component";
+import { SupplierHomeComponent } from "./supplier/supplier-home/supplier-home.component";
+import { UpdateSupplierComponent } from "./supplier/update-supplier/update-supplier.component";
+import { LogInComponent } from "./log-in/log-in.component";
+import { ForgetpasswordComponent } from "./forgetpassword/forgetpassword.component";
+import { BillComponent } from "./bill/bill.component";
+import { SupplierOrderComponent } from "./supplier/supplier-order/supplier-order.component";
+import { OrderProductComponent } from "./order-product/order-product.component";
+import { SizeHomeComponent } from "./Size/size-home/size-home.component";
+import { UpdateSizeComponent } from "./Size/update-size/update-size.component";
+import { AddSizeComponent } from "./Size/add-size/add-size.component";
+import { ColorHomeComponent } from "./Color/color-home/color-home.component";
+import { AddColorComponent } from "./Color/add-color/add-color.component";
+import { UpdateColorComponent } from "./Color/update-color/update-color.component";
+import { BillDetalisComponent } from "./bill/bill-detalis/bill-detalis.component";
+import { GenerateBillComponent } from "./bill/generate-bill/generate-bill.component";
+import { CustomerHomeComponent } from "./customer/customer-home/customer-home.component";
+import { WithdrawalComponent } from "./withdraw/withdrawal/withdrawal.component";
+import { MatStepperModule } from "@angular/material/stepper";
 import { EmployeeHomeComponent } from "./Employee/employee-home/employee-home.component";
-import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
-import { UpdateEmployeeComponent } from './Employee/update-employee/update-employee.component';
-
-import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-//import { SizeComponent } from './size_home/size/size.component';
-import { SizeHomeComponent } from './Size/size-home/size-home.component';
-import { UpdateSizeComponent } from './Size/update-size/update-size.component';
-import { AddSizeComponent } from './Size/add-size/add-size.component';
-import { ColorHomeComponent } from './Color/color-home/color-home.component';
-import { AddColorComponent } from './Color/add-color/add-color.component';
-import { UpdateColorComponent } from './Color/update-color/update-color.component';
-import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
-import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
-import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
-import { CustomerOrderComponent } from './customer-order/customer-order.component';
-
-
+import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
+import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.component";
+import { SupplierOrderStatusComponent } from "./supplier/supplier-order-status/supplier-order-status.component";
+import { ChangePasswordComponent } from "./change-password/change-password.component";
+import { CustomerOrderComponent } from "./customer-order/customer-order.component";
 
 @NgModule({
   declarations: [
@@ -124,14 +122,10 @@ import { CustomerOrderComponent } from './customer-order/customer-order.componen
     LayoutModule,
     MatToolbarModule,
     MatListModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-    
-
-
-
+    MatNativeDateModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

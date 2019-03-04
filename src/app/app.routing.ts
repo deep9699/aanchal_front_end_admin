@@ -29,6 +29,7 @@ import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
 import { CustomerOrderComponent } from './customer-order/customer-order.component';
+import { WithdrawalComponent } from './withdraw/withdrawal/withdrawal.component';
 
 const arr:Routes=[
     {path:'',component:LogInComponent},
@@ -62,7 +63,8 @@ const arr:Routes=[
       {path:"update_color/:id",component:UpdateColorComponent},
       {path:"bill_details/:id",component:BillDetalisComponent},
       {path:"gen_bill",component:GenerateBillComponent},
-      {path:"customer_home",component:CustomerHomeComponent}
+      {path:"customer_home",component:CustomerHomeComponent},
+      {path:"with_req",component:WithdrawalComponent}
     ]},
 
 
