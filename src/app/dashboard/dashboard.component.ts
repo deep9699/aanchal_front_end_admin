@@ -29,10 +29,11 @@ export class DashboardComponent implements OnInit {
      //online-offline customer
      this._ser.getOnlineCustomer().subscribe(
       (data: any) => {
-        this.online_customer[0] = data[1].Total;
-        this.offline_customer[0] = data[0].Total;
+        console.log(data);
+        this.online_customer[0] = data[0].Total;
+        this.offline_customer[0]=data[0].Total;
         console.log(this.online_customer);
-        console.log(this.offline_customer);
+        
       }
     );
 

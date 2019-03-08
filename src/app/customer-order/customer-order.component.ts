@@ -59,6 +59,7 @@ export class CustomerOrderComponent implements OnInit {
   bill_id:number;
   bill_details:bill_details[]=[];
   customer_order_table:TableDetais[]=[];
+  tmp_cust_order_table:TableDetais[]=[];
   customer_order_dataSource=new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

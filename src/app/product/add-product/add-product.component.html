@@ -85,8 +85,9 @@
 
 
     <div class="form-group">
-      <h5>Image:</h5> <input class="form-control" type="file" (change)="onChange($event)">
+      <h5>Image:</h5>
     </div>
+    <input type="file" (change)="onChange($event)">
 
     <div class="example-element-diagram" [hidden]="!flag">
       <canvas #mycanvas width="218px" height="180px"  ></canvas>
