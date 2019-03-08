@@ -70,12 +70,12 @@ export class SupplierHomeComponent implements OnInit {
         console.log(data);
       for(this.i=0;this.i<this.supplier_delarr.length;this.i++)
       {
-      if(this.supplier_arr.find(x=>x==this.supplier_delarr[this.i]))
-      {
-      this.supplier_arr.splice(this.supplier_arr.indexOf(this.supplier_delarr[this.i]),1);
+        if(this.supplier_arr.find(x=>x==this.supplier_delarr[this.i]))
+        {
+        this.supplier_arr.splice(this.supplier_arr.indexOf(this.supplier_delarr[this.i]),1);
+        }
       }
-      }
-      this.Supplier_dataSource.data=this.supplier_arr;
+        this.Supplier_dataSource.data=this.supplier_arr;
       }
       );
       }
@@ -87,6 +87,7 @@ export class SupplierHomeComponent implements OnInit {
             (data:any)=>{
               this.supplier_arr.splice(this.supplier_arr.indexOf(item),1);
                 console.log(data);
+                this.ngOnInit();
             }
           );
       }

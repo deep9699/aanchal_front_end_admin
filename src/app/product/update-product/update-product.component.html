@@ -12,7 +12,7 @@
               <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm">
                 <div class="rows">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Product Name" ngModel #product_name="ngModel" required
+                    <input matInput placeholder="Product Name" ngModel #product_name="ngModel" required (keypress)="keyPressText($event)"
                       [(ngModel)]="Product_name" name="Product_name">
                     <mat-error *ngIf="product_name?.hasError('required')">
                       Product Name Is Required

@@ -18,7 +18,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Customer Name" #Name="ngModel" name="customer_name" [(ngModel)]="cust_name" />
+          <input matInput placeholder="Customer Name" #Name="ngModel" name="customer_name" [(ngModel)]="cust_name" (keypress)="keyPressText($event)" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -81,7 +81,7 @@
       </div>
 
       <div>
-        <div class="card-body">
+        <div class="card-body" *ngIf="extra_arr.length>0">
           <div class="table-responsive">
             <table>
               <thead>

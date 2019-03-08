@@ -50,6 +50,7 @@ Customer_dataSource=new MatTableDataSource();
         (data:any)=>{
           this.customer_arr.splice(this.customer_arr.indexOf(item),1);
             console.log(data);
+            this.ngOnInit();
         }
       );
 

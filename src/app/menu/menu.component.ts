@@ -15,6 +15,9 @@ export class MenuComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+    emp_type:number=0;
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.emp_type=parseInt(localStorage.getItem('emp_type'));
+  }
 
   }

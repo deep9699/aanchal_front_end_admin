@@ -37,7 +37,7 @@ const arr:Routes=[
     {path:"forgetpassword",component:ForgetpasswordComponent},
     {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
-      {path:'dashboard',component:DashboardComponent},
+      {path:'',component:DashboardComponent},
       {path:'customer_order',component:CustomerOrderComponent},
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},

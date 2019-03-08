@@ -19,6 +19,26 @@ export class AddSupplierComponent implements OnInit {
 
     ngOnInit() {
     }
+    keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Name.length>=20) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+  
+keyPressNumber(event: any) {
+    const pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Mobile_no.length>=10) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+ }
     onclickCancle()
     {
       this._router.navigate(['menu/supplier_home']);
@@ -28,6 +48,10 @@ export class AddSupplierComponent implements OnInit {
         this.sup_ser.addSupplier(new supplier(0,this.Email_id,this.Name,this.Address,this.Password,this.Mobile_no)).subscribe(
           (data:any)=>{
             console.log(data);
+            if(data.errno==1062)
+            {
+              alert("Email_id already exist");
+            }
             this._router.navigate(['menu/supplier_home']);
           }
           );

@@ -13,7 +13,7 @@
                 <div class="rows">
 
                   <mat-form-field class="example-full-width">
-                    <input matInput name="Product_name" ngModel #product_name="ngModel" required
+                    <input matInput name="Product_name" ngModel #product_name="ngModel" required (keypress)="keyPressText($event)"
                       placeholder="Product Name" [(ngModel)]="Product_name">
                     <mat-error *ngIf="product_name?.hasError('required')">
                       Product Name Is Required
