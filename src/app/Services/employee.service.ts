@@ -12,6 +12,10 @@ export class EmployeeService {
 
   private employee_del='http://localhost:3000/employee_del/';
   private email_url='http://localhost:3000/email/';
+
+  private withdrawal_url='http://localhost:3000/withdrawal/';
+  private withdrawal_empid='http://localhost:3000/withdrawalbyemailid/';
+  private salary='http://localhost:3000/salary_date/';
   constructor(private _http:HttpClient) { }
   log_in_emp(item)
   {
@@ -39,6 +43,7 @@ export class EmployeeService {
     return this._http.post(this.email_url,body,{headers:_abc});
   }
 
+  //normal service
   //normal services
   getAllEmp()
   {
@@ -62,7 +67,7 @@ export class EmployeeService {
     console.log(body);
     return this._http.put(this.emp_url+Email_id,body,{headers:_header});
   }
- 
+
   deleteEmployee(Email_id:string)
   {
     return this._http.delete(this.emp_url+Email_id);
@@ -73,5 +78,32 @@ export class EmployeeService {
     let body=JSON.stringify(item);
     return this._http.post(this.employee_del,body,{headers:_abc});
   }
+  addwithdrawlAmount(item)
+  {
+    let _abc=new HttpHeaders().set('Content-Type','application/json');
+    let body=JSON.stringify(item);
+    return this._http.post(this.withdrawal_url,body,{headers:_abc});
+  }
+  getWithdrawlDetailsByEmployeeid(id)
+  {
+    return this._http.get(this.withdrawal_empid+id);
+  }
+  updatedate(item)
+  {
+    let _abc=new HttpHeaders().set('Content-Type','application/json');
+    let body=JSON.stringify(item);
+    return this._http.put(this.salary,body,{headers:_abc});
+  }
+  updateWithdrawl(item)
+  {
+    let _abc=new HttpHeaders().set('Content-Type','application/json');
+    let body=JSON.stringify(item);
+    return this._http.put(this.withdrawal_url,body,{headers:_abc});
+  }
+  deleterecord(id)
+  {
+    return this._http.delete(this.withdrawal_url+id);
+  }
+
 
 }

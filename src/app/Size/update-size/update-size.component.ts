@@ -20,6 +20,7 @@ export class UpdateSizeComponent implements OnInit {
   constructor(private size_ser:SizeService,private _router:Router,private _act:ActivatedRoute,public dialogRef: MatDialogRef<SizeHomeComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
+    this.flag=true;
     this.Size_id=this._act.snapshot.params["id"];
     this.Size_id=this.data.id;
     this.size_ser.getSizeById(this.Size_id).subscribe(
@@ -36,20 +37,47 @@ export class UpdateSizeComponent implements OnInit {
   onclickUpdate()
   {
     //console.log("xyz");
+    if(this.flag==true)
+    {
     this.size_ser.updatesize(new size(this.Size_name,this.Size_id)).subscribe(
       (data:any)=>
       {
-        console.log(data);
-        alert("category updated");
+        if(data.errno==1062)
+        {
+          alert('Already in Your List');
+        }
+        else
+        {
+          console.log(data);
+          alert("Size updated");
+        }
+
         this.dialogRef.close();
         this._router.navigate(['menu/size_home']);
       }
 
     );
   }
+}
 
   onclickCancle()
   {
+    this.flag=false;
+    if(this.flag==false)
+    {
+      this.dialogRef.close();
     this._router.navigate(['menu/size_home']);
+    }
+  }
+
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Size_name.length>=6) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
   }
 }

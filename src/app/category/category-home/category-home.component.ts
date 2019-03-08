@@ -71,20 +71,26 @@ export class CategoryHomeComponent implements OnInit {
       this._act.params.pipe(takeUntil(this.destroy)).subscribe(params => {
         if(this.currentdialog)
         {
+
+
           this.currentdialog.close();
+          this.ngOnInit();
         }
         this.currentdialog=this.matDialog.open(AddCategoryComponent,{
           data: {id : params.id}
         });
         this.currentdialog.afterClosed().subscribe(result => {
+
           console.log('the dailog was closed');
 
+          this.ngOnInit();
         })
       });
   }
   categoryDelete(item: category) {
     this.cat_ser.deleteProduct(item).subscribe((data: any) => {
       console.log(data);
+      this.ngOnInit();
     });
   }
   isAllSelected() {
@@ -118,7 +124,9 @@ export class CategoryHomeComponent implements OnInit {
           this.category_list.splice(this.category_list.indexOf(this.category_delarr[this.i]), 1);
         }
       }
+
       this.category_dataSource.data = this.category_list;
+      this.ngOnInit();
     });
   }
 }

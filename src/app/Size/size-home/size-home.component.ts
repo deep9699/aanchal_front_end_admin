@@ -39,12 +39,12 @@ export class SizeHomeComponent implements OnInit {
   ngOnInit() {
     this.size_dataSource.paginator=this.paginator;
     this.size_dataSource.sort=this.sort;
-  
+
     this._ser.getAllSize().subscribe(
       (data:size[])=>{
         console.log(data);
         this.size_arr=data;
-        this.size_dataSource = new MatTableDataSource(this.size_arr);
+        this.size_dataSource.data=data;
 
       }
     );
@@ -56,12 +56,14 @@ export class SizeHomeComponent implements OnInit {
         if(this.currentdialog)
         {
           this.currentdialog.close();
+          this.ngOnInit();
         }
         this.currentdialog=this.matDialog.open(AddSizeComponent,{
           data: {id : params.id}
         });
         this.currentdialog.afterClosed().subscribe(result => {
               console.log('the dailog was closed');
+              this.ngOnInit();
 
 
         })
@@ -71,6 +73,7 @@ export class SizeHomeComponent implements OnInit {
   SizeDelete(item:size) {
     this._ser.deleteSize(item).subscribe((data: any) => {
       console.log(data);
+      this.ngOnInit();
     });
   }
   Size_name_Update(item:size)
@@ -81,12 +84,14 @@ export class SizeHomeComponent implements OnInit {
       if(this.currentdialog)
       {
         this.currentdialog.close();
+        this.ngOnInit();
       }
       this.currentdialog=this.matDialog.open(UpdateSizeComponent,{
         data: {id : item.Size_id}
       });
       this.currentdialog.afterClosed().subscribe(result => {
         console.log('the dailog was closed');
+        this.ngOnInit();
 
       })
     });
@@ -124,6 +129,7 @@ export class SizeHomeComponent implements OnInit {
         }
       }
       this.size_dataSource.data = this.size_list;
+      this.ngOnInit();
     });
   }
 }

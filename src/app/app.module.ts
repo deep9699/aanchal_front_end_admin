@@ -26,10 +26,12 @@ import {
   MatAutocompleteModule
 } from "@angular/material";
 
+   import { MatFormFieldModule } from "@angular/material/form-field";
+
+
 import { WithdrawalComponent } from "./withdraw/withdrawal/withdrawal.component";
 import { MatStepperModule } from "@angular/material/stepper";
-  
-import { MatFormFieldModule } from "@angular/material/form-field";
+
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductHomeComponent } from './product/product-home/product-home.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -61,6 +63,9 @@ import { UpdateColorComponent } from './Color/update-color/update-color.componen
 import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import { SalaryManagementComponent } from './Employee/salary-management/salary-management.component';
+
+
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
@@ -102,8 +107,9 @@ import { CustomerOrderComponent } from "./customer-order/customer-order.componen
     GenerateBillComponent,
     CustomerHomeComponent,
     WithdrawalComponent,
+    SalaryManagementComponent,
     DashboardComponent,
-    
+
     CustomerOrderComponent,
     WithdrawalComponent
   ],
@@ -137,6 +143,11 @@ import { CustomerOrderComponent } from "./customer-order/customer-order.componen
     MatStepperModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
+
+
+
+
     MatGridListModule,
     ChartsModule,
 

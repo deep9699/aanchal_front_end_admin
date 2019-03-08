@@ -379,7 +379,5 @@ keyPressNumber(event: any) {
   {
       this.ngOnInit();
   }
-  onclickCancle()
-  {
-  }
+
 }

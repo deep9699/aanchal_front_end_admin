@@ -17,7 +17,7 @@ i:number;
   constructor(private size_ser:SizeService,private _router:Router,private matDialog:MatDialogRef<SizeHomeComponent>,private _act:ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.flag=true;
     this.size_ser.getAllSize().subscribe(
       (data:size[])=>
       {
@@ -28,22 +28,51 @@ i:number;
 
     onclickAdd()
    {
-     console.log("xyz");
+     //console.log("xyz");
+     if(this.flag==true)
+     {
+
+
     this.size_ser.addSize(new size(this.Size_name)).subscribe(
       (data:any)=>
       {
+       if(data.errno==1062)
+       {
+         alert('Size is Alredy in Your List')
+       }
+       else
+       {
         console.log(data);
+       }
+
         this._router.navigate(['menu/size_home']);
         //this.currentdialog.close();
         this.matDialog.close();
       }
     );
    }
+  }
 
   onclickCancle()
   {
-    this._router.navigate(['menu/size_home']);
+    this.flag=false;
+    if(this.flag==false)
+    {
+      this.matDialog.close();
+      this._router.navigate(['menu/size_home']);
+    }
 
+
+  }
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Size_name.length>=6) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
   }
 
   }

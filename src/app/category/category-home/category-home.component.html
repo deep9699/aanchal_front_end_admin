@@ -30,7 +30,7 @@
 
             <ng-container matColumnDef="Category_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Category Name </th>
-              <td mat-cell *matCellDef="let arr"> {{arr.Category_name}} </td>
+              <td mat-cell *matCellDef="let arr"> {{arr.Category_name | uppercase}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Action">
