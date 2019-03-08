@@ -23,23 +23,43 @@ export class UpdateCategoryComponent implements OnInit {
    }
   onclickUpdate()
   {
-    console.log("xyz");
+    if(this.flag==true)
+    {
+
+
+    //console.log("xyz");
     this.cat_ser.updateCategory(new category(this.Category_name,this.category_id)).subscribe(
       (data:any)=>
       {
-        console.log(data);
-        alert("category updated");
-        this.dialogRef.close();
+        if(data.errno==1062)
+        {
+          alert('Item is already in your list');
+        }
+        else
+        {
+          console.log(data);
+          alert("category updated");
+
+        }
+               this.dialogRef.close();
       }
     );
+    }
   }
 
   onclickCancle()
   {
+    this.flag=false;
+    if(this.flag==false)
+    {
+      this.dialogRef.close();
+
     this._router.navigate(['menu/category_home']);
+    }
   }
 
   ngOnInit() {
+    this.flag=true;
     this.category_id=this._act.snapshot.params["id"];
     this.category_id=this.data.id;
     this.cat_ser.getCategoryById(this.category_id).subscribe(
@@ -50,6 +70,17 @@ export class UpdateCategoryComponent implements OnInit {
         console.log(this.Category_name);
       }
     );
+  }
+
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Category_name.length>=15) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
   }
 
 

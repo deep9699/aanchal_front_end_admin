@@ -44,6 +44,7 @@ export class EmployeeService {
   }
 
   //normal service
+  //normal services
   getAllEmp()
   {
     return this._http.get(this.emp_url);

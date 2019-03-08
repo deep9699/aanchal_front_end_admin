@@ -39,10 +39,10 @@ export class ColorHomeComponent implements OnInit {
     this.color_dataSource.paginator=this.paginator;
     this.color_dataSource.sort=this.sort;
     this._ser.getAllColor().subscribe(
-      (data:color[])=>{
+      (data:any)=>{
         console.log(data);
         this.color_arr=data;
-        this.color_dataSource = new MatTableDataSource(this.color_arr);
+        this.color_dataSource.data= data;
 
   }
 );
@@ -56,12 +56,14 @@ export class ColorHomeComponent implements OnInit {
         if(this.currentdialog)
         {
           this.currentdialog.close();
+          this.ngOnInit();
         }
         this.currentdialog=this.matDialog.open(AddColorComponent,{
           data: {id : params.id}
         });
         this.currentdialog.afterClosed().subscribe(result => {
           console.log('the dailog was closed');
+          this.ngOnInit();
 
         })
       });
@@ -69,6 +71,7 @@ export class ColorHomeComponent implements OnInit {
   Delete_Color(item:color) {
     this._ser.deleteColor(item).subscribe((data: any) => {
       console.log(data);
+      this.ngOnInit();
     });
   }
   Color_name_Update(item:color)
@@ -79,12 +82,14 @@ export class ColorHomeComponent implements OnInit {
       if(this.currentdialog)
       {
         this.currentdialog.close();
+        this.ngOnInit();
       }
       this.currentdialog=this.matDialog.open(UpdateColorComponent,{
         data: {id : item.Color_id}
       });
       this.currentdialog.afterClosed().subscribe(result => {
         console.log('the dailog was closed');
+        this.ngOnInit();
 
       })
     });
@@ -122,6 +127,7 @@ export class ColorHomeComponent implements OnInit {
         }
       }
       this.color_dataSource.data = this.color_list;
+      this.ngOnInit();
     });
   }
 

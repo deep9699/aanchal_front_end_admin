@@ -4,7 +4,7 @@
 
   <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_Color_form">
     <mat-form-field class="example-full-width">
-      <input matInput name="color_name" ngModel #color_name="ngModel" required placeholder="color Name"
+      <input matInput name="color_name" (keypress)="keyPressText($event)" ngModel #color_name="ngModel" required placeholder="color Name"
         [(ngModel)]="Color_name">
 
         <mat-error *ngIf="color_name?.hasError('required')">

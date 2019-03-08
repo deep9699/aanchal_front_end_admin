@@ -1,0 +1,163 @@
+<div class="container">
+  <div class="card size">
+    <div class="card-header card-header-primary">
+      <h2 class="card-title ">Customer Order</h2>
+      <p class="card-category"> click on header to sort the data</p>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <mat-form-field class="example-form">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Order"
+            class="example-full-width">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <!-- <button mat-raised-button color="primary" (click)="Add_employee()" class="btn">
+          <mat-icon>add</mat-icon> Add Employee
+        </button> -->
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table mat-table [dataSource]="customer_order_dataSource" matSort multiTemplateDataRows>
+          <tbody>
+            <ng-container matColumnDef="Product_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Product_name </th>
+              <td mat-cell *matCellDef="let item"> {{item.Product_name | uppercase}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Color_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Color_name </th>
+              <td mat-cell *matCellDef="let item"> {{item.Color_name }} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Size_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Size_name </th>
+              <td mat-cell *matCellDef="let item"> {{item.Size_name | uppercase}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Quantity">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+              <td mat-cell *matCellDef="let item"> {{item.Quantity}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Price">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+              <td mat-cell *matCellDef="let item"> {{item.Product_price | currency:'INR'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+              <td mat-cell *matCellDef="let item"> {{item.Status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let item">
+
+                <button mat-raised-button color="primary" [disabled]="item.Status!='Order Placed'"
+                  (click)="onClickShip(item)">
+                  Delivered
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        
+      </div>
+      <div class="col-md-8">
+        <mat-paginator [pageSizeOptions]="[5,10]">
+        </mat-paginator>
+      </div>
+    </div>
+    <div class="row">
+        <h6>* Don't forget to change Status to Deliver after Delevier the Product</h6>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- <div class="container">
+  <div class="row">
+    <h1>
+      <b style="font-size: 50px; color:black;">Customer Orders</b>
+    </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+  <mat-form-field class="example-form">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Request" class="example-full-width">
+  </mat-form-field>
+</div>
+
+
+
+<table mat-table [dataSource]="customer_order_dataSource" matSort  multiTemplateDataRows class="mat-elevation-z8">
+  <ng-container matColumnDef="Product_name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Product_name </th>
+    <td mat-cell *matCellDef="let item"> {{item.Product_name | uppercase}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Color_name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Color_name </th>
+    <td mat-cell *matCellDef="let item"> {{item.Color_name }} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Size_name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Size_name  </th>
+    <td mat-cell *matCellDef="let item"> {{item.Size_name | uppercase}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Quantity">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+    <td mat-cell *matCellDef="let item"> {{item.Quantity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+    <td mat-cell *matCellDef="let item"> {{item.Product_price | currency:'INR'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+    <td mat-cell *matCellDef="let item"> {{item.Status}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let item">
+
+  <button mat-raised-button color="primary" [disabled]="item.Status!='Order Placed'" (click)="onClickShip(item)">
+    Delivered
+  </button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5,10]">
+</mat-paginator>
+<h6>* Don't forget to change Status to Deliver after Delevier the Product</h6>
+
+
+</div> -->

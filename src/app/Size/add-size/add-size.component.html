@@ -4,7 +4,7 @@
 
   <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_Size_form">
     <mat-form-field class="example-full-width">
-      <input matInput name="Size_name" ngModel #category_name="ngModel" required placeholder="Size Name"
+      <input matInput name="Size_name" (keypress)="keyPressText($event)" ngModel #category_name="ngModel" required placeholder="Size Name"
         [(ngModel)]="Size_name">
 
         <mat-error *ngIf="size_name?.hasError('required')">

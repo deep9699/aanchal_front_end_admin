@@ -19,9 +19,6 @@ import { AddEmployeeComponent } from "./Employee/add-employee/add-employee.compo
 import { UpdateEmployeeComponent } from "./Employee/update-employee/update-employee.component";
 import { SupplierOrderStatusComponent } from './supplier/supplier-order-status/supplier-order-status.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-
-
-
 import { SizeHomeComponent } from './Size/size-home/size-home.component';
 import { UpdateSizeComponent } from './Size/update-size/update-size.component';
 import { AddSizeComponent } from './Size/add-size/add-size.component';
@@ -31,14 +28,18 @@ import { UpdateColorComponent } from './Color/update-color/update-color.componen
 import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component';
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
 import { WithdrawalComponent } from './withdraw/withdrawal/withdrawal.component';
 import { SalaryManagementComponent } from './Employee/salary-management/salary-management.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
     {path:"changepassword",component:ChangePasswordComponent},
     {path:"menu",component:MenuComponent,children:[
+      {path:'dashboard',component:DashboardComponent},
+      {path:'customer_order',component:CustomerOrderComponent},
       {path:'product_home',component:ProductHomeComponent},
       {path:'add_product',component:AddProductComponent},
       {path:'update_product/:id',component:UpdateProductComponent},
@@ -63,7 +64,7 @@ const arr:Routes=[
       {path:"color_home",component:ColorHomeComponent},
       {path:"add_color",component:AddColorComponent},
       {path:"update_color/:id",component:UpdateColorComponent},
-      {path:"bill_details/:id",component:BillDetalisComponent},
+      {path:"bill_details/:bill_id",component:BillDetalisComponent},
       {path:"gen_bill",component:GenerateBillComponent},
       {path:"customer_home",component:CustomerHomeComponent},
       {path:"with_req",component:WithdrawalComponent},

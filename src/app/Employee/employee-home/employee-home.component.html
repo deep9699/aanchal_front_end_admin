@@ -1,4 +1,3 @@
-
 <div class="container">
   <h1>
     <b style="font-size: 50px; color:black;">Employee Management</b>
@@ -80,4 +79,82 @@
 
 
 
+
+  <div class="card size">
+    <div class="card-header card-header-primary">
+      <h2 class="card-title ">Employee Management</h2>
+      <p class="card-category"> click on header to sort the data</p>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <mat-form-field class="example-form">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Employee"
+            class="example-full-width">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="Add_employee()" class="btn">
+          <mat-icon>add</mat-icon> Add Employee
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table mat-table [dataSource]="employee_dataSource" matSort multiTemplateDataRows>
+          <tbody>
+            <ng-container matColumnDef="Action1">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let arr">
+                <mat-checkbox (change)="onCheakboxchacked(arr)" color="primary"></mat-checkbox>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let item"> {{item.Name | uppercase}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Email_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+              <td mat-cell *matCellDef="let item"> {{item.Email_id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Mobile_no">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
+              <td mat-cell *matCellDef="let item"> {{item.Mobile_no}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Salary">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Salary </th>
+              <td mat-cell *matCellDef="let item"> {{item.Salary | currency:'INR'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Joining_date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Joining_date </th>
+              <td mat-cell *matCellDef="let item"> {{ item.Joining_date | date}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let arr">
+                <button mat-mini-fab color="basic" (click)="onEmploee_Update(arr)">
+                  <mat-icon>create</mat-icon>
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                <button mat-mini-fab color="basic" (click)="onEmployee_Delete(arr)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <button mat-raised-button color="warn" (click)="Selected_delete()">
+          <mat-icon>delete</mat-icon> Delete All
+        </button> </div>
+      <div class="col-md-8">
+        <mat-paginator [pageSizeOptions]="[2,10]">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
 

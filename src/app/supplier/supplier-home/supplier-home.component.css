@@ -1,5 +1,30 @@
-table {
-  width: 100%;
+.search
+{
+  padding-top: 25px;
+}
+
+.btn{
+  margin-top: 25px;
+  background-color:rgb(156, 39, 176);
+}
+
+.size
+{
+  width: 80%;
+  padding-left: 30px;
+}
+
+th{
+  color: rgb(156, 39, 176);
+}
+
+button.mat-mini-fab
+{
+  background-color: rgb(156, 39, 176);
+}
+
+mat-icon{
+  color: #ffffff;
 }
 .example-full-width {
   width: 100%;
@@ -8,5 +33,12 @@ table {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  margin-left: 25px;
+  margin-top: 25px;
 }
+table {
+  width: 100%;
+}
+
+
 
