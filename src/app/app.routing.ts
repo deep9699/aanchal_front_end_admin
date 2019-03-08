@@ -32,6 +32,7 @@ import { BillDetalisComponent } from './bill/bill-detalis/bill-detalis.component
 import { GenerateBillComponent } from './bill/generate-bill/generate-bill.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
 import { WithdrawalComponent } from './withdraw/withdrawal/withdrawal.component';
+import { SalaryManagementComponent } from './Employee/salary-management/salary-management.component';
 
 const arr:Routes=[
     {path:'',component:LogInComponent},
@@ -65,7 +66,8 @@ const arr:Routes=[
       {path:"bill_details/:id",component:BillDetalisComponent},
       {path:"gen_bill",component:GenerateBillComponent},
       {path:"customer_home",component:CustomerHomeComponent},
-      {path:"with_req",component:WithdrawalComponent}
+      {path:"with_req",component:WithdrawalComponent},
+      {path:"salary",component:SalaryManagementComponent}
     ]},
 
 

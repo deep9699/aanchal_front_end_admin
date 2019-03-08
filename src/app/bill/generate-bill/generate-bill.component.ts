@@ -363,7 +363,5 @@ export class GenerateBillComponent implements OnInit {
   {
       this.ngOnInit();
   }
-  onclickCancle()
-  {
-  }
+
 }

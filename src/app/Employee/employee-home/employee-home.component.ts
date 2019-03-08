@@ -6,6 +6,7 @@ import { MatSort } from "@angular/material/sort";
 import { SelectionModel } from "@angular/cdk/collections";
 import { Router } from "@angular/router";
 import { EmployeeService } from "../../Services/employee.service";
+import { DeprecatedI18NPipesModule } from "@angular/common";
 
 
 @Component({
@@ -39,12 +40,10 @@ export class EmployeeHomeComponent implements OnInit {
     "Joining_date",
     "Action"
   ];
-  
 
   constructor(private emp_ser:EmployeeService,private _router:Router) { }
 
   ngOnInit() {
-    
 
     this.employee_dataSource.paginator = this.paginator;
 
@@ -68,7 +67,7 @@ export class EmployeeHomeComponent implements OnInit {
         this.ngOnInit();
       }
     );
- 
+
   }
   onCheakboxchacked(item: employee) {
     if (this.employee_delarr.find(x => x == item)) {
@@ -96,5 +95,11 @@ export class EmployeeHomeComponent implements OnInit {
       this.employee_dataSource.data = this.emp_tbl_arr;
     });
   }
+
+  Salary()
+  {
+    this._router.navigate(["/menu/salary"]);
+  }
+
 
 }
