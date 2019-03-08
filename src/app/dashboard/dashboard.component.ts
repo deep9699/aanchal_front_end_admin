@@ -1,8 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PageEvent, MatPaginator } from "@angular/material";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatSort } from "@angular/material/sort";
+import { SelectionModel } from "@angular/cdk/collections";
 import { Chart } from 'chart.js';
 import { DashboardService } from "../Services/dashboard.service";
 import { animation } from '@angular/animations';
+import { OrderService } from "../order.service";
 
+export class OrderTableDetais
+{
+  constructor(
+    public Order_id:number,
+    public Fk_stock_id:number,
+    public Fk_customer_id:number,
+    public Quantity:number,
+    public Status:string,
+    public Color_name:string,
+    public Size_name:string,
+    public Product_name:string,
+    public Product_price:number,
+
+  ){}
+}
+
+export class StockTableDetais
+{
+  constructor(
+    public Quantity:number,
+    public Color_name:string,
+    public Size_name:string,
+    public Product_name:string,
+    public Product_price:number,
+    public Supplier_name:string
+  ){}
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,14 +48,37 @@ export class DashboardComponent implements OnInit {
   total_supplier: number;
   weekchart: number[] = [];
   i: number;
+  customer_order_table:OrderTableDetais[]=[]
+  customer_order_dataSource=new MatTableDataSource();
+  @ViewChild(MatPaginator) order_paginator: MatPaginator;
+  @ViewChild(MatSort) order_sort: MatSort;
+  order_pageEvent: PageEvent;
+  order_displayedColumns: string[] = ['Product_name','Color_name', 'Size_name','Quantity','Price'];
+
+  stock_table:StockTableDetais[]=[]
+  stock_dataSource=new MatTableDataSource();
+  @ViewChild(MatPaginator) stock_paginator: MatPaginator;
+  @ViewChild(MatSort) stock_sort: MatSort;
+  stock_pageEvent: PageEvent;
+  stock_displayedColumns: string[] = ['Supplier_name','Product_name','Color_name', 'Size_name','Price','Quantity'];
 
   LineChart = [];
   BarChart = [];
   PieChart=[];
   myPieChart=[];
-  constructor(private _ser: DashboardService) { }
+  
+
+  constructor(private _ser: DashboardService,private order_ser:OrderService) { }
 
   ngOnInit() {
+
+    //order pageinator
+    this.customer_order_dataSource.paginator=this.order_paginator;
+    this.customer_order_dataSource.sort=this.order_sort;
+
+    //stock paginator
+    this.stock_dataSource.paginator=this.stock_paginator;
+    this.stock_dataSource.sort=this.stock_sort;
 
 
      //online-offline customer
@@ -53,6 +108,31 @@ export class DashboardComponent implements OnInit {
       (data: any) => {
         this.total_supplier = data[0].Total_sup;
         console.log(this.total_supplier);
+      }
+    );
+
+
+    //order details
+    this.order_ser.getAllOrder().subscribe(
+      (data:OrderTableDetais[])=>
+      {
+        console.log(data);
+        this.customer_order_table=data;
+         this.customer_order_dataSource.data=this.customer_order_table;
+         console.log(this.customer_order_dataSource.data);
+
+      }
+    );
+
+    //stock details
+    this._ser.getStockDetails().subscribe(
+      (data:any)=>
+      {
+        console.log(data);
+        this.stock_table=data;
+         this.stock_dataSource.data=this.stock_table;
+         console.log(this.stock_dataSource.data);
+
       }
     );
 
@@ -108,7 +188,7 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    console.log(this.online_customer);
+    //console.log(this.online_customer);
     //barchart
     this.BarChart = new Chart('barchart', {
       type: 'bar',
@@ -167,7 +247,7 @@ export class DashboardComponent implements OnInit {
         labels: ["top1","top2","top3","top4","top5"],
         datasets: [{
           label: "",
-          backgroundColor:["rgb(251,149,13)","rgb(252,2,128)","rgb(11,180,200)","rgb(93,180,97)","rgb(232,64,60)"],
+          backgroundColor:["rgb(251,149,13)","rgb(252,2,128)","rgb(11,180,200)","rgb(93,180,97)","orchid"],
           data: [70,20,30,40,60],
           fill: true,
           lineTension: 0.2,

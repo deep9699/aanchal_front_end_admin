@@ -29,7 +29,7 @@
             </ng-container>
             <ng-container matColumnDef="Name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Supplier Name </th>
-              <td mat-cell *matCellDef="let arr"> {{arr.Name}} </td>
+              <td mat-cell *matCellDef="let arr"> {{arr.Name | uppercase}} </td>
             </ng-container>
             <ng-container matColumnDef="Mobile_no">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile_no </th>

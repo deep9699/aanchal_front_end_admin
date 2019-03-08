@@ -1,10 +1,142 @@
 <div class="container">
-  <div class="rows">
-  <h1>Add-Product</h1>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">New Product</h4>
+              <p class="card-category">New product is being added</p>
+            </div>
+            <div class="card-body">
+              <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_product_form">
+                <div class="rows">
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput name="Product_name" ngModel #product_name="ngModel" required
+                      placeholder="Product Name" [(ngModel)]="Product_name">
+                    <mat-error *ngIf="product_name?.hasError('required')">
+                      Product Name Is Required
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Category Name" required #cat="ngModel" name="category_name"
+                      [(ngModel)]="selected_categories" class="example-full-width">
+                      <mat-option *ngFor="let item of category_list" [value]="item">
+                        {{item.Category_name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="cat?.hasError('required')">
+                      Category Name Is Required
+                    </mat-error>
+                  </mat-form-field>
+
+                  <!-- <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Color_Id" [(ngModel)]="Fk_color_id" name="Fk_color_id">
+                      </mat-form-field> -->
+
+                  <h5>Colors</h5>
+                  <section class="example-section" class="example-full-width">
+                    <mat-checkbox class="example-margin" color="primary" *ngFor="let item of color_list" name="colors"
+                      (change)="onCheckChangeColor(item)"> {{item.Color_name}}</mat-checkbox>
+                    <mat-error *ngIf="selected_color.length==0 && color_flag">
+                      Select Color Is Required
+                    </mat-error>
+                  </section>
+                  <!--<mat-form-field class="example-full-width">
+                        <input matInput placeholder="Size_id" [(ngModel)]="Fk_size_id" name="Fk_size_id">
+                      </mat-form-field> -->
+                  <h5>Sizes</h5>
+                  <section class="example-section" class="example-full-width">
+                    <mat-checkbox class="example-margin" color="primary" *ngFor="let item of size_list" name="sizes"
+                      (change)="onCheckChangeSize(item)">{{item.Size_name}}</mat-checkbox>
+                    <mat-error *ngIf="selected_sizes.length==0 && size_flag">
+                      Select Size Is Required
+                    </mat-error>
+                  </section>
+                  <div class="form-group" [hidden]="this.selected_sizes.length==0 || this.selected_color.length==0">
+                    <h5>Quantity</h5>
+                    <!--<table class="example-full-width">
+                          <tr *ngFor="let item of colors;let i=index">
+                            <table class="table">
+                              <tr *ngFor="let item1 of sizes;let j=index">
+                                <td>{{item.Color_name}}</td>
+                                <td>{{item1.Size_name}}</td>
+                                  <td><input  type="number" style="width: 50px;" name="qty" (change)="onClickChange(item,i)" [(ngModel)]="qty[i]"></td>
+                                  <td><button (click)="onClickOk()">ok</button></td>
+                              </tr>
+                            </table>
+                          </tr>
+                        </table>-->
+                    <table class="example-full-width">
+                      <thead>
+                        <th>Colors</th>
+                        <th>Sizes</th>
+                        <th>Quantities</th>
+                      </thead>
+                      <tr *ngFor="let item of extra_arr;let i=index">
+                        <td>{{item.color.Color_name}}</td>
+                        <td>{{item.size.Size_name}}</td>
+                        <td><input type="number" name="qty" (change)="onClickChange(i)" [(ngModel)]="qty[i]"></td>
+                        <td><button mat-raised-button (click)="onClickdelete(item)" class="btn">
+                            <mat-icon>delete</mat-icon>
+                          </button></td>
+                      </tr>
+                    </table>
+                  </div>
+                  
+                    <h5>Image:</h5> <input type="file" (change)="onChange($event)">
+                  <div class="example-element-diagram" [hidden]="!flag">
+                    <canvas #mycanvas width="218px" height="180px"></canvas>
+                  </div>
+                  
+                  <mat-form-field class="example-full-width">
+                    <input matInput required #product_desc="ngModel" placeholder="Descrption" [(ngModel)]="Product_desc"
+                      name="Product_image">
+                    <mat-error *ngIf="product_desc?.hasError('required')">
+                      Description is must
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Price" required #product_price="ngModel" type="number"
+                      [(ngModel)]="Product_price" name="Product_price">
+                    <mat-error *ngIf="product_price?.hasError('required')">
+                      Product price is must
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Supplier Name" required #sup="ngModel" name="supplier_name"
+                      [(ngModel)]="selected_suppliers" class="example-full-width">
+                      <mat-option *ngFor="let item of supplier_list" [value]="item">
+                        {{item.Name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="sup?.hasError('required')">
+                      Supplier must be selected
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <br><br>
+                <div class="rows">
+                  <button mat-raised-button color="primary" type="submit" class="btn"
+                    [disabled]="!f.valid || selected_color.length==0 || selected_sizes.length==0 ">ADD PRODUCT</button>
+
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-
-  <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_product_form">
+<!-- <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_product_form">
     <div class="rows">
     <mat-form-field class="example-full-width">
       <input matInput  name="Product_name" ngModel #product_name="ngModel" required placeholder="Product Name"
@@ -23,27 +155,27 @@
       <mat-error *ngIf="cat?.hasError('required')">
           Category Name Is Required
         </mat-error>
-    </mat-form-field>
+    </mat-form-field> -->
 
-    <!-- <mat-form-field class="example-full-width">
+<!-- <mat-form-field class="example-full-width">
       <input matInput placeholder="Color_Id" [(ngModel)]="Fk_color_id" name="Fk_color_id">
     </mat-form-field> -->
 
-    <h5>Colors</h5>
+<!-- <h5>Colors</h5>
     <section class="example-section" class="example-full-width">
       <mat-checkbox class="example-margin" color="primary" *ngFor="let item of color_list" name="colors" (change)="onCheckChangeColor(item)">{{item.Color_name}}</mat-checkbox>
       <mat-error *ngIf="selected_color.length==0 && color_flag">
           Select Color Is Required
         </mat-error>
-    </section>
+    </section> -->
 
 
 
-    <!--<mat-form-field class="example-full-width">
+<!--<mat-form-field class="example-full-width">
       <input matInput placeholder="Size_id" [(ngModel)]="Fk_size_id" name="Fk_size_id">
     </mat-form-field> -->
 
-    <h5>Sizes</h5>
+<!-- <h5>Sizes</h5>
     <section class="example-section" class="example-full-width">
       <mat-checkbox class="example-margin" color="primary" *ngFor="let item of size_list" name="sizes" (change)="onCheckChangeSize(item)">{{item.Size_name}}</mat-checkbox>
       <mat-error *ngIf="selected_sizes.length==0 && size_flag">
@@ -52,8 +184,8 @@
     </section>
 
     <div class="form-group" [hidden]="this.selected_sizes.length==0 || this.selected_color.length==0">
-      <h5>Quantity</h5>
-      <!--<table class="example-full-width">
+      <h5>Quantity</h5> -->
+<!--<table class="example-full-width">
         <tr *ngFor="let item of colors;let i=index">
           <table class="table">
             <tr *ngFor="let item1 of sizes;let j=index">
@@ -67,7 +199,7 @@
           </table>
               </tr>
       </table>-->
-      <table class="example-full-width">
+<!-- <table class="example-full-width">
         <thead>
           <th>Colors</th>
           <th>Sizes</th>
@@ -132,5 +264,4 @@
     <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
   </div>
     </div>
-  </form>
-</div>
+  </form> -->
