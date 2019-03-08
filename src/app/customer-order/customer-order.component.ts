@@ -63,7 +63,7 @@ export class CustomerOrderComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   pageEvent: PageEvent;
-  employee_selection = new SelectionModel(true, []);
+
 
   displayedColumns: string[] = ['Product_name','Color_name', 'Size_name','Quantity','Price','Status','Action'];
 

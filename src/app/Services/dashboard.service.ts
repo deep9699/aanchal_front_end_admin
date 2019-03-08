@@ -10,7 +10,7 @@ export class DashboardService {
   private totemp_url="http://localhost:3000/totalemp/";
   private totsup_url="http://localhost:3000/totalsup";
   private weekchart_url="http://localhost:3000/weekchart/";
-
+  private stocktbl_url="http://localhost:3000/dashstock/"
   constructor(private _http:HttpClient) { }
 
   getOnlineCustomer(){
@@ -27,6 +27,10 @@ export class DashboardService {
 
   getWeekchartDetails(){
     return this._http.get(this.weekchart_url);
+  }
+
+  getStockDetails(){
+    return this._http.get(this.stocktbl_url);
   }
 
 }
