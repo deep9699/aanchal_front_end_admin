@@ -37,7 +37,7 @@ export class BillComponent implements OnInit {
       (data:bill[])=>{
         console.log(data);
         this.bill_arr=data;
-        this.dataSource=this.dataSource = new MatTableDataSource(this.bill_arr);
+        this.dataSource = new MatTableDataSource(this.bill_arr);
 
       }
     );

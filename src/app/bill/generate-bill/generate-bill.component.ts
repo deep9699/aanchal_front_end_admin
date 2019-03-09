@@ -97,7 +97,7 @@ export class GenerateBillComponent implements OnInit {
   Address:string;
   cust_name: string="";
   selected_number: string;
-
+tot_qty:number;
 
   flag: number = 0;
 

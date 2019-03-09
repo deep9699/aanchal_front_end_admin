@@ -27,6 +27,7 @@
 
         <label>Gender</label>
         <mat-radio-group>
+          &nbsp;&nbsp;
           <mat-radio-button value="Male" [(ngModel)]="Gender" name="gender">Male</mat-radio-button>
           <mat-radio-button value="Female" [(ngModel)]="Gender" name="gender">Female</mat-radio-button>
         </mat-radio-group>
@@ -71,7 +72,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput type="number" name="qty" ngModel #qty1="ngModel" required placeholder="Qty" [(ngModel)]="_qty"
+          <input matInput type="number" name="qty" ngModel #qty1="ngModel" required placeholder="Qty" [(ngModel)]="_qty" (keypress)="keyPressNumber($event)"
             max="total_qty" required min="1" />
         </mat-form-field>
 

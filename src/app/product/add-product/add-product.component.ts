@@ -73,6 +73,11 @@ export class AddProductComponent implements OnInit {
       this.qty[i] = 0;
       console.log(i);
     }
+    if(this.qty[i]>500)
+    {
+      alert("Item can not more than 500");
+      this.qty[i]=500;
+    }
   }
 
 
@@ -91,7 +96,7 @@ keyPressNumber(event: any) {
     const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);
     // console.log(inputChar, e.charCode);
-       if (!pattern.test(inputChar)) {
+       if (!pattern.test(inputChar) || this.Product_price.toString().length>=5) {
        // invalid character, prevent input
            event.preventDefault();
       }

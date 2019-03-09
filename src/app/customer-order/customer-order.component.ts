@@ -55,6 +55,7 @@ export class CustomerOrderComponent implements OnInit {
   i:number;
   flag:boolean=false;
   date1:Date;
+  total:number=0;
   update_qty:number;
   bill_id:number;
   bill_details:bill_details[]=[];
@@ -98,9 +99,10 @@ export class CustomerOrderComponent implements OnInit {
   onClickShip(item)
   {
 
-    
+    this.total=item.Product_price*item.Quantity
+    console.log(this.total + "  "+item.Product_price+ "  "+item.Quantity );
     console.log(item);
-        this.bill_ser.addBill(new bill(0,this.date1,item.Product_price,item.Fk_customer_id)).subscribe(
+        this.bill_ser.addBill(new bill(0,this.date1,this.total,item.Fk_customer_id)).subscribe(
       (data:any)=>
       {
         console.log(data);
@@ -122,6 +124,7 @@ export class CustomerOrderComponent implements OnInit {
                       (data:any)=>
                       {
                         console.log(data);
+                        this.ngOnInit();
                       }
                     );
                   }

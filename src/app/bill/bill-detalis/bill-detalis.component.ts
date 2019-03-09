@@ -47,7 +47,7 @@ export class BillDetalisComponent implements OnInit {
        this.bill_date=data[0].Bill_date;
        this.address=data[0].Address;
        this.mobile_no=data[0].Mobile_no;
-       this.subtotal=data[0].Total_amount;
+       this.subtotal=data[0].Amount*data[0].Quantity;
         for(this.i=0;this.i<data.length;this.i++)
         {
           this.no=this.no+1;
@@ -56,7 +56,7 @@ export class BillDetalisComponent implements OnInit {
           this.size=data[this.i].Size_name;
           this.unitcost=data[this.i].Product_price;
           this.qty=data[this.i].Quantity;
-          this.total=data[this.i].Amount;
+          this.total=data[this.i].Amount*data[this.i].Quantity;;
         this.bill_details_arr.push(new Invoicedetails(this.no,this.item,this.color,this.size,this.unitcost,this.qty,this.total));
         }
         this.CGST=(this.subtotal*2.5)/100;
