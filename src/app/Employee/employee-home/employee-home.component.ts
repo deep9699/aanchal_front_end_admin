@@ -18,6 +18,7 @@ export class EmployeeHomeComponent implements OnInit {
   emp_tbl_arr: employee[] = [];
   employee_delarr: employee[] = [];
   j: number;
+  flag:boolean;
   i: number = 0;
   page_length = 100;
   pageSize = 10;
@@ -44,6 +45,7 @@ export class EmployeeHomeComponent implements OnInit {
   constructor(private emp_ser:EmployeeService,private _router:Router) { }
 
   ngOnInit() {
+    this.flag=true;
 
     this.employee_dataSource.paginator = this.paginator;
 
@@ -83,6 +85,16 @@ export class EmployeeHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.employee_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.employee_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
+
   }
   Selected_delete() {
     this.emp_ser.deleteAll(this.employee_delarr).subscribe((data: any) => {

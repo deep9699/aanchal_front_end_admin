@@ -14,6 +14,15 @@
     Pay Salary
   </button>
 
+  <div class="card-body" *ngIf="!flag1">
+      <div class="table-responsive" >
+          <h6>*No Record Found</h6>
+
+    </div>
+    </div>
+    <div class="card-body" *ngIf="flag1">
+        <div class="table-responsive" >
+
   <table mat-table [dataSource]="employee_dataSource" matSort>
 
      <ng-container matColumnDef="Name">
@@ -51,6 +60,8 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    </div>
+    </div>
     <mat-paginator [pageSizeOptions]="[5,10]">
     </mat-paginator>
 

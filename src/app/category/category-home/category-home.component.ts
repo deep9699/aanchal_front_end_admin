@@ -26,7 +26,7 @@ export class CategoryHomeComponent implements OnInit {
   category_delarr: category[] = [];
   j: number;
   length = 100;
-
+flag:boolean=true;
   pageSize = 10;
   selection = new SelectionModel(true, []);
   category_dataSource = new MatTableDataSource();
@@ -40,6 +40,7 @@ export class CategoryHomeComponent implements OnInit {
   constructor(private cat_ser: CategoryService,private _router:Router,private matDialog:MatDialog,private _act:ActivatedRoute) {}
 
   ngOnInit() {
+    this.flag=true;
     this.category_dataSource.paginator = this.paginator;
     this.category_dataSource.sort = this.sort;
     this.cat_ser.getAllCategory().subscribe((data: any[]) => {
@@ -105,6 +106,15 @@ export class CategoryHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.category_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.category_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
   }
   checkedItems(item: category) {
     if (this.category_delarr.find(x => x == item)) {

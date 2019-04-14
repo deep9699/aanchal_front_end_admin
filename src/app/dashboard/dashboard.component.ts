@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
   BarChart = [];
   PieChart=[];
   myPieChart=[];
-  
+
 
   constructor(private _ser: DashboardService,private order_ser:OrderService) { }
 
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
         this.online_customer[0] = data[0].Total;
         this.offline_customer[0]=data[0].Total;
         console.log(this.online_customer);
-        
+
       }
     );
 
@@ -150,6 +150,8 @@ export class DashboardComponent implements OnInit {
     console.log(this.weekchart);
 
     //linchart
+
+
     this.LineChart = new Chart('linechart', {
       type: 'line',
       data: {
@@ -175,6 +177,10 @@ export class DashboardComponent implements OnInit {
               beginAtZero: true
             }
           }],
+
+
+
+
           xAxes: [{
             ticks: {
               beginAtZero: true
@@ -189,7 +195,10 @@ export class DashboardComponent implements OnInit {
     });
 
     //console.log(this.online_customer);
-    //barchart
+
+
+
+
     this.BarChart = new Chart('barchart', {
       type: 'bar',
       data: {
@@ -209,12 +218,13 @@ export class DashboardComponent implements OnInit {
           fill: true,
           lineTension: 0.2,
           borderColor: "white",
-          //backgroundColor:"blue",
           borderWidth: 1
 
         }],
-
       },
+
+
+
       options: {
         title: {
           text: "Bar Chart",
@@ -240,6 +250,9 @@ export class DashboardComponent implements OnInit {
     });
 
 
+
+
+
     ///piechart
     this.PieChart = new Chart('piechart', {
       type: 'pie',
@@ -259,7 +272,7 @@ export class DashboardComponent implements OnInit {
         title: {
           text: "Pie Chart",
           display: true,
-        }, 
+        },
         animations:
         {
           animationScale:true
@@ -268,8 +281,8 @@ export class DashboardComponent implements OnInit {
     });
 
 
-    
-   
+
+
   }
 
   // public barChartOptions = {

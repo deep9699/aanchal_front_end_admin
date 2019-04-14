@@ -8,10 +8,10 @@
       <div>
         <mat-form-field class="example-full-width">
           <span matPrefix>+91 &nbsp;</span>
-          <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+          <input matInput  type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
             [(ngModel)]="selected_number" [matAutocomplete]="auto" />
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onNumberChange()">
-            <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
+            <mat-option *ngFor="let option of (filteredOptions | async)" [value]="numbers">
               {{ option }}
             </mat-option>
           </mat-autocomplete>
@@ -72,7 +72,7 @@
 
         <mat-form-field class="example-full-width">
           <input matInput type="number" name="qty" ngModel #qty1="ngModel" required placeholder="Qty" [(ngModel)]="_qty"
-            max="total_qty" required min="1" />
+             required min="1" [attr.max]="maxqty" />
         </mat-form-field>
 
         <button mat-raised-button (click)="onProduct_Add()" class="btn">
@@ -120,13 +120,13 @@
                 <mat-icon>add</mat-icon> ADD
               </button>
             </div>
-  
+
             <div class="col-md-4">
               <button mat-raised-button class="btn" type="submit" (click)="onclickreset()" [disabled]="!f.valid">
                 <mat-icon>refresh</mat-icon>Reset
               </button>
             </div>
-  
+
             <div class="col-md-4">
               <button mat-raised-button color="warn" (click)="onclickCancle()">
                 <mat-icon>cancel</mat-icon>CANCEL
@@ -179,7 +179,7 @@
 
 
 
-  <!-- 
+  <!--
 <div class="container">
   <div class="rows"><h1>Bill</h1></div>
 

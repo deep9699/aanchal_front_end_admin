@@ -117,6 +117,7 @@ export class GenerateBillComponent implements OnInit {
   sizebycolor: string[] = [];
   selected_qty: stock;
   date1:Date;
+  maxqty:number;
   password:string="Aanchal";
   Gender:string;
 
@@ -178,6 +179,7 @@ export class GenerateBillComponent implements OnInit {
   }
 
   onProduct_Add() {
+    this.maxqty=0;
     this.details = [];
     this.sizebycolor = [];
     console.log(this.stock_id1);
@@ -192,6 +194,7 @@ export class GenerateBillComponent implements OnInit {
     this.sizebycolor.splice(0, this.sizebycolor.length);
     this.stock_id.splice(0, this.stock_id.length);
     this.selected_product;
+    this._qty=1;
   }
 
   onclickSave() {
@@ -281,19 +284,36 @@ export class GenerateBillComponent implements OnInit {
 
   }
   onclickAdd() {}
+
+
+
+
+
+
+
   onproductChange() {
-    // console.log(this.selected_product);
+    
 
     this.details.splice(0,this.details.length);
     this.stock_ser.getDetailsByProductid(this.selected_product.Product_id).subscribe
     ((data: any) => {
-        //   console.log(data);
+           console.log(data);
         for (this.k = 0; this.k < data.length; this.k++) {
           this.details.push(new extra(data[this.k].Color_name,data[this.k].Size_name,data[this.k].Quantity));
         }
-        // console.log(this.details);
+       console.log(this.details);
       });
   }
+
+
+
+
+
+
+
+
+
+  
   onsizeChange() {
     console.log(this.selected_sizes);
     console.log(this.sizebycolor);
@@ -306,6 +326,14 @@ export class GenerateBillComponent implements OnInit {
     }
 
     console.log(this.stock_id1);
+    this.stock_ser.getStockById(this.stock_id1).subscribe(
+      (data:any)=>{
+        console.log(data);
+        this.maxqty=data[0].Quantity;
+        console.log(this.maxqty);
+      }
+    )
+
   }
   oncolorChange() {
     console.log(this.sele_col);
@@ -335,6 +363,7 @@ export class GenerateBillComponent implements OnInit {
     this.selected_product = item.product;
     this.sele_col = item.color;
     this.selected_sizes = item.size;
+
     this._qty = item.qty;
   }
 
@@ -364,7 +393,7 @@ export class GenerateBillComponent implements OnInit {
            event.preventDefault();
       }
   }
-  
+
 keyPressNumber(event: any) {
     const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);
@@ -374,7 +403,7 @@ keyPressNumber(event: any) {
            event.preventDefault();
       }
  }
- 
+
   onclickreset()
   {
       this.ngOnInit();

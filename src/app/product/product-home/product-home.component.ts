@@ -25,6 +25,7 @@ export class ProductHomeComponent implements OnInit {
   prod_tbl_arr: product[] = [];
   product_delarr: product[] = [];
   j: number;
+  flag:boolean=true;
   i: number = 0;
   page_length = 100;
   pageSize = 10;
@@ -54,6 +55,7 @@ export class ProductHomeComponent implements OnInit {
 
   ngOnInit()
   {
+    this.flag=true;
     this.product_dataSource.paginator = this.paginator;
 
     this.product_dataSource.sort = this.sort;
@@ -80,18 +82,31 @@ export class ProductHomeComponent implements OnInit {
   onProduct_Update(item) {
     this._router.navigate(["/menu/update_product", item.Product_id]);
   }
-  isAllSelected() {
-    const numSelected = this.product_selection.selected.length;
-    const numRows = this.product_dataSource.data.length;
-    return numSelected === numRows;
-  }
-  masterToggle() {
-    this.isAllSelected()
-      ? this.product_selection.clear()
-      : this.product_dataSource.data.forEach(row => this.product_selection.select(row));
-  }
+  // isAllSelected() {
+  //   const numSelected = this.product_selection.selected.length;
+  //   const numRows = this.product_dataSource.data.length;
+  //   return numSelected === numRows;
+  // }
+  // // masterToggle() {
+  //   this.isAllSelected()
+  //     ? this.product_selection.clear()
+  //     : this.product_dataSource.data.forEach(row => this.product_selection.select(row));
+  // }
   applyFilter(filterValue: string) {
+
+
+
     this.product_dataSource.filter = filterValue.trim().toLowerCase();
+    console.log( this.product_dataSource.filter);
+    if(this.product_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
   }
   onCheakboxchacked(item: product) {
     if (this.product_delarr.find(x => x == item)) {

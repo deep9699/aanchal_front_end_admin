@@ -86,7 +86,7 @@ export class AddProductComponent implements OnInit {
            event.preventDefault();
       }
   }
-  
+
 keyPressNumber(event: any) {
     const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);
@@ -96,7 +96,7 @@ keyPressNumber(event: any) {
            event.preventDefault();
       }
  }
- 
+
 
   onclickCancle()
   {
@@ -137,6 +137,9 @@ keyPressNumber(event: any) {
 
     }
 
+
+
+
   onCheckChangeColor(item: color) {
     this.color_flag=true;
     if (this.selected_color.find(x => x == item)) {
@@ -154,6 +157,13 @@ keyPressNumber(event: any) {
     }
     console.log(this.selected_color);
   }
+
+
+
+
+
+
+
   onCheckChangeSize(item: size) {
     this.size_flag=true;
     if (this.selected_sizes.find(x => x == item)) {
@@ -186,6 +196,10 @@ keyPressNumber(event: any) {
     console.log(this.extra_arr);
   }
 
+
+
+
+
   onChange(value):void {
     this.selectedFile = <File>value.target.files[0];
     if(this.selectedFile)
@@ -206,6 +220,11 @@ keyPressNumber(event: any) {
       render.readAsDataURL(value.target.files[0]);
     }
   }
+
+
+
+
+
 
 
   ngOnInit() {

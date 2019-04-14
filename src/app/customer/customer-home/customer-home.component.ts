@@ -20,6 +20,7 @@ export class CustomerHomeComponent implements OnInit {
   i:number=0;
   length = 100;
   pageSize = 10;
+  flag1:boolean;
   //selection = new SelectionModel(true, []);
 
 Customer_dataSource=new MatTableDataSource();
@@ -31,6 +32,7 @@ Customer_dataSource=new MatTableDataSource();
   constructor(private customer_ser:CustomerService,private _router:Router) { }
 
   ngOnInit() {
+    this.flag1=true;
 
     this.Customer_dataSource.paginator=this.paginator;
 
@@ -53,6 +55,20 @@ Customer_dataSource=new MatTableDataSource();
             this.ngOnInit();
         }
       );
+
+}
+
+applyFilter(filterValue: string) {
+  this.Customer_dataSource.filter = filterValue.trim().toLowerCase();
+  if(this.Customer_dataSource.filteredData.length==0)
+  {
+    //console.log('in1');
+    this.flag1=false;
+  }
+  else
+  {
+    this.flag1=true;
+  }
 
 }
 }

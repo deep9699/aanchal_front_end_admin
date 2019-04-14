@@ -32,11 +32,13 @@ export class SizeHomeComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
   pageEvent: PageEvent;
-
+flag:boolean;
 
   constructor(private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:SizeService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Size_name','Action'];
   ngOnInit() {
+
+    this.flag=true;
     this.size_dataSource.paginator=this.paginator;
     this.size_dataSource.sort=this.sort;
 
@@ -109,6 +111,16 @@ export class SizeHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.size_dataSource.filter = filterValue.trim().toLowerCase();
+
+    if(this.size_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
   }
   checkedItems(item:size) {
     if (this.size_delarr.find(x => x == item)) {

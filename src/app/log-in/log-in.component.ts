@@ -71,6 +71,9 @@ onclickforget()
 
 }
   ngOnInit() {
+
+    localStorage.setItem('email_id',"");
+    localStorage.setItem('emp_type',"");
   }
 
 }

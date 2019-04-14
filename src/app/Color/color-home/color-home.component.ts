@@ -31,10 +31,11 @@ export class ColorHomeComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
   pageEvent: PageEvent;
-
+flag:boolean=true;
   constructor(private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:ColorService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Color_name','Action'];
   ngOnInit() {
+    this.flag=true;
 
     this.color_dataSource.paginator=this.paginator;
     this.color_dataSource.sort=this.sort;
@@ -107,6 +108,15 @@ export class ColorHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.color_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.color_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
   }
   checkedItems(item:color) {
     if (this.color_delarr.find(x => x == item)) {

@@ -63,9 +63,11 @@ num3:number=this.date1.getDate();
 
 flag:boolean=false;
  no:number=1;
+ flag1:boolean;
   constructor(private emp_ser:EmployeeService,private _router:Router) { }
 
   ngOnInit() {
+    this.flag1=true;
 
     this.employee_dataSource.paginator = this.paginator;
     console.log(this.date1);
@@ -111,6 +113,16 @@ flag:boolean=false;
 
   applyFilter(filterValue: string) {
     this.employee_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.employee_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag1=false;
+    }
+    else
+    {
+      this.flag1=true;
+    }
+
   }
   Pay_salary(){
 

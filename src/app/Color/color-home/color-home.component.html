@@ -17,7 +17,14 @@
         </button>
       </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngIf="!flag">
+        <div class="table-responsive" >
+            <h6>*No Record Found</h6>
+
+      </div>
+      </div>
+
+    <div class="card-body"  *ngIf="flag">
       <div class="table-responsive">
         <table mat-table [dataSource]="color_dataSource" matSort multiTemplateDataRows>
           <tbody>
