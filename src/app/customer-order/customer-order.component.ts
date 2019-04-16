@@ -54,11 +54,14 @@ export class CustomerOrderComponent implements OnInit {
   id:number;
   i:number;
   flag:boolean=false;
+  flag1:boolean;
   date1:Date;
+  total:number=0;
   update_qty:number;
   bill_id:number;
   bill_details:bill_details[]=[];
   customer_order_table:TableDetais[]=[];
+  tmp_cust_order_table:TableDetais[]=[];
   customer_order_dataSource=new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -73,7 +76,7 @@ export class CustomerOrderComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.flag1=true;
     this.customer_order_dataSource.paginator=this.paginator;
     this.customer_order_dataSource.sort=this.sort;
     this.customer_order_table=[];
@@ -97,9 +100,11 @@ export class CustomerOrderComponent implements OnInit {
   onClickShip(item)
   {
 
-    
+
+    this.total=item.Product_price*item.Quantity
+    console.log(this.total + "  "+item.Product_price+ "  "+item.Quantity );
     console.log(item);
-        this.bill_ser.addBill(new bill(0,this.date1,item.Product_price,item.Fk_customer_id)).subscribe(
+        this.bill_ser.addBill(new bill(0,this.date1,this.total,item.Fk_customer_id)).subscribe(
       (data:any)=>
       {
         console.log(data);
@@ -121,6 +126,7 @@ export class CustomerOrderComponent implements OnInit {
                       (data:any)=>
                       {
                         console.log(data);
+                        this.ngOnInit();
                       }
                     );
                   }
@@ -147,7 +153,18 @@ export class CustomerOrderComponent implements OnInit {
   // }
 
   applyFilter(filterValue: string) {
+
     this.customer_order_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.customer_order_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag1=false;
+    }
+    else
+    {
+      this.flag1=true;
+    }
+
   }
 
 

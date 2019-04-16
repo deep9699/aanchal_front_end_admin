@@ -17,6 +17,7 @@ export class SupplierHomeComponent implements OnInit {
   i:number=0;
   length = 100;
   pageSize = 10;
+  flag:boolean;
   //selection = new SelectionModel(true, []);
 
   Supplier_dataSource=new MatTableDataSource();
@@ -28,6 +29,7 @@ export class SupplierHomeComponent implements OnInit {
   constructor(private sup_ser:SupplierService,private _router:Router) { }
 
   ngOnInit() {
+    this.flag=true;
     this.Supplier_dataSource.paginator=this.paginator;
 
     this.Supplier_dataSource.sort = this.sort;
@@ -45,6 +47,16 @@ export class SupplierHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.Supplier_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.Supplier_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
+
   }
   selectedSupplier(item:supplier){
     if(this.supplier_delarr.find(x=>x==item))
@@ -70,12 +82,12 @@ export class SupplierHomeComponent implements OnInit {
         console.log(data);
       for(this.i=0;this.i<this.supplier_delarr.length;this.i++)
       {
-      if(this.supplier_arr.find(x=>x==this.supplier_delarr[this.i]))
-      {
-      this.supplier_arr.splice(this.supplier_arr.indexOf(this.supplier_delarr[this.i]),1);
+        if(this.supplier_arr.find(x=>x==this.supplier_delarr[this.i]))
+        {
+        this.supplier_arr.splice(this.supplier_arr.indexOf(this.supplier_delarr[this.i]),1);
+        }
       }
-      }
-      this.Supplier_dataSource.data=this.supplier_arr;
+        this.Supplier_dataSource.data=this.supplier_arr;
       }
       );
       }
@@ -87,6 +99,7 @@ export class SupplierHomeComponent implements OnInit {
             (data:any)=>{
               this.supplier_arr.splice(this.supplier_arr.indexOf(item),1);
                 console.log(data);
+                this.ngOnInit();
             }
           );
       }

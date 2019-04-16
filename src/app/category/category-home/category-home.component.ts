@@ -26,7 +26,7 @@ export class CategoryHomeComponent implements OnInit {
   category_delarr: category[] = [];
   j: number;
   length = 100;
-
+flag:boolean=true;
   pageSize = 10;
   selection = new SelectionModel(true, []);
   category_dataSource = new MatTableDataSource();
@@ -40,6 +40,7 @@ export class CategoryHomeComponent implements OnInit {
   constructor(private cat_ser: CategoryService,private _router:Router,private matDialog:MatDialog,private _act:ActivatedRoute) {}
 
   ngOnInit() {
+    this.flag=true;
     this.category_dataSource.paginator = this.paginator;
     this.category_dataSource.sort = this.sort;
     this.cat_ser.getAllCategory().subscribe((data: any[]) => {
@@ -71,20 +72,26 @@ export class CategoryHomeComponent implements OnInit {
       this._act.params.pipe(takeUntil(this.destroy)).subscribe(params => {
         if(this.currentdialog)
         {
+
+
           this.currentdialog.close();
+          this.ngOnInit();
         }
         this.currentdialog=this.matDialog.open(AddCategoryComponent,{
           data: {id : params.id}
         });
         this.currentdialog.afterClosed().subscribe(result => {
+
           console.log('the dailog was closed');
 
+          this.ngOnInit();
         })
       });
   }
   categoryDelete(item: category) {
     this.cat_ser.deleteProduct(item).subscribe((data: any) => {
       console.log(data);
+      this.ngOnInit();
     });
   }
   isAllSelected() {
@@ -99,6 +106,15 @@ export class CategoryHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.category_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.category_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
   }
   checkedItems(item: category) {
     if (this.category_delarr.find(x => x == item)) {
@@ -118,7 +134,9 @@ export class CategoryHomeComponent implements OnInit {
           this.category_list.splice(this.category_list.indexOf(this.category_delarr[this.i]), 1);
         }
       }
+
       this.category_dataSource.data = this.category_list;
+      this.ngOnInit();
     });
   }
 }

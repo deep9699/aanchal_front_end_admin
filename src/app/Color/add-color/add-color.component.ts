@@ -19,6 +19,7 @@ export class AddColorComponent implements OnInit {
   constructor(private color_ser:ColorService,private _router:Router,private matDialog:MatDialogRef<ColorHomeComponent>,private _act:ActivatedRoute) { }
 
   ngOnInit() {
+    this.flag=true;
     this.color_ser.getAllColor().subscribe(
       (data:color[])=>
       {
@@ -29,23 +30,51 @@ export class AddColorComponent implements OnInit {
   }
   onclickAdd()
   {
+    if(this.flag==true)
+    {
 
-   this.color_ser.addColor(new color(this.Color_name)).subscribe(
+   this.color_ser.addColor(new color(this.Color_name.toUpperCase())).subscribe(
      (data:any)=>
      {
-       console.log(data);
+       if(data.errno==1062)
+       {
+        alert('Color already exits');
+
+       }
+       else
+       {
+        console.log(data);
+       }
+
        this._router.navigate(['menu/color_home']);
        //this.currentdialog.close();
        this.matDialog.close();
      }
    );
   }
-
+  }
  onclickCancle()
  {
-   this._router.navigate(['menu/color_home']);
+  this.flag=false;
+  if(this.flag==false)
+  {
+    console.log(this.flag);
+    this.matDialog.close();
+    this._router.navigate(['menu/color_home']);
+   //this._router.navigate(['menu/color_home']);
 
  }
 
+ }
 
+ keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Color_name.length>=10) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
 }

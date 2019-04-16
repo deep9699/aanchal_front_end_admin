@@ -9,7 +9,7 @@
               <p class="card-category">New supplier is being added</p>
             </div>
             <div class="card-body">
-              <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_product_form">
+              <form class="example-form" #f="ngForm" name="Add_product_form">
                 <div class="rows">
                   <mat-form-field class="example-full-width">
                     <input matInput placeholder="Email_id:" type="text" [(ngModel)]="Email_id" name="Email_id"
@@ -37,7 +37,7 @@
 
                   <div class="form-group">
                     <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Name:" type="text" [(ngModel)]="Name" name="Name" #user="ngModel"
+                      <input matInput placeholder="Name:" type="text" (keypress)="keyPressText($event)" [(ngModel)]="Name" name="Name" #user="ngModel"
                         required>
                       <mat-error *ngIf="user.hasError('required')">
                         Supplier Name is Required
@@ -47,7 +47,7 @@
 
 
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mobile_no:" type="text" name="Mobile_no" [(ngModel)]="Mobile_no"
+                    <input matInput placeholder="Mobile_no:" type="text" (keypress)="keyPressNumber($event)" name="Mobile_no" [(ngModel)]="Mobile_no"
                       #mob1="ngModel" required required minlength="10" maxlength="10">
                     <mat-error *ngIf="mob1.hasError('minlength')">
                       Required 10 Digit
@@ -72,7 +72,7 @@
                   </mat-form-field> -->
                 </div>
                 <div class="rows">
-                  <button mat-raised-button class="btn" type="submit" [disabled]="!f.valid">ADD SUPPLIER</button>
+                  <button mat-raised-button class="btn" type="submit" [disabled]="!f.valid" (click)="onsignup()">ADD SUPPLIER</button>
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   <button mat-raised-button color="warn" (click)="onclickCancle()">CANCEL</button>
                 </div>

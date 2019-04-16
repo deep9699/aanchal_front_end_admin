@@ -36,13 +36,40 @@ export class AddEmployeeComponent implements OnInit {
       }
     );
   }
+
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Name.length>=20) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+  onclickCancle()
+  {
+    this._router.navigate(['menu/employee_home']);  
+  }
+
+  keyPressNumber(event: any) {
+    const pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Mobile_no.length>=10) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+ }
+
   onclickAdd() {
     console.log(this.Email_id);
-    console.log(this.arr_emp)
+    console.log(this.arr_emp);
+
     this._emp.addEmployee(new employee(this.Email_id, this.Password, this.Name, this.Mobile_no, this.Address, this.DOB, this.Salary, this.Joining_date, this.Employee_type)).subscribe(
       (data: any) => {
         if (data.errno == 1062) {
-          alert("Email id is already exist");
+          alert("Email id or Mobile_no is already exist");
           this.Email_id = '';
         }
         else {
@@ -55,11 +82,12 @@ export class AddEmployeeComponent implements OnInit {
           {
             console.log(data);
             this.arr = data;
+            this._router.navigate(['menu/employee_home']);  
           }
           
         }
         //console.log(this.arr);
-        //this._router.navigate(['menu/employee_home']);  
+        //
       }
     );
   }

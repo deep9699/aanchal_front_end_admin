@@ -33,6 +33,28 @@ export class UpdateSupplierComponent implements OnInit {
       }
     );
   }
+
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Name.length>=20) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+  
+keyPressNumber(event: any) {
+    const pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Mobile_no.length>=10) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+ }
+ 
   onclickCancle()
   {
 

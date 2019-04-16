@@ -35,7 +35,7 @@
 
                   <div class="form-group">
                     <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Name:" type="text" [(ngModel)]="Name" name="Name" #user="ngModel"
+                      <input matInput placeholder="Name:" type="text" (keypress)="keyPressText($event)" [(ngModel)]="Name" name="Name" #user="ngModel"
                         required>
                       <mat-error *ngIf="user.hasError('required')">
                         Supplier Name is Required
@@ -44,7 +44,7 @@
                   </div>
 
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Mobile_no:" type="text" name="Mobile_no" [(ngModel)]="Mobile_no"
+                    <input matInput placeholder="Mobile_no:" type="text" (keypress)="keyPressNumber($event)" name="Mobile_no" [(ngModel)]="Mobile_no"
                       #mob1="ngModel" required required minlength="10">
                     <mat-error *ngIf="mob1.hasError('min')">
                       Required 10 Digit

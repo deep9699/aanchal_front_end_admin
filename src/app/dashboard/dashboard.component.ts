@@ -7,7 +7,7 @@ import { Chart } from 'chart.js';
 import { DashboardService } from "../Services/dashboard.service";
 import { animation } from '@angular/animations';
 import { OrderService } from "../order.service";
-
+import { timer } from "rxjs";
 export class OrderTableDetais
 {
   constructor(
@@ -66,12 +66,15 @@ export class DashboardComponent implements OnInit {
   BarChart = [];
   PieChart=[];
   myPieChart=[];
-  
+
+  postsSubscription:any;
+  timespan:any;
 
   constructor(private _ser: DashboardService,private order_ser:OrderService) { }
 
   ngOnInit() {
-
+        this.refreshData();
+        this.refreshDatachart();
     //order pageinator
     this.customer_order_dataSource.paginator=this.order_paginator;
     this.customer_order_dataSource.sort=this.order_sort;
@@ -81,13 +84,195 @@ export class DashboardComponent implements OnInit {
     this.stock_dataSource.sort=this.stock_sort;
 
 
+
+
+
+
+
+
+
+  }
+
+
+
+  private subscribeToData(): void {
+        this.timespan = timer(10000)
+        .subscribe(() => this.refreshData());
+  }
+
+  private subscribeToDataforchart(): void {
+    this.timespan = timer(30000)
+    .subscribe(() => this.refreshDatachart());
+}
+
+private refreshDatachart(): void {
+
+  this.subscribeToDataforchart();
+
+
+    //weekchartdetails
+    this._ser.getWeekchartDetails().subscribe(
+      (data: any) => {
+        console.log(data);
+        console.log(data[0].Total_amount);
+        for (this.i = 0; this.i < data.length; this.i++) {
+          this.weekchart[this.i] = data[this.i].Total_amount;
+        }
+        console.log(this.weekchart);
+      }
+    );
+    console.log(this.weekchart);
+
+    //console.log(this.online_customer);
+
+
+   ///piechart
+   this.PieChart = new Chart('piechart', {
+    type: 'pie',
+    data: {
+      labels: ["top1","top2","top3","top4","top5"],
+      datasets: [{
+        label: "",
+        backgroundColor:["rgb(251,149,13)","rgb(252,2,128)","rgb(11,180,200)","rgb(93,180,97)","orchid"],
+        data: [70,20,30,40,60],
+        fill: true,
+        lineTension: 0.2,
+        borderColor: "white",
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        text: "Pie Chart",
+        display: true,
+      },
+      animations:
+      {
+        animationScale:true
+      }
+    }
+  });
+
+
+
+  //linchart
+
+
+  this.LineChart = new Chart('linechart', {
+    type: 'line',
+    data: {
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      datasets: [{
+        label: "Selling amount per day",
+        data: this.weekchart,
+        fill: true,
+        lineTension: 0.2,
+        borderColor: "white",
+        //backgroundColor:"blue",
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        text: "Line Chart",
+        display: true,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }],
+
+
+
+
+        xAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      },
+      animations:
+      {
+        animationScale:true
+      }
+    }
+  });
+
+
+//barchart
+
+
+this.BarChart = new Chart('barchart', {
+type: 'bar',
+data: {
+  labels: ["2008", "2009", "2010", "2011", "2012", "2013", "2014"],
+  datasets: [{
+    label: "Online Users",
+    data: this.online_customer,
+    fill: true,
+    lineTension: 0.2,
+    borderColor: "white",
+    //backgroundColor:"blue",
+    borderWidth: 1
+  },
+  {
+    label: "Offline Users",
+    data: this.offline_customer,
+    fill: true,
+    lineTension: 0.2,
+    borderColor: "white",
+    borderWidth: 1
+
+  }],
+},
+
+
+
+options: {
+  title: {
+    text: "Bar Chart",
+    display: true,
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }],
+    xAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  },
+  animations:
+  {
+    animationScale:true
+  }
+}
+});
+
+
+
+
+}
+
+
+  private refreshData(): void {
+
+    this.subscribeToData();
+
+
      //online-offline customer
      this._ser.getOnlineCustomer().subscribe(
       (data: any) => {
-        this.online_customer[0] = data[1].Total;
-        this.offline_customer[0] = data[0].Total;
+        console.log(data);
+        this.online_customer[0] = data[0].Total;
+        this.offline_customer[0]=data[0].Total;
         console.log(this.online_customer);
-        console.log(this.offline_customer);
+
       }
     );
 
@@ -135,19 +320,8 @@ export class DashboardComponent implements OnInit {
       }
     );
 
-    //weekchartdetails
-    this._ser.getWeekchartDetails().subscribe(
-      (data: any) => {
-        console.log(data);
-        console.log(data[0].Total_amount);
-        for (this.i = 0; this.i < data.length; this.i++) {
-          this.weekchart[this.i] = data[this.i].Total_amount;
-        }
-        console.log(this.weekchart);
-      }
-    );
-    console.log(this.weekchart);
 
+<<<<<<< HEAD
     //linchart
     this.LineChart = new Chart('linechart', {
       type: 'line',
@@ -213,66 +387,19 @@ export class DashboardComponent implements OnInit {
           borderColor: "white",
           //backgroundColor:"blue",
           borderWidth: 1
+=======
 
-        }],
-
-      },
-      options: {
-        title: {
-          text: "Bar Chart",
-          display: true,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }],
-          xAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-        animations:
-        {
-          animationScale:true
-        }
-      }
-    });
+>>>>>>> d7fb6298d4bf9c03ed5ee4734da4f1a63eeee9aa
 
 
-    ///piechart
-    this.PieChart = new Chart('piechart', {
-      type: 'pie',
-      data: {
-        labels: ["top1","top2","top3","top4","top5"],
-        datasets: [{
-          label: "",
-          backgroundColor:["rgb(251,149,13)","rgb(252,2,128)","rgb(11,180,200)","rgb(93,180,97)","orchid"],
-          data: [70,20,30,40,60],
-          fill: true,
-          lineTension: 0.2,
-          borderColor: "white",
-          borderWidth: 1
-        }]
-      },
-      options: {
-        title: {
-          text: "Pie Chart",
-          display: true,
-        }, 
-        animations:
-        {
-          animationScale:true
-        }
-      }
-    });
 
 
-    
-   
+
+
+
+
   }
+
 
   // public barChartOptions = {
   //   scaleShowVerticalLines: false,

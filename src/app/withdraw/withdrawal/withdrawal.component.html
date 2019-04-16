@@ -34,33 +34,26 @@
             Employee must be required.
           </mat-error>
         </mat-form-field>
-        <div><button mat-flat-button color="primary" matStepperNext (click)="onclickemp()">Next</button></div>
+        <div><button mat-flat-button color="primary" matStepperNext matStepperNext [disabled]="!flag2" (click)="onclickemp()">Next</button></div>
         <!-- </form> -->
       </mat-step>
       <mat-step [stepControl]="secondFormGroup">
         <!-- <form [formGroup]="secondFormGroup"> -->
         <ng-template matStepLabel>Select Withdrawal Amount</ng-template>
-        <mat-form-field class="example-form">
-          <mat-select
-            (selectionChange)="onwithdrawalamountChange()"
-            placeholder="Withdrawal Amount"
-            required
-            #withdrawal_amt="ngModel"
-            name="withdrawal_amt"
-            [(ngModel)]="selected_amount"
-            class="example-full-width"
-          >
-            <mat-option *ngFor="let item of withdrawal_amount" [value]="item">
-              {{ item }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="withdrawal_amt?.hasError('required')">
-            Please select the withdrawal amount.
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter Amount" required #amt="ngModel" type="number" (change)="onamtchange()" [(ngModel)]="withdrawamt" name="Withdraw_amt" required min="1000">
+          <mat-error *ngIf="amt?.hasError('required')">
+            Amount is Must Required
+          </mat-error>
+          <mat-error *ngIf="amt?.hasError('min')">
+            Amount too low
           </mat-error>
         </mat-form-field>
+
+
         <div>
           <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;&nbsp;
-          <button mat-flat-button color="primary" matStepperNext>Next</button>
+          <button mat-flat-button color="primary" matStepperNext [disabled]="!flag1" (click)="onclickamt()">Next</button>
         </div>
         <!-- </form> -->
       </mat-step>
@@ -78,7 +71,7 @@
               *ngFor="let item of emi_option"
               [value]="item"
             >
-              {{item}}
+              {{item}}% Per Months
             </mat-radio-button>
           </mat-radio-group>
 
@@ -94,6 +87,7 @@
         <div>
           <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;&nbsp;
           <button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>
+          <button mat-flat-button color="primary" (click)="Done()">Done</button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>

@@ -13,7 +13,7 @@
                 <div class="rows">
 
                   <mat-form-field class="example-full-width">
-                    <input matInput name="Product_name" ngModel #product_name="ngModel" required
+                    <input matInput name="Product_name" ngModel #product_name="ngModel" required (keypress)="keyPressText($event)"
                       placeholder="Product Name" [(ngModel)]="Product_name">
                     <mat-error *ngIf="product_name?.hasError('required')">
                       Product Name Is Required
@@ -78,7 +78,7 @@
                       <tr *ngFor="let item of extra_arr;let i=index">
                         <td>{{item.color.Color_name}}</td>
                         <td>{{item.size.Size_name}}</td>
-                        <td><input type="number" name="qty" (change)="onClickChange(i)" [(ngModel)]="qty[i]"></td>
+                        <td><input type="number" name="qty" (change)="onClickChange(i)" [(ngModel)]="qty[i]" min="0" max="500" (keypress)="keyPressNumber($event)"></td>
                         <td><button mat-raised-button (click)="onClickdelete(item)" class="btn">
                             <mat-icon>delete</mat-icon>
                           </button></td>
@@ -101,7 +101,7 @@
 
                   <mat-form-field class="example-full-width">
                     <input matInput placeholder="Price" required #product_price="ngModel" type="number"
-                      [(ngModel)]="Product_price" name="Product_price">
+                      [(ngModel)]="Product_price" name="Product_price" min="1" max="50000" (keypress)="keyPressNumber($event)">
                     <mat-error *ngIf="product_price?.hasError('required')">
                       Product price is must
                     </mat-error>
@@ -217,8 +217,9 @@
 
 
     <div class="form-group">
-      <h5>Image:</h5> <input class="form-control" type="file" (change)="onChange($event)">
+      <h5>Image:</h5>
     </div>
+    <input type="file" (change)="onChange($event)">
 
     <div class="example-element-diagram" [hidden]="!flag">
       <canvas #mycanvas width="218px" height="180px"  ></canvas>

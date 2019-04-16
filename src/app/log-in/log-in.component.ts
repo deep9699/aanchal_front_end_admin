@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ForgetpasswordComponent } from '../forgetpassword/forgetpassword.component';
 import { Subject } from 'rxjs';
 
+
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -36,18 +37,9 @@ export class LogInComponent implements OnInit {
           console.log(data);
           if(data.length==1)
           {
-            if(data[0].Employee_type==1)
-            {
-              localStorage.setItem('email_id',this.email_id1);
+            localStorage.setItem('email_id',this.email_id1);
+              localStorage.setItem('emp_type',data[0].Employee_type);
               this._router.navigate(['menu']);
-            }
-            else
-            {
-              alert("Unauthorized login")
-              this.email_id1='';
-              this.password1='';
-            }
-
           }
           else
           {
@@ -79,6 +71,9 @@ onclickforget()
 
 }
   ngOnInit() {
+
+    localStorage.setItem('email_id',"");
+    localStorage.setItem('emp_type',"");
   }
 
 }

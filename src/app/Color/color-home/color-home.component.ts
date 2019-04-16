@@ -31,18 +31,19 @@ export class ColorHomeComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
   pageEvent: PageEvent;
-
+flag:boolean=true;
   constructor(private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:ColorService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Color_name','Action'];
   ngOnInit() {
+    this.flag=true;
 
     this.color_dataSource.paginator=this.paginator;
     this.color_dataSource.sort=this.sort;
     this._ser.getAllColor().subscribe(
-      (data:color[])=>{
+      (data:any)=>{
         console.log(data);
         this.color_arr=data;
-        this.color_dataSource = new MatTableDataSource(this.color_arr);
+        this.color_dataSource.data= data;
 
   }
 );
@@ -56,12 +57,14 @@ export class ColorHomeComponent implements OnInit {
         if(this.currentdialog)
         {
           this.currentdialog.close();
+          this.ngOnInit();
         }
         this.currentdialog=this.matDialog.open(AddColorComponent,{
           data: {id : params.id}
         });
         this.currentdialog.afterClosed().subscribe(result => {
           console.log('the dailog was closed');
+          this.ngOnInit();
 
         })
       });
@@ -69,6 +72,7 @@ export class ColorHomeComponent implements OnInit {
   Delete_Color(item:color) {
     this._ser.deleteColor(item).subscribe((data: any) => {
       console.log(data);
+      this.ngOnInit();
     });
   }
   Color_name_Update(item:color)
@@ -79,12 +83,14 @@ export class ColorHomeComponent implements OnInit {
       if(this.currentdialog)
       {
         this.currentdialog.close();
+        this.ngOnInit();
       }
       this.currentdialog=this.matDialog.open(UpdateColorComponent,{
         data: {id : item.Color_id}
       });
       this.currentdialog.afterClosed().subscribe(result => {
         console.log('the dailog was closed');
+        this.ngOnInit();
 
       })
     });
@@ -102,6 +108,15 @@ export class ColorHomeComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.color_dataSource.filter = filterValue.trim().toLowerCase();
+    if(this.color_dataSource.filteredData.length==0)
+    {
+      //console.log('in1');
+      this.flag=false;
+    }
+    else
+    {
+      this.flag=true;
+    }
   }
   checkedItems(item:color) {
     if (this.color_delarr.find(x => x == item)) {
@@ -122,6 +137,7 @@ export class ColorHomeComponent implements OnInit {
         }
       }
       this.color_dataSource.data = this.color_list;
+      this.ngOnInit();
     });
   }
 

@@ -8,6 +8,7 @@ export class employee{
     public DOB?:Date,
     public Salary?:number,
     public Joining_date?:Date,
-    public Employee_type?:number
+    public Employee_type?:number,
+    public Last_Salary_date?:Date
   ){ }
 };

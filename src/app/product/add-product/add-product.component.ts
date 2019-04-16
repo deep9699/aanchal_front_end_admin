@@ -73,7 +73,35 @@ export class AddProductComponent implements OnInit {
       this.qty[i] = 0;
       console.log(i);
     }
+    if(this.qty[i]>500)
+    {
+      alert("Item can not more than 500");
+      this.qty[i]=500;
+    }
   }
+
+
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar)) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+
+keyPressNumber(event: any) {
+    const pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Product_price.toString().length>=5) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+ }
+
 
   onclickCancle()
   {
@@ -114,6 +142,9 @@ export class AddProductComponent implements OnInit {
 
     }
 
+
+
+
   onCheckChangeColor(item: color) {
     this.color_flag=true;
     if (this.selected_color.find(x => x == item)) {
@@ -131,6 +162,13 @@ export class AddProductComponent implements OnInit {
     }
     console.log(this.selected_color);
   }
+
+
+
+
+
+
+
   onCheckChangeSize(item: size) {
     this.size_flag=true;
     if (this.selected_sizes.find(x => x == item)) {
@@ -163,6 +201,10 @@ export class AddProductComponent implements OnInit {
     console.log(this.extra_arr);
   }
 
+
+
+
+
   onChange(value):void {
     this.selectedFile = <File>value.target.files[0];
     if(this.selectedFile)
@@ -183,6 +225,11 @@ export class AddProductComponent implements OnInit {
       render.readAsDataURL(value.target.files[0]);
     }
   }
+
+
+
+
+
 
 
   ngOnInit() {

@@ -71,63 +71,63 @@
     <mat-toolbar color="primary"><img src="http://localhost:3000/images/AANCHAL_LOGO.jpg" height="70px" width="200px">
     </mat-toolbar>
     <mat-nav-list>
-      
+
         <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
           <!--
                     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-            
+
                     Tip 2: you can also add an image using data-image tag
                   -->
           <div class="logo">
-            <a class="simple-text logo-normal" [routerLink]="['dashboard']" routerLinkActive="router-link-active">
+            <a class="simple-text logo-normal" [routerLink]="['../']" routerLinkActive="router-link-active">
               Aanchal
             </a>
           </div>
           <div class="sidebar-wrapper">
             <ul class="nav">
               <li class="nav-item active  ">
-                <a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="router-link-active">
+                <a class="nav-link" [routerLink]="['../menu']" routerLinkActive="router-link-active">
                   <i class="material-icons">dashboard</i>
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1 || emp_type==2">
                 <a class="nav-link" [routerLink]="['product_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">shopping_cart</i>
                   <p>Manage Product</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1 || emp_type==2">
                 <a class="nav-link" [routerLink]="['category_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">category</i>
                   <p>Manage Category</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1 || emp_type==2">
                 <a class="nav-link" [routerLink]="['size_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">sort_by_alpha</i>
                   <p>Manage Size</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1 || emp_type==2">
                 <a class="nav-link" [routerLink]="['color_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">color_lens</i>
                   <p>Manage Color</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1">
                 <a class="nav-link" [routerLink]="['supplier_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">people</i>
                   <p>Manage Suppliers</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1">
                 <a class="nav-link" [routerLink]="['employee_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">how_to_reg</i>
                   <p>Manage Employee</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1">
                 <a class="nav-link" [routerLink]="['customer_home']" routerLinkActive="router-link-active">
                   <i class="material-icons">supervised_user_circle</i>
                   <p>Manage Customer</p>
@@ -151,10 +151,16 @@
                   <p>In Store</p>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item " *ngIf="emp_type==1">
                 <a class="nav-link" [routerLink]="['with_req']" routerLinkActive="router-link-active">
                   <i class="material-icons">money</i>
                   <p>Withdrawal Request</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" [routerLink]="['']" routerLinkActive="router-link-active">
+                  <i class="material-icons">money</i>
+                  <a (click)="logout()">Log Out</a>
                 </a>
               </li>
               <!-- <li class="nav-item active-pro ">

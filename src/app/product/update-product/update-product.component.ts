@@ -60,6 +60,29 @@ image:File;
     }
   }
 
+
+  keyPressText(event: any)
+  {
+    const pattern = /[A-Z\a-z\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar)) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+  
+keyPressNumber(event: any) {
+    const pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Product_price.toString().length>=5) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+ }
+ 
+
   onclickUpdate()
   {
     const fd = new FormData();
