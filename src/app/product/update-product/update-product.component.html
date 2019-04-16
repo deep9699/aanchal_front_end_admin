@@ -52,7 +52,7 @@
                   </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Price" required #product_price="ngModel" type="number"
+                    <input matInput placeholder="Price" required #product_price="ngModel" type="number" (keypress)="keyPressNumber($event)"
                       [(ngModel)]="Product_price" name="Product_price">
                     <mat-error *ngIf="product_price?.hasError('required')">
                       Product price is must

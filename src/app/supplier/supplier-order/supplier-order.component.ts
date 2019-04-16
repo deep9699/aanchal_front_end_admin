@@ -79,6 +79,7 @@ export class SupplierOrderComponent implements OnInit {
 
     ngOnInit()
     {
+      
       this.Table_dataSource.paginator = this.paginator;
 
       this.Table_dataSource.sort = this.sort;

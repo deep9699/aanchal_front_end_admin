@@ -77,12 +77,12 @@
       <div class="col-md-4">
         <button mat-raised-button color="warn" (click)="Selected_delete()">
           <mat-icon>delete</mat-icon> Delete All
-
         </button>
-        &nbsp; &nbsp;
-        <button mat-raised-button color="primary" (click)="Salary()">
-           Salary
-        </button> </div>
+
+        <button mat-raised-button class="home" (click)="Salary()">
+          <mat-icon>money</mat-icon> Salary
+        </button>
+      </div>
       <div class="col-md-8">
         <mat-paginator [pageSizeOptions]="[2,10]">
         </mat-paginator>

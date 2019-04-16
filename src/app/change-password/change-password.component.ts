@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../Services/employee.service';
 import { Router } from '@angular/router';
 
+
+
 export class changepassclass
 {
   constructor(
@@ -45,6 +47,10 @@ export class ChangePasswordComponent implements OnInit {
             this._router.navigate(['']);
           }
         );
+      }
+      else
+      {
+        alert("Password & Confirm Password Must be Same");  
       }
     }
     else

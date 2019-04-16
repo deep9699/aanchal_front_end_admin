@@ -71,11 +71,11 @@
     <mat-toolbar color="primary"><img src="http://localhost:3000/images/AANCHAL_LOGO.jpg" height="70px" width="200px">
     </mat-toolbar>
     <mat-nav-list>
-      
+
         <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
           <!--
                     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-            
+
                     Tip 2: you can also add an image using data-image tag
                   -->
           <div class="logo">
@@ -158,9 +158,9 @@
                 </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" [routerLink]="['with_req']" routerLinkActive="router-link-active">
+                <a class="nav-link" [routerLink]="['']" routerLinkActive="router-link-active">
                   <i class="material-icons">money</i>
-                  <a [routerLink]="['../']">Log Out</a>
+                  <a (click)="logout()">Log Out</a>
                 </a>
               </li>
               <!-- <li class="nav-item active-pro ">
