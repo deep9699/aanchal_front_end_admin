@@ -1,3 +1,13 @@
+mat-horizontal-stepper{
+  width: 100%;
+  height: 100%;
+}
+
+mat-select{
+  margin-top: 35px;
+  padding-left: 20px;
+}
+
 .example-form {
   min-width: 150px;
   max-width: 500px;

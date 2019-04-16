@@ -146,6 +146,8 @@
             </div>
           </div>
         </div>
+      
+      
         <div class="col-md-6">
           <div class="card card-chart">
             <div class="card-header card-header-info">
@@ -187,20 +189,16 @@
                   </tbody>
                 </table>
               </div>
-
-              <div class="row">
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-8">
-                  <mat-paginator [pageSizeOptions]="[2,4]">
+             
+               
+                <div class="col-12" >
+                  <mat-paginator style="background-color: rgb(29,191,212);color:white" [pageSizeOptions]="[2,4]">
                   </mat-paginator>
                 </div>
 
 
-                <!-- order details end -->
-
-              </div>
+               
+        
             </div>
             <div class="card-body">
               <h4 class="card-title">Order Details</h4>
@@ -214,6 +212,9 @@
           </div>
         </div>
       </div>
+
+
+      
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -226,8 +227,7 @@
                 <!-- stock table details -->
 
 
-                <table mat-table [dataSource]="stock_dataSource" matSort
-                  multiTemplateDataRows>
+                <table mat-table [dataSource]="stock_dataSource" matSort multiTemplateDataRows>
                   <tbody>
                     <ng-container matColumnDef="Supplier_name">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Supplier_name </th>
@@ -235,10 +235,10 @@
                     </ng-container>
 
                     <ng-container matColumnDef="Product_name">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Product_name </th>
-                        <td mat-cell *matCellDef="let item"> {{item.Product_name | uppercase}} </td>
-                      </ng-container>
-  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Product_name </th>
+                      <td mat-cell *matCellDef="let item"> {{item.Product_name | uppercase}} </td>
+                    </ng-container>
+
                     <ng-container matColumnDef="Color_name">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Color_name </th>
                       <td mat-cell *matCellDef="let item"> {{item.Color_name }} </td>
@@ -251,11 +251,11 @@
                     </ng-container>
 
                     <ng-container matColumnDef="Price">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-                        <td mat-cell *matCellDef="let item"> {{item.Product_price | currency:'INR'}} </td>
-                      </ng-container>
-  
-  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                      <td mat-cell *matCellDef="let item"> {{item.Product_price | currency:'INR'}} </td>
+                    </ng-container>
+
+
                     <ng-container matColumnDef="Quantity">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
                       <td mat-cell *matCellDef="let item"> {{item.Quantity}} </td>
@@ -267,23 +267,23 @@
                 </table>
               </div>
 
-              <div class="row">
-                <div class="col-md-4">
 
-                </div>
-                <div class="col-md-8">
+
+              <div class="row">
+       
+                <div class="col-12">
                   <mat-paginator [pageSizeOptions]="[5,10]">
                   </mat-paginator>
                 </div>
-
-
-                <!-- stock details end -->
-
               </div>
+
+              <!-- stock details end -->
+
             </div>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
   <!-- <footer class="footer">

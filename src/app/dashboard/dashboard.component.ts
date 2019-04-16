@@ -155,7 +155,8 @@ export class DashboardComponent implements OnInit {
         labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         datasets: [{
           label: "Selling amount per day",
-          data: this.weekchart,
+          //data: this.weekchart,
+          data:[2000,1000,5000,900,6000,3200,1400],
           fill: true,
           lineTension: 0.2,
           borderColor: "white",
@@ -192,10 +193,11 @@ export class DashboardComponent implements OnInit {
     this.BarChart = new Chart('barchart', {
       type: 'bar',
       data: {
-        labels: ["2008", "2009", "2010", "2011", "2012", "2013", "2014"],
+        labels: ["2013", "2014", "2015", "2016", "2017", "2018", "2019"],
         datasets: [{
           label: "Online Users",
-          data: this.online_customer,
+          //data: this.online_customer,
+          data:[0,0,0,0,0,0,1],
           fill: true,
           lineTension: 0.2,
           borderColor: "white",
@@ -204,7 +206,8 @@ export class DashboardComponent implements OnInit {
         },
         {
           label: "Offline Users",
-          data: this.offline_customer,
+          //data: this.offline_customer,
+          data:[0,0,0,0,0,0,2],
           fill: true,
           lineTension: 0.2,
           borderColor: "white",
