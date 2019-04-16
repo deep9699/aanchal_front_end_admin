@@ -9,6 +9,16 @@ button.mat-raised-button
   color: #ffffff;
 }
 
+.btn{
+  margin-top: 25px;
+  background-color:rgb(156, 39, 176);
+}
+
+
+th{
+  color: rgb(156, 39, 176);
+}
+
 .size
 {
   width: 80%;

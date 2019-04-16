@@ -321,75 +321,6 @@ options: {
     );
 
 
-<<<<<<< HEAD
-    //linchart
-    this.LineChart = new Chart('linechart', {
-      type: 'line',
-      data: {
-        labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        datasets: [{
-          label: "Selling amount per day",
-          //data: this.weekchart,
-          data:[2000,1000,5000,900,6000,3200,1400],
-          fill: true,
-          lineTension: 0.2,
-          borderColor: "white",
-          //backgroundColor:"blue",
-          borderWidth: 1
-        }]
-      },
-      options: {
-        title: {
-          text: "Line Chart",
-          display: true,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }],
-          xAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-        animations:
-        {
-          animationScale:true
-        }
-      }
-    });
-
-    //console.log(this.online_customer);
-    //barchart
-    this.BarChart = new Chart('barchart', {
-      type: 'bar',
-      data: {
-        labels: ["2013", "2014", "2015", "2016", "2017", "2018", "2019"],
-        datasets: [{
-          label: "Online Users",
-          //data: this.online_customer,
-          data:[0,0,0,0,0,0,1],
-          fill: true,
-          lineTension: 0.2,
-          borderColor: "white",
-          //backgroundColor:"blue",
-          borderWidth: 1
-        },
-        {
-          label: "Offline Users",
-          //data: this.offline_customer,
-          data:[0,0,0,0,0,0,2],
-          fill: true,
-          lineTension: 0.2,
-          borderColor: "white",
-          //backgroundColor:"blue",
-          borderWidth: 1
-=======
-
->>>>>>> d7fb6298d4bf9c03ed5ee4734da4f1a63eeee9aa
 
 
 
@@ -415,5 +346,3 @@ options: {
 
 
 }
-
-

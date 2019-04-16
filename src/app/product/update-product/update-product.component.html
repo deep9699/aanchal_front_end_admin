@@ -29,7 +29,8 @@
                   </mat-form-field>
 
                   <div class="form-group">
-                    <h5>Image:</h5> <input class="form-control" id="trigger" type="file" (change)="onChange($event)"
+                     <h5>Image:</h5> 
+                      <input class="form-control" id="trigger" type="file" (change)="onChange($event)"
                       accept="image/*">
                   </div>
 
@@ -41,7 +42,7 @@
                     <canvas #mycanvas width="218px" height="180px"></canvas>
                   </div>
 
-                  <!-- <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*"> -->
+                  <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
 
                   <mat-form-field class="example-full-width">
                     <input matInput required #product_desc1="ngModel" placeholder="Descrption"

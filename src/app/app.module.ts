@@ -73,6 +73,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { CustomerOrderComponent } from "./customer-order/customer-order.component";
 import { Notfound404Component } from './notfound404/notfound404.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { Notfound404Component } from './notfound404/notfound404.component';
 
     CustomerOrderComponent,
     WithdrawalComponent,
-    Notfound404Component
+    Notfound404Component,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

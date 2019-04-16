@@ -9,4 +9,34 @@ table {
   max-width: 500px;
   width: 100%;
 }
+.search
+{
+  padding-top: 35px;
+}
+button.mat-raised-button
+{
+  margin-top: 25px;
+  background-color:rgb(156, 39, 176);
+  color: #ffffff;
+}
+.btn{
+  margin-top: 25px;
+  background-color:rgb(156, 39, 176);
+}
+
+
+th{
+  color: rgb(156, 39, 176);
+}
+
+
+.size
+{
+  width: 90%;
+  padding-left: 30px;
+}
+h6
+{
+  color:red;
+}
 

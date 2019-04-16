@@ -15,3 +15,44 @@ table {
   max-width: 500px;
   width: 100%;
 }
+
+
+.btn
+{
+  background-color: rgb(156, 39, 176);
+  color: #ffffff;
+  padding:2px;
+}
+
+mat-icon{
+  color: #ffffff;
+}
+
+.search
+{
+  padding: 25px;
+}
+
+.btn{
+  margin-top: 25px;
+  background-color:rgb(156, 39, 176);
+}
+
+.size
+{
+  width: 90%;
+  padding-left: 30px;
+}
+
+th{
+  color: rgb(156, 39, 176);
+}
+
+button.mat-mini-fab
+{
+  background-color: rgb(156, 39, 176);
+}
+
+mat-icon{
+  color: #ffffff;
+}

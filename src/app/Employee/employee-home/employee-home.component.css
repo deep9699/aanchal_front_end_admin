@@ -5,6 +5,17 @@ h6
 }
 
 
+.btn
+{
+  background-color: rgb(156, 39, 176);
+  color: #ffffff;
+  padding:2px;
+}
+
+mat-icon{
+  color: #ffffff;
+}
+
 .search
 {
   padding-top: 25px;

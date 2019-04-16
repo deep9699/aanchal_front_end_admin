@@ -33,11 +33,13 @@ import { WithdrawalComponent } from './withdraw/withdrawal/withdrawal.component'
 import { SalaryManagementComponent } from './Employee/salary-management/salary-management.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthserviceService } from './authservice.service';
+import { Notfound404Component } from './notfound404/notfound404.component';
 
 const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
     {path:"changepassword",component:ChangePasswordComponent},
+    {path:"**",component:Notfound404Component},
     {path:"menu",component:MenuComponent,children:[
       {path:'',component:DashboardComponent,canActivate:[AuthserviceService]},
       {path:'customer_order',component:CustomerOrderComponent,canActivate:[AuthserviceService]},
@@ -70,7 +72,8 @@ const arr:Routes=[
       {path:"gen_bill",component:GenerateBillComponent,canActivate:[AuthserviceService]},
       {path:"customer_home",component:CustomerHomeComponent,canActivate:[AuthserviceService]},
       {path:"with_req",component:WithdrawalComponent,canActivate:[AuthserviceService]},
-      {path:"salary",component:SalaryManagementComponent,canActivate:[AuthserviceService]}
+      {path:"salary",component:SalaryManagementComponent,canActivate:[AuthserviceService]},
+     
     ]},
 
 
