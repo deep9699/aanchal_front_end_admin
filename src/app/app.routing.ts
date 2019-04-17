@@ -39,7 +39,7 @@ const arr:Routes=[
     {path:'',component:LogInComponent},
     {path:"forgetpassword",component:ForgetpasswordComponent},
     {path:"changepassword",component:ChangePasswordComponent},
-    {path:"**",component:Notfound404Component},
+    //{path:"**",component:Notfound404Component},
     {path:"menu",component:MenuComponent,children:[
       {path:'',component:DashboardComponent,canActivate:[AuthserviceService]},
       {path:'customer_order',component:CustomerOrderComponent,canActivate:[AuthserviceService]},

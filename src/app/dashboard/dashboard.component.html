@@ -202,7 +202,7 @@
              
                
                 <div class="col-12" >
-                  <mat-paginator style="background-color: rgb(29,191,212);color:white" [pageSizeOptions]="[2,4]">
+                  <mat-paginator #orderPaginator style="background-color: rgb(29,191,212);color:white" [pageSizeOptions]="[2,4]">
                   </mat-paginator>
                 </div>
 
@@ -282,7 +282,7 @@
               <div class="row">
        
                 <div class="col-12">
-                  <mat-paginator [pageSizeOptions]="[5,10]"></mat-paginator>
+                  <mat-paginator #stockPaginator [pageSizeOptions]="[5,10]"></mat-paginator>
                 </div>
               
               </div>

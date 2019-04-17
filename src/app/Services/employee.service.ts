@@ -2,21 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { employee } from '../classes/employee_class';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { url } from '../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  private url='http://localhost:3000/employee/';
-  private emp_url='http://localhost:3000/employee1/';
+  private url=url.endPoints+'employee/';
+  private emp_url=url.endPoints+'employee1/';
 
-  private employee_del='http://localhost:3000/employee_del/';
-  private email_url='http://localhost:3000/email/';
+  private employee_del=url.endPoints+'employee_del/';
+  private email_url=url.endPoints+'email/';
 
-  private withdrawal_url='http://localhost:3000/withdrawal/';
-  private withdrawal_empid='http://localhost:3000/withdrawalbyemailid/';
-  private salary='http://localhost:3000/salary_date/';
+  private withdrawal_url=url.endPoints+'withdrawal/';
+  private withdrawal_empid=url.endPoints+'withdrawalbyemailid/';
+  private salary=url.endPoints+'salary_date/';
   constructor(private _http:HttpClient) { }
   log_in_emp(item)
   {

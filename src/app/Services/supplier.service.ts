@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { supplier } from "../classes/supplier_class";
 import { supplier_order } from '../classes/supplier_order_class';
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
 
-  private url='http://localhost:3000/supplier/';
-  private delete='http://localhost:3000/delete_supplier/';
-  private order='http://localhost:3000/supplier_order/';
+  private url=url.endPoints+'supplier/';
+  private delete=url.endPoints+'delete_supplier/';
+  private order=url.endPoints+'supplier_order/';
   constructor(private _http:HttpClient) { }
   getAllSupplier(){
     return this._http.get(this.url);

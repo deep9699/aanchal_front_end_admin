@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { stock } from '../classes/stock_class';
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StockService {
-  private url:string='http://localhost:3000/stock/';
-  private stock_id:string='http://localhost:3000/stock_id/';
-  private stock_size:string='http://localhost:3000/stock_size/'
-  private stock_url:string='http://localhost:3000/stock_details/';
-  private sizeBycolor_url:string='http://localhost:3000/sizebycolor/'
+  private url:string=url.endPoints+'stock/';
+  private stock_id:string=url.endPoints+'stock_id/';
+  private stock_size:string=url.endPoints+'stock_size/'
+  private stock_url:string=url.endPoints+'stock_details/';
+  private sizeBycolor_url:string=url.endPoints+'sizebycolor/'
   constructor(private _http:HttpClient) { }
 
 

@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { product } from '../classes/product_class'
+import { url } from '../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private url='http://localhost:3000/product/';
-  private product_route='http://localhost:3000/product_router/';
-  private product_supplier_route='http://localhost:3000/product_supplier/';
+  private url=url.endPoints+'product/';
+  private product_route=url.endPoints+'product_router/';
+  private product_supplier_route=url.endPoints+'product_supplier/';
+  private product_delete=url.endPoints+'product_delete_router/';
   constructor(private _http:HttpClient) { }
   getAllProduct(){
     return this._http.get(this.url);
@@ -17,6 +19,10 @@ export class ProductService {
   getLowQtyProduct()
   {
     return this._http.get(this.product_supplier_route);
+  }
+  getTopSellingProduct()
+  {
+    return this._http.get(this.product_delete);
   }
   getProductById(id){
     return this._http.get(this.url+id);

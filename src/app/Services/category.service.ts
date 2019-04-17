@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { category } from '../classes/category_class';
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private url='http://localhost:3000/category/';
-  private delete_cat='http://localhost:3000/category_delete/';
+  private url=url.endPoints+'category/';
+  private delete_cat=url.endPoints+'category_delete/';
   constructor(private _http:HttpClient) { }
   getAllCategory(){
     return this._http.get(this.url);

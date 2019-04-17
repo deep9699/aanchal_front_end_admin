@@ -11,11 +11,20 @@
           <input matInput  type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
             [(ngModel)]="selected_number" [matAutocomplete]="auto" />
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onNumberChange()">
-            <mat-option *ngFor="let option of (filteredOptions | async)" [value]="numbers">
+            <mat-option *ngFor="let option of (filteredOptions | async);let i=index" [value]="option">
               {{ option }}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+
+        <!-- <mat-form-field class="example-full-width">
+          <input type="text" [(ngModel)]="selected_number1" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of (filteredOptions | async)}" [value]="numbers">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field> -->
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Customer Name" #Name="ngModel" name="customer_name" [(ngModel)]="cust_name" (keypress)="keyPressText($event)" />
@@ -72,13 +81,8 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-<<<<<<< HEAD
-          <input matInput type="number" name="qty" ngModel #qty1="ngModel" required placeholder="Qty" [(ngModel)]="_qty"
-             required min="1" [attr.max]="maxqty" />
-=======
           <input matInput type="number" name="qty" ngModel #qty1="ngModel" required placeholder="Qty" [(ngModel)]="_qty" (keypress)="keyPressNumber($event)"
             max="total_qty" required min="1" />
->>>>>>> 291ac6d692d807d6697110068d131ef3d98701bf
         </mat-form-field>
 
         <button mat-raised-button (click)="onProduct_Add()" class="btn">

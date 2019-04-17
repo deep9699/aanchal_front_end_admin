@@ -48,13 +48,13 @@ export class EmployeeHomeComponent implements OnInit {
     this.flag=true;
 
     this.employee_dataSource.paginator = this.paginator;
-
     this.employee_dataSource.sort = this.sort;
     this.emp_ser.getAllEmp().subscribe(
       (data: any[]) => {
         console.log(data);
           this.emp_tbl_arr=data;
           this.employee_dataSource.data=this.emp_tbl_arr;
+          this.employee_dataSource.sort = this.sort;
       });
   }
   Add_employee() {

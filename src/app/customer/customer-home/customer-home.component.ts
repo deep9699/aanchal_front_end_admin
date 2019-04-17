@@ -42,6 +42,7 @@ Customer_dataSource=new MatTableDataSource();
         this.customer_arr=data ;
         console.log(this.customer_arr);
         this.Customer_dataSource.data=this.customer_arr;
+        this.Customer_dataSource.sort = this.sort;
       }
     );
   }

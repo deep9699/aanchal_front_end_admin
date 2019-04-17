@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { PageEvent, MatPaginator } from "@angular/material";
 import { product } from "../../classes/product_class";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource,MatSort } from "@angular/material";
 import { ProductService } from "../../Services/product.service";
 import { SelectionModel } from "@angular/cdk/collections";
 import { Router } from "@angular/router";
 import { CategoryService } from "../../Services/category.service";
+import { url } from "../../../environments/environment";
 
 @Component({
   selector: "app-product-home",
@@ -32,11 +32,10 @@ export class ProductHomeComponent implements OnInit {
   product_selection = new SelectionModel(true, []);
 
   product_dataSource = new MatTableDataSource();
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
-  @ViewChild(MatSort)
-  sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   pageEvent: PageEvent;
+  endPoint:string=url.endPoints;
   expandedElement;
   arr:number[]=[];
   displayedColumns: string[] = [
@@ -57,13 +56,13 @@ export class ProductHomeComponent implements OnInit {
   {
     this.flag=true;
     this.product_dataSource.paginator = this.paginator;
-
     this.product_dataSource.sort = this.sort;
     this.prod_ser.getAllProduct().subscribe(
       (data: any[]) => {
         console.log(data);
           this.prod_tbl_arr=data;
           this.product_dataSource.data=data;
+          this.product_dataSource.sort = this.sort;
 
     });
   }

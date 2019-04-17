@@ -8,6 +8,8 @@ import { DashboardService } from "../Services/dashboard.service";
 import { animation } from '@angular/animations';
 import { OrderService } from "../order.service";
 import { timer } from "rxjs";
+import { ProductService } from '../Services/product.service';
+import { product } from '../classes/product_class';
 export class OrderTableDetais
 {
   constructor(
@@ -46,8 +48,10 @@ export class DashboardComponent implements OnInit {
   offline_customer: number[]=[];
   total_employee: number;
   total_supplier: number;
+  pie_data:number[]=[0,0,0,0,0];
   weekchart: number[] = [];
   i: number;
+  pie_tot:number=0;
   customer_order_table:OrderTableDetais[]=[]
   customer_order_dataSource=new MatTableDataSource();
   @ViewChild(MatPaginator) order_paginator: MatPaginator;
@@ -57,10 +61,13 @@ export class DashboardComponent implements OnInit {
 
   stock_table:StockTableDetais[]=[]
   stock_dataSource=new MatTableDataSource();
-  @ViewChild(MatPaginator) stock_paginator: MatPaginator;
+  @ViewChild('stockPaginator', {read: MatPaginator}) stock_paginator: MatPaginator;
+  @ViewChild('orderPaginator', {read: MatPaginator}) order_paginator: MatPaginator;
   @ViewChild(MatSort) stock_sort: MatSort;
   stock_pageEvent: PageEvent;
   stock_displayedColumns: string[] = ['Supplier_name','Product_name','Color_name', 'Size_name','Price','Quantity'];
+
+  top_pro:product[]=[];
 
   LineChart = [];
   BarChart = [];
@@ -70,7 +77,7 @@ export class DashboardComponent implements OnInit {
   postsSubscription:any;
   timespan:any;
 
-  constructor(private _ser: DashboardService,private order_ser:OrderService) { }
+  constructor(private _ser: DashboardService,private order_ser:OrderService,private pro_ser:ProductService) { }
 
   ngOnInit() {
         this.refreshData();
@@ -86,7 +93,26 @@ export class DashboardComponent implements OnInit {
 
 
 
-
+    this.pro_ser.getTopSellingProduct().subscribe(
+      (data:any)=>
+      {
+        this.top_pro=data;
+        console.log(this.top_pro);
+        for(this.i=0;this.i<data.length;this.i++)
+        {
+          this.pie_tot+=data[this.i].total;
+        }        
+        if(this.i==this.top_pro.length)
+        {
+         for(let x=0;x<this.top_pro.length;x++)
+         {  
+           this.pie_data[x]=parseInt((((data[x].total*100)/this.pie_tot)+""));
+         }
+        }
+        console.log(this.pie_data);
+      }
+      
+    );
 
 
 
@@ -134,7 +160,7 @@ private refreshDatachart(): void {
       datasets: [{
         label: "",
         backgroundColor:["rgb(251,149,13)","rgb(252,2,128)","rgb(11,180,200)","rgb(93,180,97)","orchid"],
-        data: [70,20,30,40,60],
+        data: this.pie_data,
         fill: true,
         lineTension: 0.2,
         borderColor: "white",

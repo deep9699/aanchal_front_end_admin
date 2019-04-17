@@ -5,6 +5,7 @@ import { category } from "../../classes/category_class";
 import { CategoryService } from "../../Services/category.service";
 import { update_prod } from "../../classes/update_prod_class";
 import { Router, ActivatedRoute } from "@angular/router";
+import { url } from "../../../environments/environment";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class UpdateProductComponent implements OnInit {
   id: number;
   flag:boolean=false;
   category_id:number;
-
+  endPoint:string=url.endPoints;
 image:File;
 
 
@@ -38,8 +39,11 @@ image:File;
   @ViewChild("mycanvas") mycanvas;
 
 
-  onChange(value):void {
+  onChange(value):void 
+  {
+    console.log("xyz");
     this.selectedFile = <File>value.target.files[0];
+    console.log(this.selectedFile);
     if(this.selectedFile)
     {
       this.flag=true;
@@ -54,7 +58,7 @@ image:File;
           context.drawImage(img,0,0,218,180);
         };
         img.src=event.target.result;
-        img.src=event.target.result;
+        //img.src=event.target.result;
       };
       render.readAsDataURL(value.target.files[0]);
     }

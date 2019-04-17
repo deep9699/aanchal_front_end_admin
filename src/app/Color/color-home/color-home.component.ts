@@ -44,6 +44,7 @@ flag:boolean=true;
         console.log(data);
         this.color_arr=data;
         this.color_dataSource.data= data;
+        this.color_dataSource.sort=this.sort;
 
   }
 );

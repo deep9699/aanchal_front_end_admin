@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { bill } from '../classes/Bill_class'
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BillService {
-  private bill_url='http://localhost:3000/bill/';
-  private bill_details='http://localhost:3000/bill_details/';
+  private bill_url=url.endPoints+'bill/';
+  private bill_details=url.endPoints+'bill_details/';
   constructor(private _http:HttpClient) { }
   GetAllBill()
   {

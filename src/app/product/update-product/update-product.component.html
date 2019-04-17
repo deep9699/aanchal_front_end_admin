@@ -35,14 +35,14 @@
                   </div>
 
                   <div class="example-element-diagram" [hidden]="flag">
-                    <img src="http://localhost:3000/images/Product_img/{{Product_image}}">
+                    <img src="{{endPoint}}/images/Product_img/{{Product_image}}">
                   </div>
 
                   <div class="example-element-diagram" [hidden]="!flag">
                     <canvas #mycanvas width="218px" height="180px"></canvas>
                   </div>
 
-                  <input type="file" id="trigger" class="ng-hide" (change)="preview($event)" accept="image/*">
+                  <input type="file" id="trigger" class="ng-hide" (change)="onChange($event)" accept="image/*">
 
                   <mat-form-field class="example-full-width">
                     <input matInput required #product_desc1="ngModel" placeholder="Descrption"

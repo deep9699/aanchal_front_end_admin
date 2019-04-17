@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { size } from '../classes/size_class';
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SizeService {
 
-  private url='http://localhost:3000/size/';
-  private delete_size='http://localhost:3000/size_delete/';
+  private url=url.endPoints+'size/';
+  private delete_size=url.endPoints+'size_delete/';
   constructor(private _http:HttpClient) { }
   getAllSize(){
     return this._http.get(this.url);

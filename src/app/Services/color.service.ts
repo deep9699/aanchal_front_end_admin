@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { size } from '../classes/size_class';
 import { color } from '../classes/color_class';
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColorService {
-
-  private url='http://localhost:3000/color/';
-  private delete_color='http://localhost:3000/color_delete/';
+url1=url.endPoints+'color/';
+  private url=url.endPoints+'color/';
+  private delete_color=url.endPoints+'color_delete/';
   constructor(private _http:HttpClient) { }
   getAllColor(){
     return this._http.get(this.url);

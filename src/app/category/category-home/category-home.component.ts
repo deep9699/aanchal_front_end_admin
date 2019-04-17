@@ -45,7 +45,9 @@ flag:boolean=true;
     this.category_dataSource.sort = this.sort;
     this.cat_ser.getAllCategory().subscribe((data: any[]) => {
       this.category_list=data;
+      console.log(data);
       this.category_dataSource.data = data;
+      this.category_dataSource.sort = this.sort;
     });
   }
   category_name_Update(item:category)

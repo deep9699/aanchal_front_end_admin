@@ -55,10 +55,9 @@ export class SupplierOrderComponent implements OnInit {
     product_selection = new SelectionModel(true, []);
 
     Table_dataSource = new MatTableDataSource();
-    @ViewChild(MatPaginator)
-    paginator: MatPaginator;
-    @ViewChild(MatSort)
-    sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+    
     pageEvent: PageEvent;
     arr:number[]=[];
     displayedColumns: string[] = [
@@ -82,12 +81,12 @@ export class SupplierOrderComponent implements OnInit {
       
       this.Table_dataSource.paginator = this.paginator;
 
-      this.Table_dataSource.sort = this.sort;
+      //this.Table_dataSource.sort = this.sort;
       this.Table_detials=[];
       this.Table_dataSource.data=[];
       this.prod_ser.getLowQtyProduct().subscribe(
         (data: Product_details[]) => {
-
+          this.Table_dataSource.sort = this.sort;
           console.log(data);
           this.sup_ser.getSupplierOrder().subscribe(
             (x:supplier_order[])=>
@@ -115,7 +114,9 @@ export class SupplierOrderComponent implements OnInit {
                 this.saw_flag=false;
               }
               console.log(this.Table_detials);
-              this.Table_dataSource.data=this.Table_detials;
+              this.Table_dataSource.sort = this.sort
+                this.Table_dataSource.data=this.Table_detials;
+              
             }
           );
           //console.log(data);

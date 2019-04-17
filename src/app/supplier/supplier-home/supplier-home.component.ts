@@ -31,13 +31,14 @@ export class SupplierHomeComponent implements OnInit {
   ngOnInit() {
     this.flag=true;
     this.Supplier_dataSource.paginator=this.paginator;
-
+    this.Supplier_dataSource.sort=this.sort;
     this.Supplier_dataSource.sort = this.sort;
     this.sup_ser.getAllSupplier().subscribe(
       (data:supplier[])=>{
         this.supplier_arr=data ;
         console.log(this.supplier_arr);
         this.Supplier_dataSource.data=this.supplier_arr;
+        this.Supplier_dataSource.sort=this.sort;
       }
     );
   }

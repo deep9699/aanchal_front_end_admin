@@ -86,6 +86,8 @@ export class CustomerOrderComponent implements OnInit {
       {
         console.log(data);
         this.customer_order_table=data;
+        
+    this.customer_order_dataSource.sort=this.sort;
         // for(this.i=0;this.i<data.length;this.i++)
         // {
         //   this.customer_order_table.push(new TableDetais(data[0].Order_id,data[0].Fk_stock_id,data[0].Fk_customer_id,data[0].Quantity,data[0].Status,data[0].Color_name,data[0].Size_name,data[0].Product_name,data[0].Product_price));

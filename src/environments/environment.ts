@@ -6,6 +6,12 @@ export const environment = {
   production: false
 };
 
+export const url ={
+  // endPoints:'http://localhost:3000/'
+
+  endPoints:'https://aanchal.herokuapp.com/'
+}
+
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

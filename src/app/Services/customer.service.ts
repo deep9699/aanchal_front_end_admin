@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { cust } from "../classes/customer_class";
+import { url } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private url='http://localhost:3000/customer/';
-  private customer_Id_url='http://localhost:3000/last_id/';
+  private url=url.endPoints+'customer/';
+  private customer_Id_url=url.endPoints+'last_id/';
   constructor(private _http:HttpClient) { }
 
   addCustomer(item:cust){

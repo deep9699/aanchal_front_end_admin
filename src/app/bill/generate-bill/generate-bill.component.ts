@@ -101,7 +101,7 @@ tot_qty:number;
 
   flag: number = 0;
 
-
+  selected_number1:string;
   ids:number;
   qtys:number;
   x: number = 0;
@@ -369,7 +369,9 @@ tot_qty:number;
 
   onNumberChange()
   {
-    console.log(this.selected_number)
+    //console.log('yesrajja');
+    //console.log('yes');
+    console.log(this.selected_number1);
     this.cust_ser.getIdByMobileNo(this.selected_number).subscribe((data:cust[])=>{
       console.log(data);
       this.Email_id=data[0].Email_id;

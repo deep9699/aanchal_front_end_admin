@@ -47,7 +47,7 @@ flag:boolean;
         console.log(data);
         this.size_arr=data;
         this.size_dataSource.data=data;
-
+        this.size_dataSource.sort=this.sort;
       }
     );
   }
