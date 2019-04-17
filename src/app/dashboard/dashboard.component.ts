@@ -54,7 +54,6 @@ export class DashboardComponent implements OnInit {
   pie_tot:number=0;
   customer_order_table:OrderTableDetais[]=[]
   customer_order_dataSource=new MatTableDataSource();
-  @ViewChild(MatPaginator) order_paginator: MatPaginator;
   @ViewChild(MatSort) order_sort: MatSort;
   order_pageEvent: PageEvent;
   order_displayedColumns: string[] = ['Product_name','Color_name', 'Size_name','Quantity','Price'];

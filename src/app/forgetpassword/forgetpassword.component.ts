@@ -16,7 +16,7 @@ import { MatDialogRef } from '@angular/material';
 export class ForgetpasswordComponent implements OnInit {
 
   flag:boolean=true;
-  email_id1:string;
+  email_id1:string="";
   password:string;
   code:number;
 
@@ -30,6 +30,7 @@ export class ForgetpasswordComponent implements OnInit {
  }
  onclicksendpassword()
  {
+   console.log(this.email_id1);
   this._ser.getEmpById(this.email_id1).subscribe(
     (data:any[])=>
     {

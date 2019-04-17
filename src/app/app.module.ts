@@ -23,7 +23,8 @@ import {
   MatListModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+
 } from "@angular/material";
 
    import { MatFormFieldModule } from "@angular/material/form-field";
@@ -131,6 +132,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatProgressSpinnerModule,
     MatSortModule,
     MatCardModule,
+    MatInputModule,
     MatAutocompleteModule,
     routing,
     HttpClientModule,

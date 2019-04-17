@@ -9,7 +9,7 @@ export const environment = {
 export const url ={
   // endPoints:'http://localhost:3000/'
 
-  endPoints:'https://aanchal.herokuapp.com/'
+  endPoints:'http://aanchal.herokuapp.com/'
 }
 
 /*
