@@ -66,12 +66,14 @@ export class DashboardComponent implements OnInit {
   stock_pageEvent: PageEvent;
   stock_displayedColumns: string[] = ['Supplier_name','Product_name','Color_name', 'Size_name','Price','Quantity'];
 
+  pie_name:string[]=['top1','top2','top3','top4','top5'];
   top_pro:product[]=[];
 
   LineChart = [];
   BarChart = [];
   PieChart=[];
   myPieChart=[];
+
 
   postsSubscription:any;
   timespan:any;
@@ -106,6 +108,7 @@ export class DashboardComponent implements OnInit {
          for(let x=0;x<this.top_pro.length;x++)
          {  
            this.pie_data[x]=parseInt((((data[x].total*100)/this.pie_tot)+""));
+           this.pie_name[x]=this.top_pro[x].Product_name;
          }
         }
         console.log(this.pie_data);
@@ -155,7 +158,7 @@ private refreshDatachart(): void {
    this.PieChart = new Chart('piechart', {
     type: 'pie',
     data: {
-      labels: ["top1","top2","top3","top4","top5"],
+      labels: this.pie_name,
       datasets: [{
         label: "",
         backgroundColor:["rgb(251,149,13)","rgb(252,2,128)","rgb(11,180,200)","rgb(93,180,97)","orchid"],
@@ -295,7 +298,7 @@ options: {
       (data: any) => {
         console.log(data);
         this.online_customer[0] = data[0].Total;
-        this.offline_customer[0]=data[0].Total;
+        this.offline_customer[0]=data[1].Total;
         console.log(this.online_customer);
 
       }

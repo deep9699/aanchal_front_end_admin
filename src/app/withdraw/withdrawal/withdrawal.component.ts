@@ -21,7 +21,7 @@ export class WithdrawalComponent implements OnInit {
   selected_employee: employee;
   selected_amount:number;
   selected_opt:number;
-
+  checked:boolean=false;
   employee_list: employee[] = [];
   withdrawal_amount:number[]=[
     5000,

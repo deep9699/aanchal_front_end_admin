@@ -81,15 +81,27 @@
         </div>
         <!-- </form> -->
       </mat-step>
-      <mat-step>
+      <mat-step [stepControl]="forthFormGroup">
         <ng-template matStepLabel>Done</ng-template>
         You are now done.
+        
         <div>
           <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;&nbsp;
-          <button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>
-          <button mat-flat-button color="primary" (click)="Done()">Done</button>
+          <button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+          <button mat-flat-button color="primary" (click)="Done()" [disabled]="checked?'false':'true'">Done</button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>
+    
+          
   </form>
+  <div>
+      <mat-checkbox class="example-margin" [(ngModel)]="checked" (change)="checked=!checked">*Tearms & conditions Apply</mat-checkbox>
+  <ul>
+      <li>All withdrawals made before completion of 5 years of continuous service are subject to tax. Withdrawals after completion of 5 years of continuous service in the EPF are tax-free.</li>
+      <li>If in case the employee was terminated or is unemployed as a result of ill-health and so on, withdrawals will not attract tax.</li>
+      <li>If the employee makes a withdrawal before the completion of 5 continuous years in the scheme, the principal amount as well as the interest accrued, is subject to tax. That said, the amount will be taxable in the current financial year.</li>
+      <li>For withdrawals before completion of 5 continuous years towards the scheme, the employee will be taxed 30% of the principal amount and the interest accrued if he/she has not submitted their PAN to the EPFO authorities. If the employee has submitted his/her PAN details to the EPFO authorities, 10% TDS (tax deducted from source) will be applicable.</li>
+    </ul>
+  </div>
 </div>
